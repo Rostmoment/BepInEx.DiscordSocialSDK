@@ -11,7 +11,6 @@ namespace BepInEx.DiscordSocialSDK
         private void Awake()
         {
             Logger = base.Logger;
-            Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
         }
     }
 }
