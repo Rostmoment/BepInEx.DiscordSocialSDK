@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using System.Runtime.InteropServices;
 
 namespace BepInEx.DiscordSocialSDK
 {
