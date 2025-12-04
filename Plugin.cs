@@ -1,0 +1,17 @@
+﻿using BepInEx;
+using BepInEx.Logging;
+
+namespace BepInEx.DiscordSocialSDK
+{
+    [BepInPlugin("rost.moment.unity.bepinex.discordsocialsdk", "Discord Social SDK For BepInEx", "1.0.0")]
+    public class Plugin : BaseUnityPlugin
+    {
+        internal static new ManualLogSource Logger;
+
+        private void Awake()
+        {
+            Logger = base.Logger;
+            Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
+        }
+    }
+}
