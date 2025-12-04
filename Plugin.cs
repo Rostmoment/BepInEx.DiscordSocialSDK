@@ -10,7 +10,16 @@ namespace BepInEx.DiscordSocialSDK
     [BepInPlugin("rost.moment.unity.bepinex.discordsocialsdk", "Discord Social SDK For BepInEx", "1.0.0")]
     public class Plugin : BaseUnityPlugin
     {
-        private static readonly string[] dependencies = ["discord_partner_sdk.dll", "System.Memory.dll", "System.Runtime.CompilerServices.Unsafe.dll", "System.Runtime.CompilerServices.Unsafe.dll"];
+        public const string DISCORD_LIBRARY_NAME = "discord_social_sdk";
+        public const string DISCORD_LIBRARY_NAME_DLL = DISCORD_LIBRARY_NAME + ".dll";
+
+        public const string SYSTEM_MEMORY_NAME = "System.Memory";
+        public const string SYSTEM_MEMRY_NAME_DLL = SYSTEM_MEMORY_NAME + ".dll";
+
+        public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME = "System.Runtime.CompilerServices.Unsafe";
+        public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL = SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME + ".dll";
+
+        private static readonly string[] dependencies = [DISCORD_LIBRARY_NAME_DLL, SYSTEM_MEMRY_NAME_DLL, SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL];
 
         internal static new ManualLogSource Logger;
 
