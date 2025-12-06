@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 namespace BepInEx.DiscordSocialSDK
 {
     [BepInPlugin("rost.moment.unity.bepinex.discordsocialsdk", "Discord Social SDK For BepInEx", "1.0.0")]
-    public class Plugin : BaseUnityPlugin
+    public class DiscoerdSDKPlugin : BaseUnityPlugin
     {
-        public const string DISCORD_LIBRARY_NAME = "discord_social_sdk";
+        public const string DISCORD_LIBRARY_NAME = "discord_partner_sdk";
         public const string DISCORD_LIBRARY_NAME_DLL = DISCORD_LIBRARY_NAME + ".dll";
 
         public const string SYSTEM_MEMORY_NAME = "System.Memory";
@@ -28,11 +28,19 @@ namespace BepInEx.DiscordSocialSDK
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 throw new PlatformNotSupportedException("Discord Social SDK is only supported on Windows");
 
-            foreach (string dependency in dependencies)
+            string path = Path.Combine(Path.GetDirectoryName(Info.Location), DISCORD_LIBRARY_NAME_DLL);
+            if (!File.Exists(path))
+                throw new FileNotFoundException($"Discord library {DISCORD_LIBRARY_NAME} was not found by path {path}");
+
+            try
             {
-                string path = Path.Combine(Path.GetDirectoryName(Info.Location), dependency);
-                if (!File.Exists(path))
-                    throw new FileNotFoundException($"Required dependency '{dependency}' not found at path: {path}");
+                Span<byte> spans = new Span<byte>();
+
+            }
+            catch (Exception e)
+            { 
+                Logger.LogError($"Failed to load System.Memory: {e}");
+                throw;
             }
 
             Logger = base.Logger;
