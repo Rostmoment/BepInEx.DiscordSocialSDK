@@ -25,6 +25,7 @@ namespace BepInEx.DiscordSocialSDK
                 return "";
             }
         }
+
         internal static Client client;
         private static string codeVerifier;
 
@@ -69,9 +70,7 @@ namespace BepInEx.DiscordSocialSDK
             DiscordSocialSDKPlugin.Logger.LogInfo("Setting status changed callback...");
             client.SetStatusChangedCallback((status, error, detail) =>
             {
-                DiscordSocialSDKPlugin.Logger.LogInfo($"Status: {Client.StatusToString(status)}, " +
-                                                     $"Error: {Client.ErrorToString(error)}, " +
-                                                     $"Detail: {detail}");
+                DiscordSocialSDKPlugin.Logger.LogInfo($"Status: {Client.StatusToString(status)}, Error: {Client.ErrorToString(error)}, Detail: {detail}");
             });
 
             DiscordSocialSDKPlugin.Logger.LogInfo("Registering launch command...");
@@ -112,8 +111,7 @@ namespace BepInEx.DiscordSocialSDK
 
         private static void AuthCallback(ClientResult result, string code, string redirectUri)
         {
-            DiscordSocialSDKPlugin.Logger.LogInfo($"Authorization Result: {result.Successful()}, " +
-                                                 $"Code: {code}, RedirectURI: {redirectUri}");
+            DiscordSocialSDKPlugin.Logger.LogInfo($"Authorization Result: {result.Successful()}, Code: {code}, RedirectURI: {redirectUri}");
 
             if (!result.Successful())
             {
@@ -122,12 +120,7 @@ namespace BepInEx.DiscordSocialSDK
             }
 
             
-            client.GetToken(
-                ApplicationId,   
-                code,
-                codeVerifier,
-                redirectUri,
-                OnTokenReceived);
+            client.GetToken(ApplicationId, code, codeVerifier, redirectUri, OnTokenReceived);
         }
 
         private static void OnRefreshTokenReceived(ClientResult result, string token, string refreshToken, AuthorizationTokenType tokenType, int expiresIn, string scopes)
@@ -142,12 +135,7 @@ namespace BepInEx.DiscordSocialSDK
             OnTokenReceived(result, token, refreshToken, tokenType, expiresIn, scopes);
         }
 
-        private static void OnTokenReceived(ClientResult result,
-                                           string token,
-                                           string newRefreshToken,
-                                           AuthorizationTokenType tokenType,
-                                           int expiresIn,
-                                           string scopes)
+        private static void OnTokenReceived(ClientResult result, string token, string newRefreshToken, AuthorizationTokenType tokenType, int expiresIn, string scopes)
         {
             if (!result.Successful())
             {
@@ -172,7 +160,5 @@ namespace BepInEx.DiscordSocialSDK
             DiscordSocialSDKPlugin.Logger.LogInfo("Token updated successfully, concting...");
             client.Connect();
         }
-        
-
     }
 }

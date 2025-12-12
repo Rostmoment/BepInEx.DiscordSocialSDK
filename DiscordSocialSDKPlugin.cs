@@ -11,9 +11,13 @@ using UnityEngine;
 
 namespace BepInEx.DiscordSocialSDK
 {
-    [BepInPlugin("rost.moment.unity.bepinex.discordsocialsdk", "Discord Social SDK For BepInEx", "1.0.0")]
+    [BepInPlugin(DiscordSocialSDKPlugin.GUID, "Discord Social SDK For BepInEx", "1.0.0")]
     public class DiscordSocialSDKPlugin : BaseUnityPlugin
     {
+        public const string GUID = "rost.moment.unity.bepinex.discordsocialsdk";
+        public const string NAME = "Discord Social SDK For BepInEx";
+        public const string VERSION = "1.0.0";
+
         public const ulong APPLICATION_ID = 1445825505004752898;
 
         public const string DISCORD_LIBRARY_NAME = "discord_partner_sdk";
@@ -65,9 +69,5 @@ namespace BepInEx.DiscordSocialSDK
             DontDestroyOnLoad(new GameObject("DiscordSocialSDKController", [typeof(DiscordController)]));
             ClientWrapper.Initialize(APPLICATION_ID);
         }
-        private void Start()
-        {
-        }
-
     }
 }
