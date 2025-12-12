@@ -25,4 +25,11 @@ namespace BepInEx.DiscordSocialSDK.Enums
         Streaming = 6,
         Unknown = 7,
     }
+
+    public static class StatusTypeExtensions
+    {
+        private static readonly StatusType[] settableStatuses = [StatusType.Idle, StatusType.Invisible, StatusType.Online, StatusType.Dnd];
+        public static bool CanSetAsOwnStatus(this StatusType status) => settableStatuses.Contains(status);
+        
+    }
 }

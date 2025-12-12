@@ -2,14 +2,20 @@
 using BepInEx.Bootstrap;
 using BepInEx.Logging;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
 namespace BepInEx.DiscordSocialSDK
 {
     [BepInPlugin("rost.moment.unity.bepinex.discordsocialsdk", "Discord Social SDK For BepInEx", "1.0.0")]
-    public class DiscoerdSDKPlugin : BaseUnityPlugin
+    public class DiscordSocialSDKPlugin : BaseUnityPlugin
     {
+        public const ulong APPLICATION_ID = 1445825505004752898;
+
         public const string DISCORD_LIBRARY_NAME = "discord_partner_sdk";
         public const string DISCORD_LIBRARY_NAME_DLL = DISCORD_LIBRARY_NAME + ".dll";
 
@@ -18,8 +24,6 @@ namespace BepInEx.DiscordSocialSDK
 
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME = "System.Runtime.CompilerServices.Unsafe";
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL = SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME + ".dll";
-
-        private static readonly string[] dependencies = [DISCORD_LIBRARY_NAME_DLL, SYSTEM_MEMRY_NAME_DLL, SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL];
 
         internal static new ManualLogSource Logger;
 
@@ -34,16 +38,36 @@ namespace BepInEx.DiscordSocialSDK
 
             try
             {
-                Span<byte> spans = new Span<byte>();
-
+                new Span<byte>();
             }
-            catch (Exception e)
+            catch
             { 
-                Logger.LogError($"Failed to load System.Memory: {e}");
+                Logger.LogError($"Failed to load {SYSTEM_MEMORY_NAME}");
                 throw;
             }
 
+            try
+            {
+                System.Runtime.CompilerServices.Unsafe.SizeOf<int>();
+            }
+            catch
+            {
+                Logger.LogError($"Failed to load {SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME}");
+                throw;
+            }
             Logger = base.Logger;
+            Initialize();
+
+            ClientWrapper.OnlineStatus = Enums.StatusType.Invisible;
         }
+        public static void Initialize()
+        {
+            DontDestroyOnLoad(new GameObject("DiscordSocialSDKController", [typeof(DiscordController)]));
+            ClientWrapper.Initialize(APPLICATION_ID);
+        }
+        private void Start()
+        {
+        }
+
     }
 }
