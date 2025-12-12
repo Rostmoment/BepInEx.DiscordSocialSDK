@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace BepInEx.DiscordSocialSDK
 {
-    [BepInPlugin(DiscordSocialSDKPlugin.GUID, "Discord Social SDK For BepInEx", "1.0.0")]
+    [BepInPlugin(DiscordSocialSDKPlugin.GUID, DiscordSocialSDKPlugin.NAME, DiscordSocialSDKPlugin.VERSION)]
     public class DiscordSocialSDKPlugin : BaseUnityPlugin
     {
         public const string GUID = "rost.moment.unity.bepinex.discordsocialsdk";
@@ -22,9 +22,9 @@ namespace BepInEx.DiscordSocialSDK
 
         public const string DISCORD_LIBRARY_NAME = "discord_partner_sdk";
         public const string DISCORD_LIBRARY_NAME_DLL = DISCORD_LIBRARY_NAME + ".dll";
-
+        
         public const string SYSTEM_MEMORY_NAME = "System.Memory";
-        public const string SYSTEM_MEMRY_NAME_DLL = SYSTEM_MEMORY_NAME + ".dll";
+        public const string SYSTEM_MEMORY_NAME_DLL = SYSTEM_MEMORY_NAME + ".dll";
 
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME = "System.Runtime.CompilerServices.Unsafe";
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL = SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME + ".dll";
