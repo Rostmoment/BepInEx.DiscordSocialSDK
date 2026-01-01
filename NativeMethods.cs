@@ -3255,7 +3255,7 @@ namespace BepInEx.DiscordSocialSDK
                     .DelegateFromPointer<DiscordSocialSDK.Client.ActivityInviteCallback>(__userData);
                 try
                 {
-                    __callback(new BepInEx.DiscordSocialSDK.ActivityInvite(*invite, 0));
+                    __callback(new BepInEx.DiscordSocialSDK.RPC.ActivityInvite(*invite, 0));
                 }
                 catch (Exception ex)
                 {

@@ -9,7 +9,7 @@ namespace BepInEx.DiscordSocialSDK
     public static class ClientWrapper
     {
 
-        public static string RefreshToken
+        private static string RefreshToken
         {
             set
             {
