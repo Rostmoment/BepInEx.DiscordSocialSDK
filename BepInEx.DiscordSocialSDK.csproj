@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
@@ -23,8 +23,19 @@
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
     <PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
   </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+	
+  <ItemGroup>
+	<EmbeddedResource Include="DLLs\discord_partner_sdk.dll" />
+	 <EmbeddedResource Include="DLLs\System.Memory.dll" />
+	 <EmbeddedResource Include="DLLs\System.Runtime.CompilerServices.Unsafe.dll" />
+   </ItemGroup>
+
+
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="DLLs\" />
   </ItemGroup>
 </Project>
