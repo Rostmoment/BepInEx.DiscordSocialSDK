@@ -3,7 +3,7 @@ using System;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
-    public static class DiscordRpcWrapper
+    public static class DiscordRPCWrapper
     {
         private static Activity currentActivity;
         private static bool initialized;

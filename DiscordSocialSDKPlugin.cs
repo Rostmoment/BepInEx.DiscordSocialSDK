@@ -152,7 +152,7 @@ namespace BepInEx.DiscordSocialSDK
             DontDestroyOnLoad(new GameObject("DiscordSocialSDKController", [typeof(DiscordController)]));
 
             ClientWrapper.Initialize(APPLICATION_ID);
-            DiscordRpcWrapper.Initialize();
+            DiscordRPCWrapper.Initialize();
         }
     }
 }
