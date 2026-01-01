@@ -26,17 +26,33 @@ namespace BepInEx.DiscordSocialSDK
             }
         }
 
-        internal static Client client;
+        /// <summary>
+        /// <see cref="Client"/> instance
+        /// WARNING: Try to don't use this directly, use the wrapper methods instead
+        /// </summary>
+        public static Client client;
         private static string codeVerifier;
 
-        public static ulong ApplicationId
+        internal static ulong ApplicationId
         {
             set => client.SetApplicationId(value);
             get => client.GetApplicationId();
         }
 
+        /// <summary>
+        /// Status of client
+        /// </summary>
         public static Client.Status Status => client == null ? Client.Status.Disconnected : client.GetStatus();
+        /// <summary>
+        /// True if client is ready
+        /// </summary>
         public static bool IsReady => Status == Client.Status.Ready;
+
+        /// <summary>
+        /// Online status of user
+        /// <para>Can be <see cref="StatusType.Dnd"/>, <see cref="StatusType.Idle"/>, <see cref="StatusType.Online"/>, <see cref="StatusType.Invisible"/></para>
+        /// <para>Can throw <see cref="InvalidStatusException"/> if status cannot be used as own status</para>
+        /// </summary>
         public static StatusType OnlineStatus
         {
             set

@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Bootstrap;
+using BepInEx.DiscordSocialSDK.RPC;
 using BepInEx.Logging;
 using System;
 using System.Collections;
@@ -67,7 +68,9 @@ namespace BepInEx.DiscordSocialSDK
         public static void Initialize()
         {
             DontDestroyOnLoad(new GameObject("DiscordSocialSDKController", [typeof(DiscordController)]));
+
             ClientWrapper.Initialize(APPLICATION_ID);
+            DiscordRpcWrapper.Initialize();
         }
     }
 }

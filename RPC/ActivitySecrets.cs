@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BepInEx.DiscordSocialSDK.RPC
 {
     /// <summary>
-    /// \see Activity
+    /// <see cref="Activity"/>
     /// </summary>
     public class ActivitySecrets : IDisposable
     {

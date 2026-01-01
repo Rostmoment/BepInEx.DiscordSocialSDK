@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
-    // I don't know what discord means by this summary comment, but here it is
     /// <summary>
-    /// \see Activity
+    /// <see cref="Activity"/>
     /// </summary>
     public class ActivityParty : IDisposable
     {
