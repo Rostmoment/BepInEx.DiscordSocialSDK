@@ -5,6 +5,7 @@ using BepInEx.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -18,7 +19,7 @@ namespace BepInEx.DiscordSocialSDK
     {
         public const string GUID = "rost.moment.unity.bepinex.discordsocialsdk";
         public const string NAME = "Discord Social SDK For BepInEx";
-        public const string VERSION = "1.0.0";
+        public const string VERSION = "1.0.1";
 
         public const ulong APPLICATION_ID = 1445825505004752898;
 
@@ -38,24 +39,37 @@ namespace BepInEx.DiscordSocialSDK
 
         private void CheckForDiscordLibrary(bool firstTime)
         {
-            string path = Path.Combine(Path.GetDirectoryName(Info.Location), DISCORD_LIBRARY_NAME_DLL);
-            if (!File.Exists(path))
+            byte[] Export()
             {
-                if (!firstTime)
-                    throw new FileNotFoundException($"File {path} not found, cannot load Discord Social Sdk");
-
-                Logger.LogWarning("Discord library was not found. Trying to export it from dll...");
                 Assembly assembly = GetType().Assembly;
                 using (Stream stream = assembly.GetManifestResourceStream(DISCORD_LIBRARY_RESOURE))
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
                         stream.CopyTo(ms);
-                        File.WriteAllBytes(path, ms.ToArray());
-                        Logger.LogInfo($"Exported discord library to {path}");
+                        return ms.ToArray();
                     }
                 }
+            }
+            string path = Path.Combine(Path.GetDirectoryName(Info.Location), DISCORD_LIBRARY_NAME_DLL);
+            
+            if (!File.Exists(path))
+            {
+                if (!firstTime)
+                    throw new FileNotFoundException($"File {path} not found, cannot load Discord Social Sdk");
+
+                Logger.LogWarning("Discord library was not found. Trying to export it from dll...");
+                File.WriteAllBytes(path, Export());
+                Logger.LogInfo($"Exported discord library to {path}");
                 CheckForDiscordLibrary(false);
+            }
+            else
+            {
+                if (!Export().SequenceEqual(File.ReadAllBytes(path)))
+                {
+                    Logger.LogWarning("Discord library differs from the embedded one. Re-exporting...");
+                    File.WriteAllBytes(path, Export());
+                }
             }
         }
         private void CheckForSystemMemoryLibrary(bool firstTime)

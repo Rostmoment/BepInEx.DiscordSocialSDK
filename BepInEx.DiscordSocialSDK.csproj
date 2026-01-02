@@ -15,6 +15,12 @@
     <RootNamespace>BepInEx.DiscordSocialSDK</RootNamespace>
   </PropertyGroup>
 
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>1591</NoWarn>
+  </PropertyGroup>
+	
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />

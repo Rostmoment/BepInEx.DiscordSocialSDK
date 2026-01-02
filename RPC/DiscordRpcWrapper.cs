@@ -1,5 +1,6 @@
 ﻿using BepInEx.DiscordSocialSDK.Enums;
 using System;
+using System.Drawing.Printing;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
@@ -21,8 +22,11 @@ namespace BepInEx.DiscordSocialSDK.RPC
         public static string CurrentSmallImage => currentActivity?.Assets()?.SmallImage();
         public static string CurrentSmallImageText => currentActivity?.Assets()?.SmallText();
 
+        public static string CurrentName => currentActivity?.Name();
         public static string CurrentDetails => currentActivity?.Details();
+        public static string CurrentDetailsUrl => currentActivity?.DetailsUrl();
         public static string CurrentState => currentActivity?.State();
+        public static string CurrentStateUrl => currentActivity?.StateUrl();
 
         public static string CurrentPartyId => currentActivity?.Party()?.Id();
         public static int? CurrentPartyCurrentSize => currentActivity?.Party()?.CurrentSize();
@@ -49,13 +53,20 @@ namespace BepInEx.DiscordSocialSDK.RPC
             }
         }
 
+        public static ActivityButton[] CurrentButtons => currentActivity?.GetButtons();
+
+        private static void CreateNewActivity()
+        {
+            currentActivity?.Dispose();
+            currentActivity = new Activity();
+            currentActivity.SetApplicationId(ClientWrapper.ApplicationId);
+        }
         internal static void Initialize()
         {
             if (initialized)
                 return;
 
-            currentActivity = new Activity();
-            currentActivity.SetApplicationId(ClientWrapper.ApplicationId);
+            CreateNewActivity();
             ActivityType = ActivityTypes.Playing;
 
             initialized = true;
@@ -64,15 +75,21 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <summary>
         /// Sets rich presence info
         /// </summary>
+        /// <param name="name">Name of rich presence</param>
         /// <param name="details">Detail for rich presence</param>
+        /// <param name="detailsURL">URL that opens when user clicks details text</param>
         /// <param name="state">State for rich presence</param>
-        public static void SetInfo(string details, string state = null)
+        /// <param name="stateURL">URL that opens when user clicks state text</param>
+        public static void SetInfo(string name, string details, string detailsURL = null, string state = null, string stateURL = null)
         {
             if (!IsReady)
                 return;
 
+            currentActivity.SetName(name);
             currentActivity.SetDetails(details);
+            currentActivity.SetDetailsUrl(detailsURL);
             currentActivity.SetState(state);
+            currentActivity.SetStateUrl(stateURL);
 
             Update();
         }
@@ -93,14 +110,14 @@ namespace BepInEx.DiscordSocialSDK.RPC
             ActivityAssets assets = new ActivityAssets();
             assets.SetLargeImage(largeImage);
 
-            if (!largeText.IsNullOrWhiteSpace())
+            if (!string.IsNullOrEmpty(largeText))
                 assets.SetLargeText(largeText);
 
-            if (!smallImage.IsNullOrWhiteSpace())
+            if (!string.IsNullOrEmpty(smallImage))
             {
                 assets.SetSmallImage(smallImage);
 
-                if (!smallText.IsNullOrWhiteSpace())
+                if (!string.IsNullOrEmpty(smallText))
                     assets.SetSmallText(smallText);
             }
             currentActivity.SetAssets(assets);
@@ -178,12 +195,79 @@ namespace BepInEx.DiscordSocialSDK.RPC
             if (!IsReady)
                 return;
 
-            currentActivity.Dispose();
-            currentActivity = new Activity();
+            CreateNewActivity();
 
             Update();
         }
 
+        /// <summary>
+        /// Adds button to current rich presence
+        /// <para>Won't add button if there is already 2 buttons</para>
+        /// </summary>
+        /// <param name="label">Label for button</param>
+        /// <param name="url">URL that opens when user clicks button</param>
+        public static void AddButton(string label, string url)
+        {
+            if (!IsReady)
+                return;
+
+            if (CurrentButtons != null && CurrentButtons.Length >= 2)
+                return;
+
+            ActivityButton button = new ActivityButton();
+            button.SetLabel(label);
+            button.SetUrl(url);
+            currentActivity.AddButton(button);
+
+            Update();
+        }
+        // Why discord didn't make a ClearButtons method is beyond me
+        /// <summary>
+        /// Clears all buttons from current rich presence
+        /// </summary>
+        public static void ClearButtons()
+        {
+            if (!IsReady)
+                return;
+
+            Activity newActivity = new Activity();
+
+            newActivity.SetApplicationId(ClientWrapper.ApplicationId);
+            newActivity.SetType(ActivityType);
+
+            if (!string.IsNullOrEmpty(CurrentName))
+                newActivity.SetName(CurrentName);
+
+            if (!string.IsNullOrEmpty(CurrentDetails))
+                newActivity.SetDetails(CurrentDetails);
+
+            if (!string.IsNullOrEmpty(CurrentDetailsUrl))
+                newActivity.SetDetailsUrl(CurrentDetailsUrl);
+
+            if (!string.IsNullOrEmpty(CurrentState))
+                newActivity.SetState(CurrentState);
+
+            if (!string.IsNullOrEmpty(CurrentStateUrl))
+                newActivity.SetStateUrl(CurrentStateUrl);
+
+            if (currentActivity.Assets() != null)
+                newActivity.SetAssets(currentActivity.Assets());
+            
+            if (currentActivity.Party() != null)
+                newActivity.SetParty(currentActivity.Party());
+
+            if (currentActivity.Timestamps() != null)
+                newActivity.SetTimestamps(currentActivity.Timestamps());
+
+            if (currentActivity.Secrets() != null)
+                newActivity.SetSecrets(currentActivity.Secrets());
+
+
+            currentActivity.Dispose();
+            currentActivity = newActivity;
+
+            Update();
+        }
 
         private static void Update()
         {
