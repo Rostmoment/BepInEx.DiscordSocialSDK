@@ -61,9 +61,25 @@ namespace BepInEx.DiscordSocialSDK
                     throw new InvalidStatusException(value);
                 client.SetOnlineStatus(value, (x) => { });
             }
-            get => client.GetCurrentUser().Status();
+            get => User.Status();
 
         }
+        /// <summary>
+        /// Returns hash of client avatar
+        /// </summary>
+        public static string AvatarHash => User?.Avatar();
+        /// <summary>
+        /// Username of client
+        /// </summary>
+        public static string Username => User?.Username();
+        /// <summary>
+        /// Client user id
+        /// </summary>
+        public static ulong? Id => User?.Id();
+        /// <summary>
+        /// Returns <see cref="UserHandle"/> of client
+        /// </summary>
+        public static UserHandle User => client.GetCurrentUserV2();
 
 
         internal static void Initialize(ulong appId)
