@@ -188,7 +188,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         }
 
         /// <summary>
-        /// Clears current rich presence activity
+        /// Clears current rich presence activity, resets to default state
         /// </summary>
         public static void Clear()
         {
@@ -267,6 +267,14 @@ namespace BepInEx.DiscordSocialSDK.RPC
             currentActivity = newActivity;
 
             Update();
+        }
+
+        /// <summary>
+        /// Removes rich presence from user's profile
+        /// </summary>
+        public static void Wipe()
+        {
+            ClientWrapper.client?.ClearRichPresence();
         }
 
         private static void Update()

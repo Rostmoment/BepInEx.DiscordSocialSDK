@@ -157,10 +157,19 @@ namespace BepInEx.DiscordSocialSDK
             CheckForSystemMemoryLibrary(true);
             CheckForUnsafeLibrary(true);
 
+            ClientWrapper.onMessageReceived += (ulong messageId) =>
+            {
+                MessageHandle handle = ClientWrapper.GetMessage(messageId);
+                Logger.LogInfo($"Message received: \"{handle.Content()}\" from {handle.Author().Username()}");
+
+            };
+
             Initialize();
 
             ClientWrapper.OnlineStatus = Enums.StatusType.Invisible;
         }
+
+
         public static void Initialize()
         {
             DontDestroyOnLoad(new GameObject("DiscordSocialSDKController", [typeof(DiscordController)]));

@@ -81,6 +81,11 @@ namespace BepInEx.DiscordSocialSDK
         /// </summary>
         public static UserHandle User => client.GetCurrentUserV2();
 
+        public static event Action<ulong> onMessageReceived;
+        public static event Action<ulong, ulong> onMessageDeleted;
+        public static event Action<ulong> onMessageUpdated;
+
+        public static MessageHandle GetMessage(ulong messageId) => client.GetMessageHandle(messageId);
 
         internal static void Initialize(ulong appId)
         {
@@ -189,8 +194,16 @@ namespace BepInEx.DiscordSocialSDK
                 return;
             }
 
-            DiscordSocialSDKPlugin.Logger.LogInfo("Token updated successfully, concting...");
+            DiscordSocialSDKPlugin.Logger.LogInfo("Token updated successfully, connecting...");
             client.Connect();
+
+            client.SetMessageUpdatedCallback(OnMessageUpdated);
+            client.SetMessageCreatedCallback(OnMessageCreated);
+            client.SetMessageDeletedCallback(OnMessageDeleted);
         }
+
+        private static void OnMessageDeleted(ulong messageId, ulong channelId) => onMessageDeleted?.Invoke(messageId, channelId);
+        private static void OnMessageCreated(ulong messageId) => onMessageReceived?.Invoke(messageId);
+        private static void OnMessageUpdated(ulong messageId) => onMessageUpdated?.Invoke(messageId);
     }
 }
