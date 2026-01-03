@@ -157,12 +157,6 @@ namespace BepInEx.DiscordSocialSDK
             CheckForSystemMemoryLibrary(true);
             CheckForUnsafeLibrary(true);
 
-            ClientWrapper.onMessageReceived += (ulong messageId) =>
-            {
-                MessageHandle handle = ClientWrapper.GetMessage(messageId);
-                Logger.LogInfo($"Message received: \"{handle.Content()}\" from {handle.Author().Username()}");
-
-            };
 
             Initialize();
 
