@@ -1,5 +1,5 @@
 # BepInEx.DiscordSocialSDK
-Wrapper around Discord Social SDK for BepInEx5
+Wrapper around [Discord Social SDK](https://discord.com/developers/social-sdk) for [BepInEx5](https://github.com/BepInEx/BepInEx)
 
 # How to install
 1) Install zip from [releases page](https://github.com/Rostmoment/BepInEx.DiscordSocialSDK/releases)<br>
