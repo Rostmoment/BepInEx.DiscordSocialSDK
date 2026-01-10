@@ -84,15 +84,15 @@ namespace BepInEx.DiscordSocialSDK
         /// <summary>
         /// Invoked whenever a new message is received in either a lobby or a DM. First argument is message id
         /// </summary>
-        public static event Action<ulong> onMessageReceived;
+        public static event Client.MessageCreatedCallback onMessageReceived;
         /// <summary>
         /// Invoked whenever a message is deleted. First argument is message id, second is channel id where message was deleted
         /// </summary>
-        public static event Action<ulong, ulong> onMessageDeleted;
+        public static event Client.MessageDeletedCallback onMessageDeleted;
         /// <summary>
         /// Invoked whenever a message is edited. First argument is message id
         /// </summary>
-        public static event Action<ulong> onMessageUpdated;
+        public static event Client.MessageUpdatedCallback onMessageUpdated;
 
         /// <summary>
         /// Returns <see cref="MessageHandle"/> of message
