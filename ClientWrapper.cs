@@ -81,11 +81,27 @@ namespace BepInEx.DiscordSocialSDK
         /// </summary>
         public static UserHandle User => client.GetCurrentUserV2();
 
+        /// <summary>
+        /// Invoked whenever a new message is received in either a lobby or a DM. First argument is message id
+        /// </summary>
         public static event Action<ulong> onMessageReceived;
+        /// <summary>
+        /// Invoked whenever a message is deleted. First argument is message id, second is channel id where message was deleted
+        /// </summary>
         public static event Action<ulong, ulong> onMessageDeleted;
+        /// <summary>
+        /// Invoked whenever a message is edited. First argument is message id
+        /// </summary>
         public static event Action<ulong> onMessageUpdated;
 
+        /// <summary>
+        /// Returns <see cref="MessageHandle"/> of message
+        /// </summary>
+        /// <param name="messageId">ID of message to get</param>
+        /// <returns></returns>
         public static MessageHandle GetMessage(ulong messageId) => client.GetMessageHandle(messageId);
+
+
 
         internal static void Initialize(ulong appId)
         {
@@ -201,6 +217,8 @@ namespace BepInEx.DiscordSocialSDK
             client.SetMessageCreatedCallback(OnMessageCreated);
             client.SetMessageDeletedCallback(OnMessageDeleted);
         }
+
+
 
         private static void OnMessageDeleted(ulong messageId, ulong channelId) => onMessageDeleted?.Invoke(messageId, channelId);
         private static void OnMessageCreated(ulong messageId) => onMessageReceived?.Invoke(messageId);

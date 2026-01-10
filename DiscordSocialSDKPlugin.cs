@@ -2,6 +2,7 @@
 using BepInEx.Bootstrap;
 using BepInEx.DiscordSocialSDK.RPC;
 using BepInEx.Logging;
+using HarmonyLib;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -148,6 +149,7 @@ namespace BepInEx.DiscordSocialSDK
 
         private void Awake()
         {
+
             Logger = base.Logger;
 
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -159,8 +161,6 @@ namespace BepInEx.DiscordSocialSDK
 
 
             Initialize();
-
-            ClientWrapper.OnlineStatus = Enums.StatusType.Invisible;
         }
 
 
