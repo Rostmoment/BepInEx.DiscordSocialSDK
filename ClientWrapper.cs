@@ -102,24 +102,47 @@ namespace BepInEx.DiscordSocialSDK
         /// <returns></returns>
         public static MessageHandle GetMessage(ulong messageId) => client.GetMessageHandle(messageId);
 
+        /// <summary>
+        /// Sends message to user
+        /// </summary>
+        /// <param name="userID">User to reveive message</param>
+        /// <param name="text">Text of message</param>
+        /// <param name="metadata">Dictionary that will be sent with message, can be seen in <see cref="MessageHandle"/> later</param>
+        /// <exception cref="CannotSendMessageToThisUserException">Throws if you cannot send message to user</exception>
+        /// <exception cref="UknownException">Throws if something went wrong and was not handled</exception>
         public static void SendMessageToUser(ulong userID, string text, Dictionary<string, string> metadata) => 
             SendMessageToUser(userID, text, metadata, (x, y) => {});
 
         /// <summary>
         /// Sends message to user
         /// </summary>
-        /// <param name="userID"></param>
-        /// <param name="text"></param>
-        /// <param name="metadata"></param>
-        /// <param name="callback"></param>
+        /// <param name="userID">User to reveive message</param>
+        /// <param name="text">Text of message</param>
+        /// <param name="metadata">Dictionary that will be sent with message, can be seen in <see cref="MessageHandle"/> later</param>
+        /// <param name="callback">Callback for result</param>
+        /// <exception cref="CannotSendMessageToThisUserException">Throws if you cannot send message to user</exception>
+        /// <exception cref="UknownException">Throws if something went wrong and was not handled</exception>
         public static void SendMessageToUser(ulong userID, string text, Dictionary<string, string> metadata, Client.SendUserMessageCallback callback)
         {
+            Client.SendUserMessageCallback errorHandle = (clientResult, messageID) =>
+            {
+                if (!clientResult.Successful())
+                {
+                    if (clientResult.ErrorCode() == ErrorCode.CannotSendMessageToThisUser.ToErrorCode())
+                        throw new CannotSendMessageToThisUserException(userID);
+                    else
+                        throw new UknownException(clientResult);
+                }
+            };
+            Client.SendUserMessageCallback resultCallback = errorHandle + callback;
+
             if (metadata == null || metadata.Count == 0)
-                client.SendUserMessage(userID, text, callback);
+                client.SendUserMessage(userID, text, resultCallback);
             else
-                client.SendUserMessageWithMetadata(userID, text, metadata, callback);
+                client.SendUserMessageWithMetadata(userID, text, metadata, resultCallback);
         }
 
+        #region connecting to discord
         internal static void Initialize(ulong appId)
         {
             if (client != null)
@@ -240,5 +263,6 @@ namespace BepInEx.DiscordSocialSDK
         private static void OnMessageDeleted(ulong messageId, ulong channelId) => onMessageDeleted?.Invoke(messageId, channelId);
         private static void OnMessageCreated(ulong messageId) => onMessageReceived?.Invoke(messageId);
         private static void OnMessageUpdated(ulong messageId) => onMessageUpdated?.Invoke(messageId);
+        #endregion
     }
 }
