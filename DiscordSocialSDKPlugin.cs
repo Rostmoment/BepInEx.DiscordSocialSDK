@@ -36,8 +36,6 @@ namespace BepInEx.DiscordSocialSDK
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL = SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME + ".dll";
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_RESOURCE = "BepInEx.DiscordSocialSDK.DLLs." + SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL;
 
-        internal static new ManualLogSource Logger;
-
         private void CheckForDiscordLibrary(bool firstTime)
         {
             byte[] Export()
@@ -149,16 +147,12 @@ namespace BepInEx.DiscordSocialSDK
 
         private void Awake()
         {
-
-            Logger = base.Logger;
-
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 throw new PlatformNotSupportedException("Discord Social SDK is only supported on Windows");
 
             CheckForDiscordLibrary(true);
             CheckForSystemMemoryLibrary(true);
             CheckForUnsafeLibrary(true);
-
 
             Initialize();
         }

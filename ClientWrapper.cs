@@ -1,6 +1,7 @@
 ﻿using BepInEx.DiscordSocialSDK.Enums;
 using BepInEx.DiscordSocialSDK.Exceptions;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 
@@ -51,7 +52,7 @@ namespace BepInEx.DiscordSocialSDK
         /// <summary>
         /// Online status of user
         /// <para>Can be <see cref="StatusType.Dnd"/>, <see cref="StatusType.Idle"/>, <see cref="StatusType.Online"/>, <see cref="StatusType.Invisible"/></para>
-        /// <para>Can throw <see cref="InvalidStatusException"/> if status cannot be used as own status</para>
+        /// <exception cref="InvalidStatusException">when status is now allowed to be set as own</exception>
         /// </summary>
         public static StatusType OnlineStatus
         {
@@ -101,14 +102,30 @@ namespace BepInEx.DiscordSocialSDK
         /// <returns></returns>
         public static MessageHandle GetMessage(ulong messageId) => client.GetMessageHandle(messageId);
 
+        public static void SendMessageToUser(ulong userID, string text, Dictionary<string, string> metadata) => 
+            SendMessageToUser(userID, text, metadata, (x, y) => {});
 
+        /// <summary>
+        /// Sends message to user
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="text"></param>
+        /// <param name="metadata"></param>
+        /// <param name="callback"></param>
+        public static void SendMessageToUser(ulong userID, string text, Dictionary<string, string> metadata, Client.SendUserMessageCallback callback)
+        {
+            if (metadata == null || metadata.Count == 0)
+                client.SendUserMessage(userID, text, callback);
+            else
+                client.SendUserMessageWithMetadata(userID, text, metadata, callback);
+        }
 
         internal static void Initialize(ulong appId)
         {
             if (client != null)
                 return;
 
-            DiscordSocialSDKPlugin.Logger.LogInfo("Initializing Discord Social SDK Client...");
+            Logger.LogInfo("Initializing Discord Social SDK Client...");
 
 
             client = new Client();
@@ -116,27 +133,27 @@ namespace BepInEx.DiscordSocialSDK
 
             client.AddLogCallback((message, severity) =>
             {
-                DiscordSocialSDKPlugin.Logger.LogError($"{severity}: {message}");
+                Logger.LogError($"{severity}: {message}");
             }, LoggingSeverity.Error);
 
 
-            DiscordSocialSDKPlugin.Logger.LogInfo("Setting status changed callback...");
+            Logger.LogInfo("Setting status changed callback...");
             client.SetStatusChangedCallback((status, error, detail) =>
             {
-                DiscordSocialSDKPlugin.Logger.LogInfo($"Status: {Client.StatusToString(status)}, Error: {Client.ErrorToString(error)}, Detail: {detail}");
+                Logger.LogInfo($"Status: {Client.StatusToString(status)}, Error: {Client.ErrorToString(error)}, Detail: {detail}");
             });
 
-            DiscordSocialSDKPlugin.Logger.LogInfo("Registering launch command...");
+            Logger.LogInfo("Registering launch command...");
             client.RegisterLaunchCommand(ApplicationId, string.Empty);
 
             if (!string.IsNullOrEmpty(RefreshToken))
             {
-                DiscordSocialSDKPlugin.Logger.LogInfo("Using existing refresh token...");
+                Logger.LogInfo("Using existing refresh token...");
                 client.RefreshToken(ApplicationId, RefreshToken, OnRefreshTokenReceived);
             }
             else
             {
-                DiscordSocialSDKPlugin.Logger.LogInfo("No refresh token found, starting OAuth flow...");
+                Logger.LogInfo("No refresh token found, starting OAuth flow...");
                 StartOAuthFlow();
             }
         }
@@ -153,22 +170,22 @@ namespace BepInEx.DiscordSocialSDK
                 args.SetScopes(Client.GetDefaultCommunicationScopes());
                 args.SetCodeChallenge(averifierObj.Challenge());
 
-                DiscordSocialSDKPlugin.Logger.LogInfo("Starting OAuth flow...");
+                Logger.LogInfo("Starting OAuth flow...");
                 client.Authorize(args, AuthCallback);
             }
             catch (Exception ex)
             {
-                DiscordSocialSDKPlugin.Logger.LogError($"Failed to start OAuth flow: {ex.Message}");
+                Logger.LogError($"Failed to start OAuth flow: {ex.Message}");
             }
         }
 
         private static void AuthCallback(ClientResult result, string code, string redirectUri)
         {
-            DiscordSocialSDKPlugin.Logger.LogInfo($"Authorization Result: {result.Successful()}, Code: {code}, RedirectURI: {redirectUri}");
+            Logger.LogInfo($"Authorization Result: {result.Successful()}, Code: {code}, RedirectURI: {redirectUri}");
 
             if (!result.Successful())
             {
-                DiscordSocialSDKPlugin.Logger.LogError($"Authorization failed: {result.Error()}");
+                Logger.LogError($"Authorization failed: {result.Error()}");
                 return;
             }
 
@@ -180,7 +197,7 @@ namespace BepInEx.DiscordSocialSDK
         {
             if (!result.Successful())
             {
-                DiscordSocialSDKPlugin.Logger.LogError($"Refresh token failed: {result.Error()}");
+                Logger.LogError($"Refresh token failed: {result.Error()}");
                 StartOAuthFlow();
                 return;
             }
@@ -192,12 +209,12 @@ namespace BepInEx.DiscordSocialSDK
         {
             if (!result.Successful())
             {
-                DiscordSocialSDKPlugin.Logger.LogError($"Token retrieval failed: {result.Error()}");
+                Logger.LogError($"Token retrieval failed: {result.Error()}");
                 return;
             }
 
             RefreshToken = newRefreshToken;
-            DiscordSocialSDKPlugin.Logger.LogInfo($"Refresh token received, length: {RefreshToken?.Length}");
+            Logger.LogInfo($"Refresh token received, length: {RefreshToken?.Length}");
 
             client.UpdateToken(tokenType, token, OnTokenUpdated);
         }
@@ -206,11 +223,11 @@ namespace BepInEx.DiscordSocialSDK
         {
             if (!result.Successful())
             {
-                DiscordSocialSDKPlugin.Logger.LogError($"Failed to update token: {result.Error()}");
+                Logger.LogError($"Failed to update token: {result.Error()}");
                 return;
             }
 
-            DiscordSocialSDKPlugin.Logger.LogInfo("Token updated successfully, connecting...");
+            Logger.LogInfo("Token updated successfully, connecting...");
             client.Connect();
 
             client.SetMessageUpdatedCallback(OnMessageUpdated);

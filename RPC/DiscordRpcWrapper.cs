@@ -337,7 +337,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         private static void Callback(ClientResult result)
         {
             if (!result.Successful())
-                DiscordSocialSDKPlugin.Logger.LogError($"Failed to update Discord Rich Presence: {result.Error()}");
+                Logger.LogError($"Failed to update Discord Rich Presence: {result.Error()}");
         }
     }
 }

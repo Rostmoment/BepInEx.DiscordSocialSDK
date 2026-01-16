@@ -1063,7 +1063,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -1085,7 +1085,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -1109,7 +1109,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -1135,7 +1135,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -1992,7 +1992,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2012,7 +2012,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2033,7 +2033,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2054,7 +2054,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2079,7 +2079,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2105,7 +2105,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2138,7 +2138,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2160,7 +2160,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2180,7 +2180,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2200,7 +2200,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2227,7 +2227,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2264,7 +2264,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2292,7 +2292,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2320,7 +2320,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2358,7 +2358,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2388,7 +2388,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2428,7 +2428,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2451,7 +2451,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2471,7 +2471,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2492,7 +2492,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2512,7 +2512,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2535,7 +2535,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2556,7 +2556,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2576,7 +2576,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2597,7 +2597,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2617,7 +2617,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2645,7 +2645,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2676,7 +2676,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2705,7 +2705,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2727,7 +2727,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2748,7 +2748,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2772,7 +2772,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2792,7 +2792,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2816,7 +2816,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2836,7 +2836,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2861,7 +2861,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2883,7 +2883,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2909,7 +2909,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2933,7 +2933,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2962,7 +2962,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -2991,7 +2991,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3017,7 +3017,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3038,7 +3038,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3059,7 +3059,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3079,7 +3079,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3099,7 +3099,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3123,7 +3123,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3147,7 +3147,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3171,7 +3171,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3191,7 +3191,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3216,7 +3216,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3238,7 +3238,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3259,7 +3259,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3280,7 +3280,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3307,7 +3307,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3328,7 +3328,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3349,7 +3349,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3370,7 +3370,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3391,7 +3391,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3415,7 +3415,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3439,7 +3439,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3465,7 +3465,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3487,7 +3487,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
@@ -3507,7 +3507,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    DiscordSocialSDKPlugin.Logger.LogError(ex);
+                    Logger.LogError(ex);
                 }
                 finally
                 {
