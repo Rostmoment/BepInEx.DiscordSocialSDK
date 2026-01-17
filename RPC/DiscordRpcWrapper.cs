@@ -1,6 +1,5 @@
 ﻿using BepInEx.DiscordSocialSDK.Enums;
 using System;
-using System.Drawing.Printing;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
@@ -16,13 +15,9 @@ namespace BepInEx.DiscordSocialSDK.RPC
         public static bool IsReady => ClientWrapper.IsReady && initialized;
 
         /// <summary>
-        /// <see cref="ActivityTypes"/> of rpc
+        /// <see cref="ActivityTypes"/> of rpc, null if no activity
         /// </summary>
-        public static ActivityTypes ActivityType
-        {
-            get => currentActivity.Type();
-            set => currentActivity.SetType(value);
-        }
+        public static ActivityTypes? ActivityType => currentActivity?.Type();
 
         /// <summary>
         /// Large image identifier or URL, null if no large image
@@ -75,6 +70,10 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// Max size of party, null if no party
         /// </summary>
         public static int? CurrentPartyMaxSize => currentActivity?.Party()?.MaxSize();
+        /// <summary>
+        /// <see cref="ActivityPartyPrivacy"/> of current party, null if no party
+        /// </summary>
+        public static ActivityPartyPrivacy? CurrentPartyPrivacy => currentActivity?.Party()?.Privacy();
 
         /// <summary>
         /// Start of current timestamp, null if no timestamp
@@ -124,9 +123,19 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return;
 
             CreateNewActivity();
-            ActivityType = ActivityTypes.Playing;
 
             initialized = true;
+        }
+
+        public static void SetActivityType(ActivityTypes activityType)
+        {
+            if (!IsReady)
+                return;
+
+            currentActivity.SetType(activityType);
+            noButtons.SetType(activityType);
+
+            Update();
         }
 
         /// <summary>
@@ -195,7 +204,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <summary>
         /// Sets party info
         /// </summary>
-        public static void SetParty(string partyId, int current, int max)
+        public static void SetParty(string partyId, int current, int max, ActivityPartyPrivacy privacy)
         {
             if (!IsReady)
                 return;
@@ -204,6 +213,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             party.SetId(partyId);
             party.SetCurrentSize(current);
             party.SetMaxSize(max);
+            party.SetPrivacy(privacy);
 
             currentActivity.SetParty(party);
             noButtons.SetParty(party);
@@ -303,6 +313,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             if (!IsReady)
                 return;
 
+            currentActivity?.Dispose();
             currentActivity = new Activity(noButtons);
 
             Update();
