@@ -6,6 +6,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
 {
     public static class DiscordRPCWrapper
     {
+        private static Activity noButtons;
         private static Activity currentActivity;
         private static bool initialized;
 
@@ -112,6 +113,10 @@ namespace BepInEx.DiscordSocialSDK.RPC
             currentActivity?.Dispose();
             currentActivity = new Activity();
             currentActivity.SetApplicationId(ClientWrapper.ApplicationId);
+
+            noButtons?.Dispose();
+            noButtons = new Activity();
+            noButtons.SetApplicationId(ClientWrapper.ApplicationId);
         }
         internal static void Initialize()
         {
@@ -143,6 +148,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
             currentActivity.SetState(state);
             currentActivity.SetStateUrl(stateURL);
 
+            noButtons.SetName(name);
+            noButtons.SetDetails(details);
+            noButtons.SetDetailsUrl(detailsURL);
+            noButtons.SetState(state);
+            noButtons.SetStateUrl(stateURL);
+
             Update();
         }
 
@@ -172,7 +183,9 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 if (!string.IsNullOrEmpty(smallText))
                     assets.SetSmallText(smallText);
             }
+
             currentActivity.SetAssets(assets);
+            noButtons.SetAssets(assets);
 
             Update();
 
@@ -193,6 +206,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
             party.SetMaxSize(max);
 
             currentActivity.SetParty(party);
+            noButtons.SetParty(party);
+
             Update();
         }
 
@@ -220,6 +235,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 timestamps.SetEnd((ulong)new DateTimeOffset(end.Value).ToUnixTimeMilliseconds());
 
             currentActivity.SetTimestamps(timestamps);
+            noButtons.SetTimestamps(timestamps);
+
             Update();
         }
         /// <summary>
@@ -236,6 +253,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return;
 
             currentActivity.SetTimestamps(null);
+            noButtons.SetTimestamps(null);
+
             Update();
         }
 
@@ -269,7 +288,9 @@ namespace BepInEx.DiscordSocialSDK.RPC
             ActivityButton button = new ActivityButton();
             button.SetLabel(label);
             button.SetUrl(url);
+
             currentActivity.AddButton(button);
+            // Buttons cannot be removed from acrivity, that's why I made noButtons field
 
             Update();
         }
@@ -282,41 +303,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             if (!IsReady)
                 return;
 
-            Activity newActivity = new Activity();
-
-            newActivity.SetApplicationId(ClientWrapper.ApplicationId);
-            newActivity.SetType(ActivityType);
-
-            if (!string.IsNullOrEmpty(CurrentName))
-                newActivity.SetName(CurrentName);
-
-            if (!string.IsNullOrEmpty(CurrentDetails))
-                newActivity.SetDetails(CurrentDetails);
-
-            if (!string.IsNullOrEmpty(CurrentDetailsUrl))
-                newActivity.SetDetailsUrl(CurrentDetailsUrl);
-
-            if (!string.IsNullOrEmpty(CurrentState))
-                newActivity.SetState(CurrentState);
-
-            if (!string.IsNullOrEmpty(CurrentStateUrl))
-                newActivity.SetStateUrl(CurrentStateUrl);
-
-            if (currentActivity.Assets() != null)
-                newActivity.SetAssets(currentActivity.Assets());
-            
-            if (currentActivity.Party() != null)
-                newActivity.SetParty(currentActivity.Party());
-
-            if (currentActivity.Timestamps() != null)
-                newActivity.SetTimestamps(currentActivity.Timestamps());
-
-            if (currentActivity.Secrets() != null)
-                newActivity.SetSecrets(currentActivity.Secrets());
-
-
-            currentActivity.Dispose();
-            currentActivity = newActivity;
+            currentActivity = new Activity(noButtons);
 
             Update();
         }
