@@ -1,4 +1,5 @@
-﻿using BepInEx.DiscordSocialSDK.Enums;
+﻿using BepInEx.DiscordSocialSDK.Auth;
+using BepInEx.DiscordSocialSDK.Enums;
 using BepInEx.DiscordSocialSDK.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,7 @@ namespace BepInEx.DiscordSocialSDK
         /// Returns hash of client avatar
         /// </summary>
         public static string AvatarHash => User?.Avatar();
+
         /// <summary>
         /// Username of client
         /// </summary>

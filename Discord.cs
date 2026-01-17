@@ -10,6 +10,7 @@ using System.Threading;
 using BepInEx.DiscordSocialSDK.Enums;
 using BepInEx.DiscordSocialSDK.Extensions;
 using BepInEx.DiscordSocialSDK.RPC;
+using BepInEx.DiscordSocialSDK.Auth;
 
 
 namespace BepInEx.DiscordSocialSDK
@@ -287,637 +288,6 @@ namespace BepInEx.DiscordSocialSDK
                 fixed(NativeMethods.ClientResult* self = &this.self) {
                     NativeMethods.ClientResult.SetRetryAfter(self, value);
                 }
-            }
-        }
-    }
-    /// <summary>
-    ///  Struct that encapsulates the challenge part of the code verification flow.
-    /// </summary>
-    public class AuthorizationCodeChallenge : IDisposable {
-        internal NativeMethods.AuthorizationCodeChallenge self;
-        private int disposed_;
-
-        internal AuthorizationCodeChallenge(NativeMethods.AuthorizationCodeChallenge self,
-                                            int disposed) {
-            this.self = self;
-                disposed_ = disposed;
-        }
-
-        ~AuthorizationCodeChallenge() { Dispose(); }
-
-        public AuthorizationCodeChallenge() {
-            NativeMethods.__Init();
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeChallenge* self = &this.self) {
-                    NativeMethods.AuthorizationCodeChallenge.Init(self);
-                }
-            }
-            NativeMethods.__OnPostConstruct(this);
-        }
-        public void Dispose() {
-            if (Interlocked.Exchange(ref disposed_, 1) != 0) {
-                return;
-            }
-            GC.SuppressFinalize(this);
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeChallenge* self = &this.self) {
-                    NativeMethods.AuthorizationCodeChallenge.Drop(self);
-                }
-            }
-        }
-
-        public AuthorizationCodeChallenge(AuthorizationCodeChallenge other) {
-            if (other == null) {
-                throw new ArgumentNullException(nameof(other));
-            }
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeChallenge));
-            }
-            if (other.disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(other));
-            }
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeChallenge* otherPtr = &other.self) {
-                    fixed(NativeMethods.AuthorizationCodeChallenge* selfPtr = &self) {
-                        NativeMethods.AuthorizationCodeChallenge.Clone(selfPtr, otherPtr);
-                    }
-                }
-            }
-        }
-        internal unsafe AuthorizationCodeChallenge(NativeMethods.AuthorizationCodeChallenge* otherPtr) {
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeChallenge* selfPtr = &self) {
-                    NativeMethods.AuthorizationCodeChallenge.Clone(selfPtr, otherPtr);
-                }
-            }
-        }
-        public AuthenticationCodeChallengeMethod Method() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeChallenge));
-            }
-            unsafe {
-                AuthenticationCodeChallengeMethod __returnValue;
-                fixed(NativeMethods.AuthorizationCodeChallenge* self = &this.self) {
-                    __returnValue = NativeMethods.AuthorizationCodeChallenge.Method(self);
-                }
-                return __returnValue;
-            }
-        }
-        public void SetMethod(AuthenticationCodeChallengeMethod value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeChallenge));
-            }
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeChallenge* self = &this.self) {
-                    NativeMethods.AuthorizationCodeChallenge.SetMethod(self, value);
-                }
-            }
-        }
-        public string Challenge() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeChallenge));
-            }
-            unsafe {
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.AuthorizationCodeChallenge* self = &this.self) {
-                    NativeMethods.AuthorizationCodeChallenge.Challenge(self, &__returnValue);
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetChallenge(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeChallenge));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned =
-                  NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.AuthorizationCodeChallenge* self = &this.self) {
-                    NativeMethods.AuthorizationCodeChallenge.SetChallenge(self, __valueSpan);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
-            }
-        }
-    }
-    /// <summary>
-    ///  Struct that encapsulates both parts of the code verification flow.
-    /// </summary>
-    public class AuthorizationCodeVerifier : IDisposable {
-        internal NativeMethods.AuthorizationCodeVerifier self;
-        private int disposed_;
-
-        internal AuthorizationCodeVerifier(NativeMethods.AuthorizationCodeVerifier self, int disposed) {
-            this.self = self;
-                disposed_ = disposed;
-        }
-
-        ~AuthorizationCodeVerifier() { Dispose(); }
-
-        public void Dispose() {
-            if (Interlocked.Exchange(ref disposed_, 1) != 0) {
-                return;
-            }
-            GC.SuppressFinalize(this);
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeVerifier* self = &this.self) {
-                    NativeMethods.AuthorizationCodeVerifier.Drop(self);
-                }
-            }
-        }
-
-        public AuthorizationCodeVerifier(AuthorizationCodeVerifier other) {
-            if (other == null) {
-                throw new ArgumentNullException(nameof(other));
-            }
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeVerifier));
-            }
-            if (other.disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(other));
-            }
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeVerifier* otherPtr = &other.self) {
-                    fixed(NativeMethods.AuthorizationCodeVerifier* selfPtr = &self) {
-                        NativeMethods.AuthorizationCodeVerifier.Clone(selfPtr, otherPtr);
-                    }
-                }
-            }
-        }
-        internal unsafe AuthorizationCodeVerifier(NativeMethods.AuthorizationCodeVerifier* otherPtr) {
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeVerifier* selfPtr = &self) {
-                    NativeMethods.AuthorizationCodeVerifier.Clone(selfPtr, otherPtr);
-                }
-            }
-        }
-        public AuthorizationCodeChallenge Challenge() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeVerifier));
-            }
-            unsafe {
-                var __returnValueNative = new NativeMethods.AuthorizationCodeChallenge();
-                AuthorizationCodeChallenge __returnValue = null;
-                fixed(NativeMethods.AuthorizationCodeVerifier* self = &this.self) {
-                    NativeMethods.AuthorizationCodeVerifier.Challenge(self, &__returnValueNative);
-                }
-                __returnValue = new AuthorizationCodeChallenge(__returnValueNative, 0);
-                return __returnValue;
-            }
-        }
-        public void SetChallenge(AuthorizationCodeChallenge value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeVerifier));
-            }
-            unsafe {
-                fixed(NativeMethods.AuthorizationCodeChallenge* __valueFixed = &value.self) {
-                    fixed(NativeMethods.AuthorizationCodeVerifier* self = &this.self) {
-                        NativeMethods.AuthorizationCodeVerifier.SetChallenge(self, __valueFixed);
-                    }
-                }
-            }
-        }
-        public string Verifier() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeVerifier));
-            }
-            unsafe {
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.AuthorizationCodeVerifier* self = &this.self) {
-                    NativeMethods.AuthorizationCodeVerifier.Verifier(self, &__returnValue);
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetVerifier(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationCodeVerifier));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned =
-                  NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.AuthorizationCodeVerifier* self = &this.self) {
-                    NativeMethods.AuthorizationCodeVerifier.SetVerifier(self, __valueSpan);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
-            }
-        }
-    }
-    /// <summary>
-    ///  Arguments to the Client::Authorize function.
-    /// </summary>
-    public class AuthorizationArgs : IDisposable {
-        internal NativeMethods.AuthorizationArgs self;
-        private int disposed_;
-
-        internal AuthorizationArgs(NativeMethods.AuthorizationArgs self, int disposed) {
-            this.self = self;
-                disposed_ = disposed;
-        }
-
-        ~AuthorizationArgs() { Dispose(); }
-
-        public AuthorizationArgs() {
-            NativeMethods.__Init();
-            unsafe {
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.Init(self);
-                }
-            }
-            NativeMethods.__OnPostConstruct(this);
-        }
-        public void Dispose() {
-            if (Interlocked.Exchange(ref disposed_, 1) != 0) {
-                return;
-            }
-            GC.SuppressFinalize(this);
-            unsafe {
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.Drop(self);
-                }
-            }
-        }
-
-        public AuthorizationArgs(AuthorizationArgs other) {
-            if (other == null) {
-                throw new ArgumentNullException(nameof(other));
-            }
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            if (other.disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(other));
-            }
-            unsafe {
-                fixed(NativeMethods.AuthorizationArgs* otherPtr = &other.self) {
-                    fixed(NativeMethods.AuthorizationArgs* selfPtr = &self) {
-                        NativeMethods.AuthorizationArgs.Clone(selfPtr, otherPtr);
-                    }
-                }
-            }
-        }
-        internal unsafe AuthorizationArgs(NativeMethods.AuthorizationArgs* otherPtr) {
-            unsafe {
-                fixed(NativeMethods.AuthorizationArgs* selfPtr = &self) {
-                    NativeMethods.AuthorizationArgs.Clone(selfPtr, otherPtr);
-                }
-            }
-        }
-        public ulong ClientId() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                ulong __returnValue;
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    __returnValue = NativeMethods.AuthorizationArgs.ClientId(self);
-                }
-                return __returnValue;
-            }
-        }
-        public void SetClientId(ulong value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetClientId(self, value);
-                }
-            }
-        }
-        public string Scopes() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.Scopes(self, &__returnValue);
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetScopes(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned =
-                  NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetScopes(self, __valueSpan);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
-            }
-        }
-        public string State() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                bool __returnIsNonNull;
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    __returnIsNonNull = NativeMethods.AuthorizationArgs.State(self, &__returnValue);
-                }
-                if (!__returnIsNonNull) {
-                    return null;
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetState(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned = NativeMethods.__InitNullableStringLocal(
-                  __scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetState(self,
-                                                             value != null ? &__valueSpan : null);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
-            }
-        }
-        public string Nonce() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                bool __returnIsNonNull;
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    __returnIsNonNull = NativeMethods.AuthorizationArgs.Nonce(self, &__returnValue);
-                }
-                if (!__returnIsNonNull) {
-                    return null;
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetNonce(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned = NativeMethods.__InitNullableStringLocal(
-                  __scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetNonce(self,
-                                                             value != null ? &__valueSpan : null);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
-            }
-        }
-        public AuthorizationCodeChallenge CodeChallenge() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                bool __returnIsNonNull;
-                var __returnValueNative = new NativeMethods.AuthorizationCodeChallenge();
-                AuthorizationCodeChallenge __returnValue = null;
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    __returnIsNonNull =
-                      NativeMethods.AuthorizationArgs.CodeChallenge(self, &__returnValueNative);
-                }
-                if (!__returnIsNonNull) {
-                    return null;
-                }
-                __returnValue = new AuthorizationCodeChallenge(__returnValueNative, 0);
-                return __returnValue;
-            }
-        }
-        public void SetCodeChallenge(AuthorizationCodeChallenge value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __valueLocal = value?.self ?? default;
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetCodeChallenge(
-                      self, value != null ? &__valueLocal : null);
-                }
-                if (value != null) {
-                    value.self = __valueLocal;
-                }
-            }
-        }
-        public IntegrationType? IntegrationType() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                bool __returnIsNonNull;
-                IntegrationType __returnValue;
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    __returnIsNonNull =
-                      NativeMethods.AuthorizationArgs.IntegrationType(self, &__returnValue);
-                }
-                if (!__returnIsNonNull) {
-                    return null;
-                }
-                return __returnValue;
-            }
-        }
-        public void SetIntegrationType(IntegrationType? value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __valueLocal = value ?? default;
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetIntegrationType(
-                      self, value != null ? &__valueLocal : null);
-                }
-            }
-        }
-        public string CustomSchemeParam() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                bool __returnIsNonNull;
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    __returnIsNonNull =
-                      NativeMethods.AuthorizationArgs.CustomSchemeParam(self, &__returnValue);
-                }
-                if (!__returnIsNonNull) {
-                    return null;
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetCustomSchemeParam(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(AuthorizationArgs));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned = NativeMethods.__InitNullableStringLocal(
-                  __scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.AuthorizationArgs* self = &this.self) {
-                    NativeMethods.AuthorizationArgs.SetCustomSchemeParam(
-                      self, value != null ? &__valueSpan : null);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
-            }
-        }
-    }
-    /// <summary>
-    ///  Arguments to the Client::GetTokenFromDevice function.
-    /// </summary>
-    public class DeviceAuthorizationArgs : IDisposable {
-        internal NativeMethods.DeviceAuthorizationArgs self;
-        private int disposed_;
-
-        internal DeviceAuthorizationArgs(NativeMethods.DeviceAuthorizationArgs self, int disposed) {
-            this.self = self;
-                disposed_ = disposed;
-        }
-
-        ~DeviceAuthorizationArgs() { Dispose(); }
-
-        public DeviceAuthorizationArgs() {
-            NativeMethods.__Init();
-            unsafe {
-                fixed(NativeMethods.DeviceAuthorizationArgs* self = &this.self) {
-                    NativeMethods.DeviceAuthorizationArgs.Init(self);
-                }
-            }
-            NativeMethods.__OnPostConstruct(this);
-        }
-        public void Dispose() {
-            if (Interlocked.Exchange(ref disposed_, 1) != 0) {
-                return;
-            }
-            GC.SuppressFinalize(this);
-            unsafe {
-                fixed(NativeMethods.DeviceAuthorizationArgs* self = &this.self) {
-                    NativeMethods.DeviceAuthorizationArgs.Drop(self);
-                }
-            }
-        }
-
-        public DeviceAuthorizationArgs(DeviceAuthorizationArgs other) {
-            if (other == null) {
-                throw new ArgumentNullException(nameof(other));
-            }
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(DeviceAuthorizationArgs));
-            }
-            if (other.disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(other));
-            }
-            unsafe {
-                fixed(NativeMethods.DeviceAuthorizationArgs* otherPtr = &other.self) {
-                    fixed(NativeMethods.DeviceAuthorizationArgs* selfPtr = &self) {
-                        NativeMethods.DeviceAuthorizationArgs.Clone(selfPtr, otherPtr);
-                    }
-                }
-            }
-        }
-        internal unsafe DeviceAuthorizationArgs(NativeMethods.DeviceAuthorizationArgs* otherPtr) {
-            unsafe {
-                fixed(NativeMethods.DeviceAuthorizationArgs* selfPtr = &self) {
-                    NativeMethods.DeviceAuthorizationArgs.Clone(selfPtr, otherPtr);
-                }
-            }
-        }
-        public ulong ClientId() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(DeviceAuthorizationArgs));
-            }
-            unsafe {
-                ulong __returnValue;
-                fixed(NativeMethods.DeviceAuthorizationArgs* self = &this.self) {
-                    __returnValue = NativeMethods.DeviceAuthorizationArgs.ClientId(self);
-                }
-                return __returnValue;
-            }
-        }
-        public void SetClientId(ulong value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(DeviceAuthorizationArgs));
-            }
-            unsafe {
-                fixed(NativeMethods.DeviceAuthorizationArgs* self = &this.self) {
-                    NativeMethods.DeviceAuthorizationArgs.SetClientId(self, value);
-                }
-            }
-        }
-        public string Scopes() {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(DeviceAuthorizationArgs));
-            }
-            unsafe {
-                var __returnValue = new NativeMethods.Discord_String();
-                fixed(NativeMethods.DeviceAuthorizationArgs* self = &this.self) {
-                    NativeMethods.DeviceAuthorizationArgs.Scopes(self, &__returnValue);
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
-                return __returnValueSurface;
-            }
-        }
-        public void SetScopes(string value) {
-            if (disposed_ != 0) {
-                throw new ObjectDisposedException(nameof(DeviceAuthorizationArgs));
-            }
-            unsafe {
-                var __scratchAligned = stackalloc ulong[128];
-                var __scratch = (byte*)__scratchAligned;
-                var __scratchUsed = 0;
-                NativeMethods.Discord_String __valueSpan;
-                var __valueOwned =
-                  NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__valueSpan, value);
-                fixed(NativeMethods.DeviceAuthorizationArgs* self = &this.self) {
-                    NativeMethods.DeviceAuthorizationArgs.SetScopes(self, __valueSpan);
-                }
-                NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
     }
@@ -5732,7 +5102,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  NOTE: this *will not* close authorization windows presented to the user.
         ///
         /// </remarks>
-        public void AbortAuthorize() {
+        internal void AbortAuthorize() {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
             }
@@ -5745,7 +5115,7 @@ namespace BepInEx.DiscordSocialSDK
         /// <summary>
         ///  This function is used to abort/cleanup the device authorization flow.
         /// </summary>
-        public void AbortGetTokenFromDevice() {
+        internal void AbortGetTokenFromDevice() {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
             }
@@ -5854,7 +5224,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  For more information see: https://discord.com/developers/docs/topics/oauth2
         ///
         /// </remarks>
-        public void Authorize(AuthorizationArgs args,
+        internal void Authorize(AuthorizationArgs args,
                               AuthorizationCallback callback) {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
@@ -5880,7 +5250,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  should be used in conjunction with a backend server to handle the device authorization
         ///  flow. For a public client, you can use Client::AbortGetTokenFromDevice instead.
         /// </summary>
-        public void CloseAuthorizeDeviceScreen() {
+        internal void CloseAuthorizeDeviceScreen() {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
             }
@@ -5896,7 +5266,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  `challenge` value to pass into Client::Authorize and a `verifier` value to pass into
         ///  GetToken.
         /// </summary>
-        public AuthorizationCodeVerifier CreateAuthorizationCodeVerifier() {
+        internal AuthorizationCodeVerifier CreateAuthorizationCodeVerifier() {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
             }
@@ -7396,7 +6766,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  changes to Status::Ready.
         ///
         /// </remarks>
-        public void Connect() {
+        internal void Connect() {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
             }
@@ -7415,7 +6785,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  Client::Status::Disconnected.
         ///
         /// </remarks>
-        public void Disconnect() {
+        internal void Disconnect() {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
             }
