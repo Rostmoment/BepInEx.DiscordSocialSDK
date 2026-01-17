@@ -5527,7 +5527,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void GetTokenFromDevice(DeviceAuthorizationArgs args,
+        internal void GetTokenFromDevice(DeviceAuthorizationArgs args,
                                        TokenExchangeCallback callback) {
             if (disposed_ != 0) {
                 throw new ObjectDisposedException(nameof(Client));
@@ -5587,7 +5587,7 @@ namespace BepInEx.DiscordSocialSDK
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void GetTokenFromDeviceProvisionalMerge(
+        internal void GetTokenFromDeviceProvisionalMerge(
           DeviceAuthorizationArgs args,
           AuthenticationExternalAuthType externalAuthType,
           string externalAuthToken,
