@@ -18,6 +18,7 @@ namespace BepInEx.DiscordSocialSDK
     [BepInPlugin(DiscordSocialSDKPlugin.GUID, DiscordSocialSDKPlugin.NAME, DiscordSocialSDKPlugin.VERSION)]
     public class DiscordSocialSDKPlugin : BaseUnityPlugin
     {
+        #region constants
         public const string GUID = "rost.moment.unity.bepinex.discordsocialsdk";
         public const string NAME = "Discord Social SDK For BepInEx";
         public const string VERSION = "1.0.1";
@@ -35,6 +36,7 @@ namespace BepInEx.DiscordSocialSDK
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME = "System.Runtime.CompilerServices.Unsafe";
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL = SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME + ".dll";
         public const string SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_RESOURCE = "BepInEx.DiscordSocialSDK.DLLs." + SYSTEM_RUNTIME_COMPILER_SERVICES_UNSAFE_NAME_DLL;
+        #endregion
 
         private void CheckForDiscordLibrary(bool firstTime)
         {
@@ -158,7 +160,7 @@ namespace BepInEx.DiscordSocialSDK
         }
 
 
-        public static void Initialize()
+        private static void Initialize()
         {
             DontDestroyOnLoad(new GameObject("DiscordSocialSDKController", [typeof(DiscordController)]));
 
