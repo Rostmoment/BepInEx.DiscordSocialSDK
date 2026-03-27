@@ -10,10 +10,10 @@ namespace BepInEx.DiscordSocialSDK
 {
     internal class DiscordController : MonoBehaviour
     {
-        [DllImport(LibraryNames.DISCORD_LIBRARY_NAME, EntryPoint = "Discord_RunCallbacks", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Libraries.DISCORD_LIBRARY_NAME, EntryPoint = "Discord_RunCallbacks", CallingConvention = CallingConvention.Cdecl)]
         private static extern void Discord_RunCallbacks();
 
-        [DllImport(LibraryNames.DISCORD_LIBRARY_NAME, EntryPoint = "Discord_ResetCallbacks", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(Libraries.DISCORD_LIBRARY_NAME, EntryPoint = "Discord_ResetCallbacks", CallingConvention = CallingConvention.Cdecl)]
         private static extern void Discord_ResetCallbacks();
 
 

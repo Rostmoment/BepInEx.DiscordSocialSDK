@@ -9,6 +9,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         public DiscordRPCWrapper(ClientWrapper client)
         {
             this.client = client;
+            Initialize();
         }
 
         private ClientWrapper client;

@@ -185,22 +185,22 @@ namespace BepInEx.DiscordSocialSDK
             }
         }
 
-        [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+        [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                    EntryPoint = "Discord_Alloc",
                    CallingConvention = CallingConvention.Cdecl)]
         public static extern void* Discord_Alloc(UIntPtr size);
 
-        [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+        [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                    EntryPoint = "Discord_Free",
                    CallingConvention = CallingConvention.Cdecl)]
         public static extern void Discord_Free(void* ptr);
 
-        [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+        [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                    EntryPoint = "Discord_FreeProperties",
                    CallingConvention = CallingConvention.Cdecl)]
         public static extern void Discord_FreeProperties(Discord_Properties props);
 
-        [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+        [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                    EntryPoint = "Discord_SetFreeThreaded",
                    CallingConvention = CallingConvention.Cdecl)]
         public static extern void Discord_SetFreeThreaded();
@@ -294,89 +294,89 @@ namespace BepInEx.DiscordSocialSDK
         public struct ActivityInvite
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ActivityInvite* self, ActivityInvite* rhs);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SenderId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong SenderId(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetSenderId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSenderId(ActivityInvite* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_ChannelId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ChannelId(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetChannelId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetChannelId(ActivityInvite* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_MessageId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong MessageId(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetMessageId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetMessageId(ActivityInvite* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_Type",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ActivityActionTypes Type(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetType(ActivityInvite* self,
                                               BepInEx.DiscordSocialSDK.Enums.ActivityActionTypes value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_ApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ApplicationId(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetApplicationId(ActivityInvite* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_ParentApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ParentApplicationId(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetParentApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetParentApplicationId(ActivityInvite* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_PartyId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void PartyId(ActivityInvite* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetPartyId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetPartyId(ActivityInvite* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SessionId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SessionId(ActivityInvite* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetSessionId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSessionId(ActivityInvite* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_IsValid",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsValid(ActivityInvite* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityInvite_SetIsValid",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetIsValid(ActivityInvite* self, bool value);
@@ -385,79 +385,79 @@ namespace BepInEx.DiscordSocialSDK
         public struct ActivityAssets
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ActivityAssets* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ActivityAssets* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ActivityAssets* self, ActivityAssets* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_LargeImage",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool LargeImage(ActivityAssets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetLargeImage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLargeImage(ActivityAssets* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_LargeText",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool LargeText(ActivityAssets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetLargeText",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLargeText(ActivityAssets* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_LargeUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool LargeUrl(ActivityAssets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetLargeUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLargeUrl(ActivityAssets* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SmallImage",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SmallImage(ActivityAssets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetSmallImage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSmallImage(ActivityAssets* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SmallText",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SmallText(ActivityAssets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetSmallText",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSmallText(ActivityAssets* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SmallUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SmallUrl(ActivityAssets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetSmallUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSmallUrl(ActivityAssets* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_InviteCoverImage",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool InviteCoverImage(ActivityAssets* self,
                                                        Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityAssets_SetInviteCoverImage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetInviteCoverImage(ActivityAssets* self, Discord_String* value);
@@ -466,31 +466,31 @@ namespace BepInEx.DiscordSocialSDK
         public struct ActivityTimestamps
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ActivityTimestamps* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ActivityTimestamps* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ActivityTimestamps* self, ActivityTimestamps* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_Start",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Start(ActivityTimestamps* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_SetStart",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetStart(ActivityTimestamps* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_End",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong End(ActivityTimestamps* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityTimestamps_SetEnd",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetEnd(ActivityTimestamps* self, ulong value);
@@ -499,47 +499,47 @@ namespace BepInEx.DiscordSocialSDK
         public struct ActivityParty
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ActivityParty* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ActivityParty* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ActivityParty* self, ActivityParty* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Id(ActivityParty* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_SetId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetId(ActivityParty* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_CurrentSize",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int CurrentSize(ActivityParty* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_SetCurrentSize",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetCurrentSize(ActivityParty* self, int value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_MaxSize",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int MaxSize(ActivityParty* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_SetMaxSize",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetMaxSize(ActivityParty* self, int value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_Privacy",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ActivityPartyPrivacy Privacy(ActivityParty* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityParty_SetPrivacy",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetPrivacy(ActivityParty* self,
@@ -549,23 +549,23 @@ namespace BepInEx.DiscordSocialSDK
         public struct ActivitySecrets
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivitySecrets_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ActivitySecrets* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivitySecrets_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ActivitySecrets* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivitySecrets_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ActivitySecrets* self, ActivitySecrets* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivitySecrets_Join",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Join(ActivitySecrets* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivitySecrets_SetJoin",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetJoin(ActivitySecrets* self, Discord_String value);
@@ -574,31 +574,31 @@ namespace BepInEx.DiscordSocialSDK
         public struct ActivityButton
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ActivityButton* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ActivityButton* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ActivityButton* self, ActivityButton* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_Label",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Label(ActivityButton* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_SetLabel",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLabel(ActivityButton* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_Url",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Url(ActivityButton* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ActivityButton_SetUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetUrl(ActivityButton* self, Discord_String value);
@@ -607,154 +607,154 @@ namespace BepInEx.DiscordSocialSDK
         public struct Activity
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(Activity* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(Activity* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(Activity* self, Activity* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_AddButton",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AddButton(Activity* self, ActivityButton* button);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Equals",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Equals(Activity* self, Activity* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_GetButtons",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetButtons(Activity* self,
                                                  Discord_ActivityButtonSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Name",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Name(Activity* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetName(Activity* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Type",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ActivityTypes Type(Activity* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetType(Activity* self, BepInEx.DiscordSocialSDK.Enums.ActivityTypes value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_StatusDisplayType",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool StatusDisplayType(Activity* self,
                                                         BepInEx.DiscordSocialSDK.Enums.StatusDisplayTypes* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetStatusDisplayType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetStatusDisplayType(Activity* self,
                                                            BepInEx.DiscordSocialSDK.Enums.StatusDisplayTypes* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_State",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool State(Activity* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetState",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetState(Activity* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_StateUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool StateUrl(Activity* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetStateUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetStateUrl(Activity* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Details",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Details(Activity* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetDetails",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetDetails(Activity* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_DetailsUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool DetailsUrl(Activity* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetDetailsUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetDetailsUrl(Activity* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_ApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ApplicationId(Activity* self, ulong* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetApplicationId(Activity* self, ulong* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_ParentApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ParentApplicationId(Activity* self, ulong* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetParentApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetParentApplicationId(Activity* self, ulong* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Assets",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Assets(Activity* self, ActivityAssets* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetAssets",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetAssets(Activity* self, ActivityAssets* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Timestamps",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Timestamps(Activity* self, ActivityTimestamps* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetTimestamps",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetTimestamps(Activity* self, ActivityTimestamps* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Party",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Party(Activity* self, ActivityParty* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetParty",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetParty(Activity* self, ActivityParty* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_Secrets",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Secrets(Activity* self, ActivitySecrets* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetSecrets",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSecrets(Activity* self, ActivitySecrets* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SupportedPlatforms",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ActivityGamePlatforms SupportedPlatforms(Activity* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Activity_SetSupportedPlatforms",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSupportedPlatforms(Activity* self,
@@ -764,81 +764,81 @@ namespace BepInEx.DiscordSocialSDK
         public struct ClientResult
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ClientResult* self, ClientResult* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_ToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ToString(ClientResult* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Type",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ErrorType Type(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetType(ClientResult* self, BepInEx.DiscordSocialSDK.Enums.ErrorType value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Error",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Error(ClientResult* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetError",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetError(ClientResult* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_ErrorCode",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int ErrorCode(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetErrorCode",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetErrorCode(ClientResult* self, int value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Status",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.HttpStatusCode Status(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetStatus",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetStatus(ClientResult* self, BepInEx.DiscordSocialSDK.Enums.HttpStatusCode value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_ResponseBody",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ResponseBody(ClientResult* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetResponseBody",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetResponseBody(ClientResult* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Successful",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Successful(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetSuccessful",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSuccessful(ClientResult* self, bool value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_Retryable",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Retryable(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetRetryable",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetRetryable(ClientResult* self, bool value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_RetryAfter",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern float RetryAfter(ClientResult* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientResult_SetRetryAfter",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetRetryAfter(ClientResult* self, float value);
@@ -847,35 +847,35 @@ namespace BepInEx.DiscordSocialSDK
         public struct AuthorizationCodeChallenge
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(AuthorizationCodeChallenge* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(AuthorizationCodeChallenge* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(AuthorizationCodeChallenge* self,
                                             AuthorizationCodeChallenge* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_Method",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.AuthenticationCodeChallengeMethod Method(
               AuthorizationCodeChallenge* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_SetMethod",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetMethod(AuthorizationCodeChallenge* self,
                                                 BepInEx.DiscordSocialSDK.Enums.AuthenticationCodeChallengeMethod value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_Challenge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Challenge(AuthorizationCodeChallenge* self,
                                                 Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeChallenge_SetChallenge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetChallenge(AuthorizationCodeChallenge* self,
@@ -885,31 +885,31 @@ namespace BepInEx.DiscordSocialSDK
         public struct AuthorizationCodeVerifier
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeVerifier_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(AuthorizationCodeVerifier* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeVerifier_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(AuthorizationCodeVerifier* self,
                                             AuthorizationCodeVerifier* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeVerifier_Challenge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Challenge(AuthorizationCodeVerifier* self,
                                                 AuthorizationCodeChallenge* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeVerifier_SetChallenge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetChallenge(AuthorizationCodeVerifier* self,
                                                    AuthorizationCodeChallenge* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeVerifier_Verifier",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Verifier(AuthorizationCodeVerifier* self,
                                                Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationCodeVerifier_SetVerifier",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetVerifier(AuthorizationCodeVerifier* self,
@@ -919,81 +919,81 @@ namespace BepInEx.DiscordSocialSDK
         public struct AuthorizationArgs
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(AuthorizationArgs* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(AuthorizationArgs* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(AuthorizationArgs* self, AuthorizationArgs* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_ClientId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ClientId(AuthorizationArgs* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetClientId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetClientId(AuthorizationArgs* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_Scopes",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Scopes(AuthorizationArgs* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetScopes",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetScopes(AuthorizationArgs* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_State",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool State(AuthorizationArgs* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetState",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetState(AuthorizationArgs* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_Nonce",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Nonce(AuthorizationArgs* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetNonce",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetNonce(AuthorizationArgs* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_CodeChallenge",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool CodeChallenge(AuthorizationArgs* self,
                                                     AuthorizationCodeChallenge* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetCodeChallenge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetCodeChallenge(AuthorizationArgs* self,
                                                        AuthorizationCodeChallenge* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_IntegrationType",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IntegrationType(AuthorizationArgs* self,
                                                       BepInEx.DiscordSocialSDK.Enums.IntegrationType* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetIntegrationType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetIntegrationType(AuthorizationArgs* self,
                                                          BepInEx.DiscordSocialSDK.Enums.IntegrationType* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_CustomSchemeParam",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool CustomSchemeParam(AuthorizationArgs* self,
                                                         Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AuthorizationArgs_SetCustomSchemeParam",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetCustomSchemeParam(AuthorizationArgs* self,
@@ -1003,33 +1003,33 @@ namespace BepInEx.DiscordSocialSDK
         public struct DeviceAuthorizationArgs
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(DeviceAuthorizationArgs* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(DeviceAuthorizationArgs* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(DeviceAuthorizationArgs* self,
                                             DeviceAuthorizationArgs* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_ClientId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ClientId(DeviceAuthorizationArgs* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_SetClientId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetClientId(DeviceAuthorizationArgs* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_Scopes",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Scopes(DeviceAuthorizationArgs* self,
                                              Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_DeviceAuthorizationArgs_SetScopes",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetScopes(DeviceAuthorizationArgs* self, Discord_String value);
@@ -1038,20 +1038,20 @@ namespace BepInEx.DiscordSocialSDK
         public struct VoiceStateHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VoiceStateHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(VoiceStateHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VoiceStateHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(VoiceStateHandle* self, VoiceStateHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VoiceStateHandle_SelfDeaf",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SelfDeaf(VoiceStateHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VoiceStateHandle_SelfMute",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
@@ -1061,24 +1061,24 @@ namespace BepInEx.DiscordSocialSDK
         public struct VADThresholdSettings
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VADThresholdSettings_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(VADThresholdSettings* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VADThresholdSettings_VadThreshold",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern float VadThreshold(VADThresholdSettings* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VADThresholdSettings_SetVadThreshold",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetVadThreshold(VADThresholdSettings* self, float value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VADThresholdSettings_Automatic",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Automatic(VADThresholdSettings* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_VADThresholdSettings_SetAutomatic",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetAutomatic(VADThresholdSettings* self, bool value);
@@ -1181,87 +1181,87 @@ namespace BepInEx.DiscordSocialSDK
                 {
                 }
             }
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(Call* self, Call* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_ErrorToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ErrorToString(BepInEx.DiscordSocialSDK.Voice.Call.Error type,
                                                     Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetAudioMode",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.AudioModeType GetAudioMode(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetChannelId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong GetChannelId(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetGuildId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong GetGuildId(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetLocalMute",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetLocalMute(Call* self, ulong userId);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetParticipants",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetParticipants(Call* self, Discord_UInt64Span* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetParticipantVolume",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern float GetParticipantVolume(Call* self, ulong userId);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetPTTActive",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetPTTActive(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetPTTReleaseDelay",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern uint GetPTTReleaseDelay(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetSelfDeaf",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetSelfDeaf(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetSelfMute",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetSelfMute(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetStatus",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Voice.Call.Status GetStatus(Call* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetVADThreshold",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetVADThreshold(Call* self, VADThresholdSettings* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_GetVoiceStateHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetVoiceStateHandle(Call* self,
                                                           ulong userId,
                                                           VoiceStateHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetAudioMode",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetAudioMode(Call* self, BepInEx.DiscordSocialSDK.Enums.AudioModeType audioMode);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetLocalMute",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLocalMute(Call* self, ulong userId, bool mute);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetOnVoiceStateChangedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetOnVoiceStateChangedCallback(
@@ -1269,7 +1269,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Call.OnVoiceStateChanged cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetParticipantChangedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetParticipantChangedCallback(
@@ -1277,27 +1277,27 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Call.OnParticipantChanged cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetParticipantVolume",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetParticipantVolume(Call* self, ulong userId, float volume);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetPTTActive",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetPTTActive(Call* self, bool active);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetPTTReleaseDelay",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetPTTReleaseDelay(Call* self, uint releaseDelayMs);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetSelfDeaf",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSelfDeaf(Call* self, bool deaf);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetSelfMute",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSelfMute(Call* self, bool mute);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetSpeakingStatusChangedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSpeakingStatusChangedCallback(
@@ -1305,7 +1305,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Call.OnSpeakingStatusChanged cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetStatusChangedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetStatusChangedCallback(
@@ -1313,11 +1313,11 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Call.OnStatusChanged cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_SetVADThreshold",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetVADThreshold(Call* self, bool automatic, float threshold);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Call_StatusToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void StatusToString(BepInEx.DiscordSocialSDK.Voice.Call.Status type,
@@ -1327,27 +1327,27 @@ namespace BepInEx.DiscordSocialSDK
         public struct ChannelHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ChannelHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ChannelHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ChannelHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ChannelHandle* self, ChannelHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ChannelHandle_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(ChannelHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ChannelHandle_Name",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Name(ChannelHandle* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ChannelHandle_Recipients",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Recipients(ChannelHandle* self, Discord_UInt64Span* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ChannelHandle_Type",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ChannelType Type(ChannelHandle* self);
@@ -1356,27 +1356,27 @@ namespace BepInEx.DiscordSocialSDK
         public struct GuildMinimal
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildMinimal_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(GuildMinimal* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildMinimal_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(GuildMinimal* self, GuildMinimal* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildMinimal_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(GuildMinimal* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildMinimal_SetId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetId(GuildMinimal* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildMinimal_Name",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Name(GuildMinimal* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildMinimal_SetName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetName(GuildMinimal* self, Discord_String value);
@@ -1385,80 +1385,80 @@ namespace BepInEx.DiscordSocialSDK
         public struct GuildChannel
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(GuildChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(GuildChannel* self, GuildChannel* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(GuildChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetId(GuildChannel* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_Name",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Name(GuildChannel* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetName(GuildChannel* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_Type",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ChannelType Type(GuildChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetType(GuildChannel* self, BepInEx.DiscordSocialSDK.Enums.ChannelType value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_Position",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int Position(GuildChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetPosition",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetPosition(GuildChannel* self, int value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_ParentId",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ParentId(GuildChannel* self, ulong* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetParentId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetParentId(GuildChannel* self, ulong* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_IsLinkable",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsLinkable(GuildChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetIsLinkable",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetIsLinkable(GuildChannel* self, bool value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_IsViewableAndWriteableByAllMembers",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsViewableAndWriteableByAllMembers(GuildChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetIsViewableAndWriteableByAllMembers",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetIsViewableAndWriteableByAllMembers(GuildChannel* self,
                                                                             bool value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_LinkedLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool LinkedLobby(GuildChannel* self, LinkedLobby* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_GuildChannel_SetLinkedLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLinkedLobby(GuildChannel* self, LinkedLobby* value);
@@ -1467,31 +1467,31 @@ namespace BepInEx.DiscordSocialSDK
         public struct LinkedLobby
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(LinkedLobby* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(LinkedLobby* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(LinkedLobby* self, LinkedLobby* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_ApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ApplicationId(LinkedLobby* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_SetApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetApplicationId(LinkedLobby* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_LobbyId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong LobbyId(LinkedLobby* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedLobby_SetLobbyId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyId(LinkedLobby* self, ulong value);
@@ -1500,35 +1500,35 @@ namespace BepInEx.DiscordSocialSDK
         public struct LinkedChannel
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(LinkedChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(LinkedChannel* self, LinkedChannel* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(LinkedChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_SetId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetId(LinkedChannel* self, ulong value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_Name",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Name(LinkedChannel* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_SetName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetName(LinkedChannel* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_GuildId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong GuildId(LinkedChannel* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LinkedChannel_SetGuildId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetGuildId(LinkedChannel* self, ulong value);
@@ -1537,34 +1537,34 @@ namespace BepInEx.DiscordSocialSDK
         public struct RelationshipHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(RelationshipHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(RelationshipHandle* self, RelationshipHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_DiscordRelationshipType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.RelationshipType DiscordRelationshipType(
               RelationshipHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_GameRelationshipType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.RelationshipType GameRelationshipType(
               RelationshipHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(RelationshipHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_IsSpamRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsSpamRequest(RelationshipHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_RelationshipHandle_User",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
@@ -1574,42 +1574,42 @@ namespace BepInEx.DiscordSocialSDK
         public struct UserApplicationProfileHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(UserApplicationProfileHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(UserApplicationProfileHandle* self,
                                             UserApplicationProfileHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_AvatarHash",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AvatarHash(UserApplicationProfileHandle* self,
                                                  Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_Metadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Metadata(UserApplicationProfileHandle* self,
                                                Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_ProviderId",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ProviderId(UserApplicationProfileHandle* self,
                                                  Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_ProviderIssuedUserId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ProviderIssuedUserId(UserApplicationProfileHandle* self,
                                                            Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_ProviderType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.ExternalIdentityProviderType ProviderType(
               UserApplicationProfileHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserApplicationProfileHandle_Username",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Username(UserApplicationProfileHandle* self,
@@ -1619,69 +1619,69 @@ namespace BepInEx.DiscordSocialSDK
         public struct UserHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(UserHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(UserHandle* self, UserHandle* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Avatar",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Avatar(UserHandle* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_AvatarTypeToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AvatarTypeToString(BepInEx.DiscordSocialSDK.Handles.UserHandle.AvatarType type,
                                                          Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_AvatarUrl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AvatarUrl(UserHandle* self,
                                                 BepInEx.DiscordSocialSDK.Handles.UserHandle.AvatarType animatedType,
                                                 BepInEx.DiscordSocialSDK.Handles.UserHandle.AvatarType staticType,
                                                 Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_DisplayName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void DisplayName(UserHandle* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_GameActivity",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GameActivity(UserHandle* self, Activity* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_GlobalName",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GlobalName(UserHandle* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(UserHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_IsProvisional",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsProvisional(UserHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Relationship",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Relationship(UserHandle* self, RelationshipHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Status",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.StatusType Status(UserHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_UserApplicationProfiles",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UserApplicationProfiles(
               UserHandle* self,
               Discord_UserApplicationProfileHandleSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserHandle_Username",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Username(UserHandle* self, Discord_String* returnValue);
@@ -1690,35 +1690,35 @@ namespace BepInEx.DiscordSocialSDK
         public struct LobbyMemberHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(LobbyMemberHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(LobbyMemberHandle* self, LobbyMemberHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_CanLinkLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool CanLinkLobby(LobbyMemberHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_Connected",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Connected(LobbyMemberHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(LobbyMemberHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_Metadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Metadata(
               LobbyMemberHandle* self,
               BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyMemberHandle_User",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
@@ -1728,46 +1728,46 @@ namespace BepInEx.DiscordSocialSDK
         public struct LobbyHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(LobbyHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(LobbyHandle* self, LobbyHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_GetCallInfoHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetCallInfoHandle(LobbyHandle* self, CallInfoHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_GetLobbyMemberHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetLobbyMemberHandle(LobbyHandle* self,
                                                            ulong memberId,
                                                            LobbyMemberHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(LobbyHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_LinkedChannel",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool LinkedChannel(LobbyHandle* self, LinkedChannel* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_LobbyMemberIds",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void LobbyMemberIds(LobbyHandle* self,
                                                      Discord_UInt64Span* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_LobbyMembers",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void LobbyMembers(LobbyHandle* self,
                                                    Discord_LobbyMemberHandleSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_LobbyHandle_Metadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Metadata(
@@ -1778,51 +1778,51 @@ namespace BepInEx.DiscordSocialSDK
         public struct AdditionalContent
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(AdditionalContent* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(AdditionalContent* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(AdditionalContent* self, AdditionalContent* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Equals",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Equals(AdditionalContent* self, AdditionalContent* rhs);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_TypeToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void TypeToString(BepInEx.DiscordSocialSDK.Enums.AdditionalContentType type,
                                                    Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Type",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.AdditionalContentType Type(AdditionalContent* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_SetType",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetType(AdditionalContent* self,
                                               BepInEx.DiscordSocialSDK.Enums.AdditionalContentType value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Title",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Title(AdditionalContent* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_SetTitle",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetTitle(AdditionalContent* self, Discord_String* value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_Count",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern byte Count(AdditionalContent* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AdditionalContent_SetCount",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetCount(AdditionalContent* self, byte value);
@@ -1831,97 +1831,97 @@ namespace BepInEx.DiscordSocialSDK
         public struct MessageHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(MessageHandle* self, MessageHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_AdditionalContent",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool AdditionalContent(MessageHandle* self,
                                                         AdditionalContent* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_ApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ApplicationId(MessageHandle* self, ulong* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Author",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Author(MessageHandle* self, UserHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_AuthorId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong AuthorId(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Channel",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Channel(MessageHandle* self, ChannelHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_ChannelId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ChannelId(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Content",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Content(MessageHandle* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_DisclosureType",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool DisclosureType(MessageHandle* self,
                                                      BepInEx.DiscordSocialSDK.Enums.DisclosureTypes* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_EditedTimestamp",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong EditedTimestamp(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong Id(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Lobby",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Lobby(MessageHandle* self, LobbyHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Metadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Metadata(
               MessageHandle* self,
               BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_ModerationMetadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ModerationMetadata(
               MessageHandle* self,
               BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_RawContent",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RawContent(MessageHandle* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_Recipient",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Recipient(MessageHandle* self, UserHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_RecipientId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong RecipientId(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_SentFromGame",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SentFromGame(MessageHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_MessageHandle_SentTimestamp",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong SentTimestamp(MessageHandle* self);
@@ -1930,41 +1930,41 @@ namespace BepInEx.DiscordSocialSDK
         public struct AudioDevice
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(AudioDevice* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(AudioDevice* self, AudioDevice* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_Equals",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool Equals(AudioDevice* self, AudioDevice* rhs);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_Id",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Id(AudioDevice* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_SetId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetId(AudioDevice* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_Name",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Name(AudioDevice* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_SetName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetName(AudioDevice* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_IsDefault",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsDefault(AudioDevice* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_AudioDevice_SetIsDefault",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetIsDefault(AudioDevice* self, bool value);
@@ -1973,19 +1973,19 @@ namespace BepInEx.DiscordSocialSDK
         public struct UserMessageSummary
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserMessageSummary_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(UserMessageSummary* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserMessageSummary_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(UserMessageSummary* self, UserMessageSummary* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserMessageSummary_LastMessageId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong LastMessageId(UserMessageSummary* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_UserMessageSummary_UserId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong UserId(UserMessageSummary* self);
@@ -1994,64 +1994,64 @@ namespace BepInEx.DiscordSocialSDK
         public struct ClientCreateOptions
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(ClientCreateOptions* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(ClientCreateOptions* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(ClientCreateOptions* self, ClientCreateOptions* arg0);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_WebBase",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void WebBase(ClientCreateOptions* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_SetWebBase",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetWebBase(ClientCreateOptions* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_ApiBase",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ApiBase(ClientCreateOptions* self, Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_SetApiBase",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetApiBase(ClientCreateOptions* self, Discord_String value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_ExperimentalAudioSystem",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Enums.AudioSystem ExperimentalAudioSystem(
               ClientCreateOptions* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_SetExperimentalAudioSystem",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetExperimentalAudioSystem(ClientCreateOptions* self,
                                                                  BepInEx.DiscordSocialSDK.Enums.AudioSystem value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint =
                          "Discord_ClientCreateOptions_ExperimentalAndroidPreventCommsForBluetooth",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ExperimentalAndroidPreventCommsForBluetooth(
               ClientCreateOptions* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint =
                          "Discord_ClientCreateOptions_SetExperimentalAndroidPreventCommsForBluetooth",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetExperimentalAndroidPreventCommsForBluetooth(
               ClientCreateOptions* self,
               bool value);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_CpuAffinityMask",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool CpuAffinityMask(ClientCreateOptions* self, ulong* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_ClientCreateOptions_SetCpuAffinityMask",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetCpuAffinityMask(ClientCreateOptions* self, ulong* value);
@@ -3615,81 +3615,81 @@ namespace BepInEx.DiscordSocialSDK
                 {
                 }
             }
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_Init",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Init(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_InitWithBases",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void InitWithBases(Client* self,
                                                     Discord_String apiBase,
                                                     Discord_String webBase);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_InitWithOptions",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void InitWithOptions(Client* self, ClientCreateOptions* options);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_ErrorToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ErrorToString(BepInEx.DiscordSocialSDK.Client.Client.Error type,
                                                     Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong GetApplicationId(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetCurrentUser",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetCurrentUser(Client* self, UserHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetDefaultAudioDeviceId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetDefaultAudioDeviceId(Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetDefaultCommunicationScopes",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetDefaultCommunicationScopes(Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetDefaultPresenceScopes",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetDefaultPresenceScopes(Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetVersionHash",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetVersionHash(Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetVersionMajor",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int GetVersionMajor();
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetVersionMinor",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int GetVersionMinor();
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetVersionPatch",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern int GetVersionPatch();
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetHttpRequestTimeout",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetHttpRequestTimeout(Client* self,
                                                             int httpTimeoutInMilliseconds);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_StatusToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void StatusToString(BepInEx.DiscordSocialSDK.Client.Client.Status type,
                                                      Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_ThreadToString",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ThreadToString(BepInEx.DiscordSocialSDK.Client.Client.Thread type,
                                                      Discord_String* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_EndCall",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void EndCall(Client* self,
@@ -3697,7 +3697,7 @@ namespace BepInEx.DiscordSocialSDK
                                               BepInEx.DiscordSocialSDK.NativeMethods.Client.EndCallCallback callback,
                                               void* callback__userDataFree,
                                               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_EndCalls",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void EndCalls(
@@ -3705,16 +3705,16 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.EndCallsCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetCall",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetCall(Client* self, ulong channelId, Call* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetCalls",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetCalls(Client* self, Discord_CallSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetCurrentInputDevice",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetCurrentInputDevice(
@@ -3722,7 +3722,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetCurrentInputDeviceCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetCurrentOutputDevice",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetCurrentOutputDevice(
@@ -3730,7 +3730,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetCurrentOutputDeviceCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetInputDevices",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetInputDevices(
@@ -3738,11 +3738,11 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetInputDevicesCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetInputVolume",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern float GetInputVolume(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetOutputDevices",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetOutputDevices(
@@ -3750,29 +3750,29 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetOutputDevicesCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetOutputVolume",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern float GetOutputVolume(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetSelfDeafAll",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetSelfDeafAll(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetSelfMuteAll",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetSelfMuteAll(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetAecDump",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetAecDump(Client* self, bool on);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetAutomaticGainControl",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetAutomaticGainControl(Client* self, bool on);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetDeviceChangeCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetDeviceChangeCallback(
@@ -3780,15 +3780,15 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.DeviceChangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetEchoCancellation",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetEchoCancellation(Client* self, bool on);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetEngineManagedAudioSession",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetEngineManagedAudioSession(Client* self, bool isEngineManaged);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetInputDevice",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetInputDevice(
@@ -3797,11 +3797,11 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SetInputDeviceCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetInputVolume",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetInputVolume(Client* self, float inputVolume);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetNoAudioInputCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetNoAudioInputCallback(
@@ -3809,19 +3809,19 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.NoAudioInputCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetNoAudioInputThreshold",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetNoAudioInputThreshold(Client* self, float dBFSThreshold);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetNoiseSuppression",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetNoiseSuppression(Client* self, bool on);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetOpusHardwareCoding",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetOpusHardwareCoding(Client* self, bool encode, bool decode);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetOutputDevice",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetOutputDevice(
@@ -3830,30 +3830,30 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SetOutputDeviceCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetOutputVolume",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetOutputVolume(Client* self, float outputVolume);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetSelfDeafAll",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSelfDeafAll(Client* self, bool deaf);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetSelfMuteAll",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetSelfMuteAll(Client* self, bool mute);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetSpeakerMode",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SetSpeakerMode(Client* self, bool speakerMode);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetThreadPriority",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetThreadPriority(Client* self,
                                                         BepInEx.DiscordSocialSDK.Client.Client.Thread thread,
                                                         int priority);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetVoiceParticipantChangedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetVoiceParticipantChangedCallback(
@@ -3861,17 +3861,17 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.VoiceParticipantChangedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_ShowAudioRoutePicker",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool ShowAudioRoutePicker(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_StartCall",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool StartCall(Client* self, ulong channelId, Call* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_StartCallWithAudioCallbacks",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
@@ -3885,15 +3885,15 @@ namespace BepInEx.DiscordSocialSDK
               void* capturedCb__userDataFree,
               void* capturedCb__userData,
               Call* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AbortAuthorize",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AbortAuthorize(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AbortGetTokenFromDevice",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AbortGetTokenFromDevice(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_Authorize",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Authorize(
@@ -3902,17 +3902,17 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizationCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CloseAuthorizeDeviceScreen",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void CloseAuthorizeDeviceScreen(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CreateAuthorizationCodeVerifier",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void CreateAuthorizationCodeVerifier(
               Client* self,
               AuthorizationCodeVerifier* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_ExchangeChildToken",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ExchangeChildToken(
@@ -3922,7 +3922,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.ExchangeChildTokenCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_FetchCurrentUser",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void FetchCurrentUser(
@@ -3932,7 +3932,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.FetchCurrentUserCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetProvisionalToken",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetProvisionalToken(
@@ -3943,7 +3943,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetToken",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetToken(
@@ -3955,7 +3955,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetTokenFromDevice",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetTokenFromDevice(
@@ -3964,7 +3964,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetTokenFromDeviceProvisionalMerge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetTokenFromDeviceProvisionalMerge(
@@ -3975,7 +3975,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetTokenFromProvisionalMerge",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetTokenFromProvisionalMerge(
@@ -3989,22 +3989,22 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_IsAuthenticated",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool IsAuthenticated(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_OpenAuthorizeDeviceScreen",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void OpenAuthorizeDeviceScreen(Client* self,
                                                                 ulong clientId,
                                                                 Discord_String userCode);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_ProvisionalUserMergeCompleted",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ProvisionalUserMergeCompleted(Client* self, bool success);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RefreshToken",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RefreshToken(
@@ -4014,7 +4014,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RegisterAuthorizeRequestCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RegisterAuthorizeRequestCallback(
@@ -4022,11 +4022,11 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizeRequestCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RemoveAuthorizeRequestCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RemoveAuthorizeRequestCallback(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RevokeToken",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RevokeToken(
@@ -4036,7 +4036,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.RevokeTokenCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetAuthorizeDeviceScreenClosedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetAuthorizeDeviceScreenClosedCallback(
@@ -4044,11 +4044,11 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizeDeviceScreenClosedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetGameWindowPid",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetGameWindowPid(Client* self, int pid);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetTokenExpirationCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetTokenExpirationCallback(
@@ -4056,7 +4056,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExpirationCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_UnmergeIntoProvisionalAccount",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UnmergeIntoProvisionalAccount(
@@ -4067,7 +4067,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UnmergeIntoProvisionalAccountCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_UpdateProvisionalAccountDisplayName",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UpdateProvisionalAccountDisplayName(
@@ -4076,7 +4076,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateProvisionalAccountDisplayNameCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_UpdateToken",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UpdateToken(
@@ -4086,12 +4086,12 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateTokenCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CanOpenMessageInDiscord",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool CanOpenMessageInDiscord(Client* self, ulong messageId);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_DeleteUserMessage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void DeleteUserMessage(
@@ -4101,7 +4101,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.DeleteUserMessageCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_EditUserMessage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void EditUserMessage(
@@ -4112,14 +4112,14 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.EditUserMessageCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetChannelHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetChannelHandle(Client* self,
                                                        ulong channelId,
                                                        ChannelHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetLobbyMessagesWithLimit",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetLobbyMessagesWithLimit(
@@ -4129,14 +4129,14 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetLobbyMessagesCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetMessageHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetMessageHandle(Client* self,
                                                        ulong messageId,
                                                        MessageHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetUserMessageSummaries",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetUserMessageSummaries(
@@ -4144,7 +4144,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UserMessageSummariesCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetUserMessagesWithLimit",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetUserMessagesWithLimit(
@@ -4154,7 +4154,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UserMessagesWithLimitCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_OpenMessageInDiscord",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void OpenMessageInDiscord(
@@ -4167,7 +4167,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.OpenMessageInDiscordCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendLobbyMessage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendLobbyMessage(
@@ -4177,7 +4177,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendLobbyMessageWithMetadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendLobbyMessageWithMetadata(
@@ -4188,7 +4188,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendUserMessage",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendUserMessage(
@@ -4198,7 +4198,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendUserMessageWithMetadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendUserMessageWithMetadata(
@@ -4209,7 +4209,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetMessageCreatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetMessageCreatedCallback(
@@ -4217,7 +4217,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageCreatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetMessageDeletedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetMessageDeletedCallback(
@@ -4225,7 +4225,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageDeletedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetMessageUpdatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetMessageUpdatedCallback(
@@ -4233,11 +4233,11 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageUpdatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetShowingChat",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetShowingChat(Client* self, bool showingChat);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AddLogCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AddLogCallback(
@@ -4246,7 +4246,7 @@ namespace BepInEx.DiscordSocialSDK
               void* callback__userDataFree,
               void* callback__userData,
               BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AddVoiceLogCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AddVoiceLogCallback(
@@ -4255,19 +4255,19 @@ namespace BepInEx.DiscordSocialSDK
               void* callback__userDataFree,
               void* callback__userData,
               BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_Connect",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Connect(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_Disconnect",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Disconnect(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetStatus",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern BepInEx.DiscordSocialSDK.Client.Client.Status GetStatus(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_OpenConnectedGamesSettingsInDiscord",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void OpenConnectedGamesSettingsInDiscord(
@@ -4275,18 +4275,18 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.OpenConnectedGamesSettingsInDiscordCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetApplicationId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetApplicationId(Client* self, ulong applicationId);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLogDir",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool SetLogDir(Client* self,
                                                 Discord_String path,
                                                 BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetStatusChangedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetStatusChangedCallback(
@@ -4294,13 +4294,13 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.OnStatusChanged cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetVoiceLogDir",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetVoiceLogDir(Client* self,
                                                      Discord_String path,
                                                      BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CreateOrJoinLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void CreateOrJoinLobby(
@@ -4309,7 +4309,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.CreateOrJoinLobbyCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CreateOrJoinLobbyWithMetadata",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void CreateOrJoinLobbyWithMetadata(
@@ -4320,7 +4320,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.CreateOrJoinLobbyCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetGuildChannels",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetGuildChannels(
@@ -4329,18 +4329,18 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetGuildChannelsCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetLobbyHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetLobbyHandle(Client* self,
                                                      ulong lobbyId,
                                                      LobbyHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetLobbyIds",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetLobbyIds(Client* self, Discord_UInt64Span* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetUserGuilds",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetUserGuilds(
@@ -4348,7 +4348,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetUserGuildsCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_JoinLinkedLobbyGuild",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void JoinLinkedLobbyGuild(
@@ -4361,7 +4361,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.JoinLinkedLobbyGuildCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_LeaveLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void LeaveLobby(
@@ -4370,7 +4370,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LeaveLobbyCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_LinkChannelToLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void LinkChannelToLobby(
@@ -4380,7 +4380,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LinkOrUnlinkChannelCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLobbyCreatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyCreatedCallback(
@@ -4388,7 +4388,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyCreatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLobbyDeletedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyDeletedCallback(
@@ -4396,7 +4396,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyDeletedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLobbyMemberAddedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyMemberAddedCallback(
@@ -4404,7 +4404,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberAddedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLobbyMemberRemovedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyMemberRemovedCallback(
@@ -4412,7 +4412,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberRemovedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLobbyMemberUpdatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyMemberUpdatedCallback(
@@ -4420,7 +4420,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberUpdatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetLobbyUpdatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetLobbyUpdatedCallback(
@@ -4428,7 +4428,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyUpdatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_UnlinkChannelFromLobby",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UnlinkChannelFromLobby(
@@ -4437,7 +4437,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.LinkOrUnlinkChannelCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_IsDiscordAppInstalled",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void IsDiscordAppInstalled(
@@ -4445,7 +4445,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.IsDiscordAppInstalledCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AcceptActivityInvite",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AcceptActivityInvite(
@@ -4454,25 +4454,25 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.AcceptActivityInviteCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_ClearRichPresence",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void ClearRichPresence(Client* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RegisterLaunchCommand",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool RegisterLaunchCommand(Client* self,
                                                             ulong applicationId,
                                                             Discord_String command);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RegisterLaunchSteamApplication",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool RegisterLaunchSteamApplication(Client* self,
                                                                      ulong applicationId,
                                                                      uint steamAppId);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendActivityInvite",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendActivityInvite(
@@ -4482,7 +4482,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendActivityJoinRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendActivityJoinRequest(
@@ -4491,7 +4491,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendActivityJoinRequestReply",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendActivityJoinRequestReply(
@@ -4500,7 +4500,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetActivityInviteCreatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetActivityInviteCreatedCallback(
@@ -4508,7 +4508,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityInviteCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetActivityInviteUpdatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetActivityInviteUpdatedCallback(
@@ -4516,7 +4516,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityInviteCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetActivityJoinCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetActivityJoinCallback(
@@ -4524,7 +4524,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityJoinCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetActivityJoinWithApplicationCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetActivityJoinWithApplicationCallback(
@@ -4532,7 +4532,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityJoinWithApplicationCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetOnlineStatus",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetOnlineStatus(
@@ -4541,7 +4541,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateStatusCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_UpdateRichPresence",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UpdateRichPresence(
@@ -4550,7 +4550,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRichPresenceCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AcceptDiscordFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AcceptDiscordFriendRequest(
@@ -4559,7 +4559,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_AcceptGameFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void AcceptGameFriendRequest(
@@ -4568,7 +4568,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_BlockUser",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void BlockUser(
@@ -4577,7 +4577,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CancelDiscordFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void CancelDiscordFriendRequest(
@@ -4586,7 +4586,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_CancelGameFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void CancelGameFriendRequest(
@@ -4595,25 +4595,25 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetRelationshipHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetRelationshipHandle(Client* self,
                                                             ulong userId,
                                                             RelationshipHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetRelationships",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetRelationships(Client* self,
                                                        Discord_RelationshipHandleSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetRelationshipsByGroup",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetRelationshipsByGroup(
               Client* self,
               BepInEx.DiscordSocialSDK.Enums.RelationshipGroupType groupType,
               Discord_RelationshipHandleSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RejectDiscordFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RejectDiscordFriendRequest(
@@ -4622,7 +4622,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RejectGameFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RejectGameFriendRequest(
@@ -4631,7 +4631,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RemoveDiscordAndGameFriend",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RemoveDiscordAndGameFriend(
@@ -4640,7 +4640,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_RemoveGameFriend",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void RemoveGameFriend(
@@ -4649,13 +4649,13 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SearchFriendsByUsername",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SearchFriendsByUsername(Client* self,
                                                               Discord_String searchStr,
                                                               Discord_UserHandleSpan* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendDiscordFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendDiscordFriendRequest(
@@ -4664,7 +4664,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendFriendRequestCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendDiscordFriendRequestById",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendDiscordFriendRequestById(
@@ -4673,7 +4673,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendGameFriendRequest",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendGameFriendRequest(
@@ -4682,7 +4682,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.SendFriendRequestCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SendGameFriendRequestById",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SendGameFriendRequestById(
@@ -4691,7 +4691,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetRelationshipCreatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetRelationshipCreatedCallback(
@@ -4699,7 +4699,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipCreatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetRelationshipDeletedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetRelationshipDeletedCallback(
@@ -4707,7 +4707,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipDeletedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_UnblockUser",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void UnblockUser(
@@ -4716,12 +4716,12 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetCurrentUserV2",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetCurrentUserV2(Client* self, UserHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetDiscordClientConnectedUser",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetDiscordClientConnectedUser(
@@ -4730,12 +4730,12 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.GetDiscordClientConnectedUserCallback callback,
               void* callback__userDataFree,
               void* callback__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_GetUser",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetUser(Client* self, ulong userId, UserHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetRelationshipGroupsUpdatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetRelationshipGroupsUpdatedCallback(
@@ -4743,7 +4743,7 @@ namespace BepInEx.DiscordSocialSDK
               BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipGroupsUpdatedCallback cb,
               void* cb__userDataFree,
               void* cb__userData);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetUserUpdatedCallback",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetUserUpdatedCallback(
@@ -4756,31 +4756,31 @@ namespace BepInEx.DiscordSocialSDK
         public struct CallInfoHandle
         {
             public IntPtr Handle;
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_CallInfoHandle_Drop",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Drop(CallInfoHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_CallInfoHandle_Clone",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void Clone(CallInfoHandle* self, CallInfoHandle* other);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_CallInfoHandle_ChannelId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong ChannelId(CallInfoHandle* self);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_CallInfoHandle_GetParticipants",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void GetParticipants(CallInfoHandle* self,
                                                       Discord_UInt64Span* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_CallInfoHandle_GetVoiceStateHandle",
                        CallingConvention = CallingConvention.Cdecl)]
             [return: MarshalAs(UnmanagedType.U1)]
             public static extern bool GetVoiceStateHandle(CallInfoHandle* self,
                                                           ulong userId,
                                                           VoiceStateHandle* returnValue);
-            [DllImport(LibraryNames.DISCORD_LIBRARY_NAME,
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_CallInfoHandle_GuildId",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern ulong GuildId(CallInfoHandle* self);

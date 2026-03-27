@@ -34,6 +34,7 @@
 	<EmbeddedResource Include="libs\discord_partner_sdk.dll" />
 	 <EmbeddedResource Include="libs\System.Memory.dll" />
 	 <EmbeddedResource Include="libs\System.Runtime.CompilerServices.Unsafe.dll" />
+	  <EmbeddedResource Include="libs\System.Numerics.Vectors.dll" />
    </ItemGroup>
 
 
