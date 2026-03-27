@@ -33,6 +33,7 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 if (PlayerPrefs.HasKey(RefreshTokenName))
                     return PlayerPrefs.GetString(RefreshTokenName);
+
                 return "";
             }
         }
