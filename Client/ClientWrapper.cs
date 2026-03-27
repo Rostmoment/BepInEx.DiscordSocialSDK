@@ -1,11 +1,12 @@
 ﻿using BepInEx.DiscordSocialSDK.Auth;
 using BepInEx.DiscordSocialSDK.Enums;
 using BepInEx.DiscordSocialSDK.Exceptions;
+using BepInEx.DiscordSocialSDK.Handles;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BepInEx.DiscordSocialSDK
+namespace BepInEx.DiscordSocialSDK.Client
 {
     public class ClientWrapper
     {

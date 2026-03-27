@@ -3,9 +3,11 @@ using BepInEx.DiscordSocialSDK.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
@@ -22,7 +24,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         internal ActivityInvite(NativeMethods.ActivityInvite self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~ActivityInvite() { Dispose(); }
@@ -180,7 +182,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivityActionTypes Type()
+        public BepInEx.DiscordSocialSDK.Enums.ActivityActionTypes Type()
         {
             if (disposed_ != 0)
             {
@@ -188,7 +190,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             }
             unsafe
             {
-                ActivityActionTypes __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ActivityActionTypes __returnValue;
                 fixed (NativeMethods.ActivityInvite* self = &this.self)
                 {
                     __returnValue = NativeMethods.ActivityInvite.Type(self);
@@ -196,7 +198,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetType(ActivityActionTypes value)
+        public void SetType(BepInEx.DiscordSocialSDK.Enums.ActivityActionTypes value)
         {
             if (disposed_ != 0)
             {
@@ -285,7 +287,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
@@ -325,7 +327,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

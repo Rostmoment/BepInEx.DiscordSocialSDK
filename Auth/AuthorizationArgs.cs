@@ -3,14 +3,16 @@ using BepInEx.DiscordSocialSDK.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.Auth
 {
     /// <summary>
-    ///  Arguments to the Client::Authorize function.
+    /// Arguments to the Client::Authorize function.
     /// </summary>
     internal class AuthorizationArgs : IDisposable
     {
@@ -20,7 +22,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
         internal AuthorizationArgs(NativeMethods.AuthorizationArgs self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~AuthorizationArgs() { Dispose(); }
@@ -131,9 +133,8 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 {
                     NativeMethods.AuthorizationArgs.Scopes(self, &__returnValue);
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
@@ -158,7 +159,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string State()
+        public string? State()
         {
             if (disposed_ != 0)
             {
@@ -178,11 +179,11 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetState(string value)
+        public void SetState(string? value)
         {
             if (disposed_ != 0)
             {
@@ -199,12 +200,12 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     NativeMethods.AuthorizationArgs.SetState(self,
-                                                             value != null ? &__valueSpan : null);
+                                                             (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string Nonce()
+        public string? Nonce()
         {
             if (disposed_ != 0)
             {
@@ -224,11 +225,11 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetNonce(string value)
+        public void SetNonce(string? value)
         {
             if (disposed_ != 0)
             {
@@ -245,12 +246,12 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     NativeMethods.AuthorizationArgs.SetNonce(self,
-                                                             value != null ? &__valueSpan : null);
+                                                             (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public AuthorizationCodeChallenge CodeChallenge()
+        public AuthorizationCodeChallenge? CodeChallenge()
         {
             if (disposed_ != 0)
             {
@@ -260,7 +261,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
             {
                 bool __returnIsNonNull;
                 var __returnValueNative = new NativeMethods.AuthorizationCodeChallenge();
-                AuthorizationCodeChallenge __returnValue = null;
+                AuthorizationCodeChallenge? __returnValue = null;
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     __returnIsNonNull =
@@ -274,7 +275,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 return __returnValue;
             }
         }
-        public void SetCodeChallenge(AuthorizationCodeChallenge value)
+        public void SetCodeChallenge(AuthorizationCodeChallenge? value)
         {
             if (disposed_ != 0)
             {
@@ -286,7 +287,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     NativeMethods.AuthorizationArgs.SetCodeChallenge(
-                      self, value != null ? &__valueLocal : null);
+                      self, (value != null ? &__valueLocal : null));
                 }
                 if (value != null)
                 {
@@ -328,11 +329,11 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     NativeMethods.AuthorizationArgs.SetIntegrationType(
-                      self, value != null ? &__valueLocal : null);
+                      self, (value != null ? &__valueLocal : null));
                 }
             }
         }
-        public string CustomSchemeParam()
+        public string? CustomSchemeParam()
         {
             if (disposed_ != 0)
             {
@@ -353,11 +354,11 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetCustomSchemeParam(string value)
+        public void SetCustomSchemeParam(string? value)
         {
             if (disposed_ != 0)
             {
@@ -374,7 +375,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     NativeMethods.AuthorizationArgs.SetCustomSchemeParam(
-                      self, value != null ? &__valueSpan : null);
+                      self, (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }

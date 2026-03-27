@@ -17,6 +17,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     {
         Name = 0,
         State = 1,
-        Details = 2,
+        Details = 2
     }
 }

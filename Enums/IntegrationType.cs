@@ -12,6 +12,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     public enum IntegrationType
     {
         GuildInstall = 0,
-        UserInstall = 1,
+        UserInstall = 1
     }
 }

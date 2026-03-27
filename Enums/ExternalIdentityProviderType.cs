@@ -17,6 +17,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         Unity = 3,
         DiscordBot = 4,
         None = 5,
-        Unknown = 6,
+        Unknown = 6
     }
 }

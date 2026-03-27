@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
+
     /// <summary>
-    /// <see cref="Activity"/>
+    /// Represents start and end timestamps for a Discord activity.
+    /// These timestamps are expressed in milliseconds since the Unix epoch
+    /// and are used by Discord to display activity timers, such as elapsed
+    /// time since the activity started or a countdown until it ends.
     /// </summary>
     public class ActivityTimestamps : IDisposable
     {
@@ -18,7 +22,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         internal ActivityTimestamps(NativeMethods.ActivityTimestamps self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~ActivityTimestamps() { Dispose(); }

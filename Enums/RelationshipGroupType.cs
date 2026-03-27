@@ -14,6 +14,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     {
         OnlinePlayingGame = 0,
         OnlineElsewhere = 1,
-        Offline = 2,
+        Offline = 2
     }
 }

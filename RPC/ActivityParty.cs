@@ -3,14 +3,19 @@ using BepInEx.DiscordSocialSDK.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.RPC
 {
     /// <summary>
-    /// <see cref="Activity"/>
+    /// Represents the party information for a Discord Rich Presence activity.
+    /// This includes the party's unique ID, the current and maximum number of members,
+    /// and the party's privacy settings. These properties allow Discord to display
+    /// party-related information such as size and visibility in the user's activity status.
     /// </summary>
     public class ActivityParty : IDisposable
     {
@@ -20,7 +25,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         internal ActivityParty(NativeMethods.ActivityParty self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~ActivityParty() { Dispose(); }
@@ -101,9 +106,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.ActivityParty.Id(self, &__returnValue);
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

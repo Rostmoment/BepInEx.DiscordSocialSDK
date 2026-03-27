@@ -16,6 +16,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     /// </remarks>
     public enum AuthenticationCodeChallengeMethod
     {
-        S256 = 0,
+        S256 = 0
     }
 }

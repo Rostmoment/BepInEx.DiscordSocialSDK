@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Enums
 {
+
     /// <summary>
     ///  Represents whether a voice call is using push to talk or auto voice detection
     /// </summary>
@@ -13,6 +14,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     {
         MODE_UNINIT = 0,
         MODE_VAD = 1,
-        MODE_PTT = 2,
+        MODE_PTT = 2
     }
 }

@@ -2,14 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.Auth
 {
     /// <summary>
-    ///  Struct that encapsulates both parts of the code verification flow.
+    /// Struct that encapsulates both parts of the code verification flow.
     /// </summary>
     internal class AuthorizationCodeVerifier : IDisposable
     {
@@ -19,7 +21,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
         internal AuthorizationCodeVerifier(NativeMethods.AuthorizationCodeVerifier self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~AuthorizationCodeVerifier() { Dispose(); }
@@ -84,7 +86,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
             unsafe
             {
                 var __returnValueNative = new NativeMethods.AuthorizationCodeChallenge();
-                AuthorizationCodeChallenge __returnValue = null;
+                AuthorizationCodeChallenge? __returnValue = null;
                 fixed (NativeMethods.AuthorizationCodeVerifier* self = &this.self)
                 {
                     NativeMethods.AuthorizationCodeVerifier.Challenge(self, &__returnValueNative);
@@ -125,7 +127,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

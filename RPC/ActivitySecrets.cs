@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +10,10 @@ using System.Threading.Tasks;
 namespace BepInEx.DiscordSocialSDK.RPC
 {
     /// <summary>
-    /// <see cref="Activity"/>
+    /// Represents the secret codes associated with a Discord Rich Presence activity.
+    /// The primary secret is the "Join" code, shared with users accepted into the party,
+    /// allowing them to join the activity session. The Join secret must be a string
+    /// between 2 and 128 characters, e.g., a Discord lobby ID or internal game server ID.
     /// </summary>
     public class ActivitySecrets : IDisposable
     {
@@ -19,7 +23,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         internal ActivitySecrets(NativeMethods.ActivitySecrets self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~ActivitySecrets() { Dispose(); }
@@ -100,9 +104,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.ActivitySecrets.Join(self, &__returnValue);
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

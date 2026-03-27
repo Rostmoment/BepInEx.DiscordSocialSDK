@@ -13,6 +13,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     public enum AuthorizationTokenType
     {
         User = 0,
-        Bearer = 1,
+        Bearer = 1
     }
 }

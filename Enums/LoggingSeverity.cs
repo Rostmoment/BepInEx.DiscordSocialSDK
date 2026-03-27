@@ -15,6 +15,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         Info = 2,
         Warning = 3,
         Error = 4,
-        None = 5,
+        None = 5
     }
 }

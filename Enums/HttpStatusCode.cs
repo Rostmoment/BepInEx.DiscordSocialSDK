@@ -77,6 +77,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         InsufficientStorage = 507,
         LoopDetected = 508,
         NotExtended = 510,
-        NetworkAuthorizationRequired = 511,
+        NetworkAuthorizationRequired = 511
     }
 }

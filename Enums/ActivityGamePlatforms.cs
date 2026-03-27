@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Enums
 {
+
     /// <summary>
     ///  Represents the type of platforms that an activity invite can be accepted on.
     /// </summary>
@@ -19,6 +20,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         Android = 16,
         Embedded = 32,
         PS4 = 64,
-        PS5 = 128,
+        PS5 = 128
     }
 }

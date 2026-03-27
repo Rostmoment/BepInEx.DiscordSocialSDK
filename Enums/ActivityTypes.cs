@@ -24,6 +24,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         Watching = 3,
         CustomStatus = 4,
         Competing = 5,
-        HangStatus = 6,
+        HangStatus = 6
     }
 }

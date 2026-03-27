@@ -19,6 +19,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         UnityServicesIdToken = 4,
         DiscordBotIssuedAccessToken = 5,
         AppleIdToken = 6,
-        PlayStationNetworkIdToken = 7,
+        PlayStationNetworkIdToken = 7
     }
 }

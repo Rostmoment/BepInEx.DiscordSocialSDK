@@ -21,6 +21,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     {
         Invalid = 0,
         Join = 1,
-        JoinRequest = 5,
+        JoinRequest = 5
     }
 }

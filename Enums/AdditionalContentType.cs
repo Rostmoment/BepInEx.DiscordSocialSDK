@@ -17,6 +17,7 @@ namespace BepInEx.DiscordSocialSDK.Enums
         VoiceMessage = 3,
         Thread = 4,
         Embed = 5,
-        Sticker = 6,
+        Sticker = 6
     }
+
 }

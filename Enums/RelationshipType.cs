@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Enums
 {
+
     /// <summary>
     ///  Enum that represents the possible types of relationships that can exist between two users
     /// </summary>
@@ -17,6 +18,7 @@ namespace BepInEx.DiscordSocialSDK.Enums
         PendingIncoming = 3,
         PendingOutgoing = 4,
         Implicit = 5,
-        Suggestion = 6,
+        Suggestion = 6
     }
+
 }

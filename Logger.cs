@@ -42,5 +42,25 @@ namespace BepInEx.DiscordSocialSDK
             logger.LogDebug($"Debug from {caller} method at line {sourceLineNumber}");
             logger.LogDebug(message);
         }
+
+        public static void LogException(Exception ex, [CallerMemberName] string caller = null, [CallerLineNumber] int sourceLineNumber = 0)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            builder.AppendLine($"Exception from {caller} method at line {sourceLineNumber}");
+            builder.AppendLine($"Type: {ex.GetType().FullName}");
+            builder.AppendLine($"Message: {ex.Message}");
+            builder.AppendLine($"StackTrace: {ex.StackTrace}");
+
+            if (ex.InnerException != null)
+            {
+                builder.AppendLine("InnerException:");
+                builder.AppendLine($"Type: {ex.InnerException.GetType().FullName}");
+                builder.AppendLine($"Message: {ex.InnerException.Message}");
+                builder.AppendLine($"StackTrace: {ex.InnerException.StackTrace}");
+            }
+
+            logger.LogError(builder.ToString());
+        }
     }
 }

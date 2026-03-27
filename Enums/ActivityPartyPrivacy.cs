@@ -12,6 +12,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
     public enum ActivityPartyPrivacy
     {
         Private = 0,
-        Public = 1,
+        Public = 1
     }
 }

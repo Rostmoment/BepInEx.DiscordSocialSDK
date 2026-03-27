@@ -1,4 +1,5 @@
-﻿using BepInEx.DiscordSocialSDK.Enums;
+﻿using BepInEx.DiscordSocialSDK.Client;
+using BepInEx.DiscordSocialSDK.Enums;
 using System;
 
 namespace BepInEx.DiscordSocialSDK.RPC

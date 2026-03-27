@@ -3,9 +3,11 @@ using BepInEx.DiscordSocialSDK.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.Auth
 {
@@ -21,7 +23,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                                             int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~AuthorizationCodeChallenge() { Dispose(); }
@@ -132,9 +134,8 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 {
                     NativeMethods.AuthorizationCodeChallenge.Challenge(self, &__returnValue);
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

@@ -20,6 +20,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         ValidationError = 6,
         Aborted = 7,
         AuthorizationFailed = 8,
-        RPCError = 9,
+        RPCError = 9
     }
 }

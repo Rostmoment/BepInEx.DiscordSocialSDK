@@ -30,6 +30,6 @@ namespace BepInEx.DiscordSocialSDK.Enums
         GuildForum = 15,
         GuildMedia = 16,
         Lobby = 17,
-        EphemeralDm = 18,
+        EphemeralDm = 18
     }
 }

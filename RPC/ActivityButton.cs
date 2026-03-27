@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,18 +10,19 @@ using System.Threading.Tasks;
 namespace BepInEx.DiscordSocialSDK.RPC
 {
     /// <summary>
-    /// <see cref="Activity"/>
+    /// Represents a button that can appear on a Discord Rich Presence activity.
+    /// Each button has a <see cref="Label"/> (the text displayed on the button)
+    /// and a <see cref="Url"/> (the link opened when the button is clicked)
     /// </summary>
     public class ActivityButton : IDisposable
     {
-
         internal NativeMethods.ActivityButton self;
         private int disposed_;
 
         internal ActivityButton(NativeMethods.ActivityButton self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~ActivityButton() { Dispose(); }
@@ -101,9 +103,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.ActivityButton.Label(self, &__returnValue);
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
@@ -141,9 +142,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.ActivityButton.Url(self, &__returnValue);
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

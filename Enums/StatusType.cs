@@ -23,7 +23,7 @@ namespace BepInEx.DiscordSocialSDK.Enums
         Dnd = 4,
         Invisible = 5,
         Streaming = 6,
-        Unknown = 7,
+        Unknown = 7
     }
 
     public static class StatusTypeExtensions

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         internal ActivityAssets(NativeMethods.ActivityAssets self, int disposed)
         {
             this.self = self;
-            disposed_ = disposed;
+            this.disposed_ = disposed;
         }
 
         ~ActivityAssets() { Dispose(); }
@@ -104,7 +105,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public string LargeImage()
+        public string? LargeImage()
         {
             if (disposed_ != 0)
             {
@@ -122,13 +123,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     return null;
                 }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetLargeImage(string value)
+        public void SetLargeImage(string? value)
         {
             if (disposed_ != 0)
             {
@@ -145,12 +145,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetLargeImage(self,
-                                                               value != null ? &__valueSpan : null);
+                                                               (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string LargeText()
+        public string? LargeText()
         {
             if (disposed_ != 0)
             {
@@ -159,22 +159,20 @@ namespace BepInEx.DiscordSocialSDK.RPC
             unsafe
             {
                 bool __returnIsNonNull;
-                var __returnValue = new NativeMethods.Discord_String();
+                NativeMethods.Discord_String __returnValue = new NativeMethods.Discord_String();
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     __returnIsNonNull = NativeMethods.ActivityAssets.LargeText(self, &__returnValue);
                 }
                 if (!__returnIsNonNull)
-                {
                     return null;
-                }
-                string __returnValueSurface =
-                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+
+                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free(__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetLargeText(string value)
+        public void SetLargeText(string? value)
         {
             if (disposed_ != 0)
             {
@@ -191,12 +189,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetLargeText(self,
-                                                              value != null ? &__valueSpan : null);
+                                                              (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string LargeUrl()
+        public string? LargeUrl()
         {
             if (disposed_ != 0)
             {
@@ -216,11 +214,11 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetLargeUrl(string value)
+        public void SetLargeUrl(string? value)
         {
             if (disposed_ != 0)
             {
@@ -237,12 +235,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetLargeUrl(self,
-                                                             value != null ? &__valueSpan : null);
+                                                             (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string SmallImage()
+        public string? SmallImage()
         {
             if (disposed_ != 0)
             {
@@ -262,11 +260,11 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetSmallImage(string value)
+        public void SetSmallImage(string? value)
         {
             if (disposed_ != 0)
             {
@@ -283,12 +281,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetSmallImage(self,
-                                                               value != null ? &__valueSpan : null);
+                                                               (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string SmallText()
+        public string? SmallText()
         {
             if (disposed_ != 0)
             {
@@ -308,11 +306,11 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetSmallText(string value)
+        public void SetSmallText(string? value)
         {
             if (disposed_ != 0)
             {
@@ -329,12 +327,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetSmallText(self,
-                                                              value != null ? &__valueSpan : null);
+                                                              (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string SmallUrl()
+        public string? SmallUrl()
         {
             if (disposed_ != 0)
             {
@@ -354,11 +352,11 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetSmallUrl(string value)
+        public void SetSmallUrl(string? value)
         {
             if (disposed_ != 0)
             {
@@ -375,12 +373,12 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetSmallUrl(self,
-                                                             value != null ? &__valueSpan : null);
+                                                             (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public string InviteCoverImage()
+        public string? InviteCoverImage()
         {
             if (disposed_ != 0)
             {
@@ -401,11 +399,11 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
                 string __returnValueSurface =
                   MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public void SetInviteCoverImage(string value)
+        public void SetInviteCoverImage(string? value)
         {
             if (disposed_ != 0)
             {
@@ -422,7 +420,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     NativeMethods.ActivityAssets.SetInviteCoverImage(
-                      self, value != null ? &__valueSpan : null);
+                      self, (value != null ? &__valueSpan : null));
                 }
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
