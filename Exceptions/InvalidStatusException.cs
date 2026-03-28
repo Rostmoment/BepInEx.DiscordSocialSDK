@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Exceptions
 {
-    class InvalidStatusException : Exception
+    public class InvalidStatusException : Exception
     {
         public StatusType Status { get; }
         public InvalidStatusException(StatusType status) : base($"The status '{status}' is not a valid status for this operation")

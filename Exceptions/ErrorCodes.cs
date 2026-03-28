@@ -14,6 +14,7 @@ namespace BepInEx.DiscordSocialSDK.Exceptions
     public enum ErrorCode
     {
         Unknown = 1000,
+        CannotSendEmptyMessage = 50006,
         CannotSendMessageToThisUser = 50007
     }
 }

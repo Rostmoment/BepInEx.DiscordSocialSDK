@@ -78,10 +78,13 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 if (!clientResult.Successful())
                 {
-                    if (clientResult.ErrorCode() == ErrorCode.CannotSendMessageToThisUser.ToErrorCode())
+                    int errorCode = clientResult.ErrorCode();
+                    if (errorCode == ErrorCode.CannotSendMessageToThisUser.ToErrorCode())
                         throw new CannotSendMessageToThisUserException(userID);
+                    else if (errorCode == ErrorCode.CannotSendEmptyMessage.ToErrorCode())
+                        throw new CannotSendEmptyMessageException(userID);
                     else
-                        throw new UknownException(clientResult);
+                        throw new UknownDiscordException(clientResult);
                 }
             };
 
