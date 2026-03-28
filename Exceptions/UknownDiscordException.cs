@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Exceptions
 {
-    public class UknownDiscordException : Exception
+    public class UknownDiscordException : BaseDiscordException
     {
-        public ClientResult ClientResult { get; }
-        public UknownDiscordException(ClientResult result) : base(result.Error())
+        public UknownDiscordException(ClientResult result) : base(result)
         {
-            ClientResult = result;
         }
     }
 }

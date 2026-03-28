@@ -15,6 +15,7 @@ namespace BepInEx.DiscordSocialSDK.Exceptions
     {
         Unknown = 1000,
         CannotSendEmptyMessage = 50006,
-        CannotSendMessageToThisUser = 50007
+        CannotSendMessageToThisUser = 50007,
+        InvalidBody = 50035
     }
 }

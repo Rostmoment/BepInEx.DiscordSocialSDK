@@ -80,9 +80,9 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     int errorCode = clientResult.ErrorCode();
                     if (errorCode == ErrorCode.CannotSendMessageToThisUser.ToErrorCode())
-                        throw new CannotSendMessageToThisUserException(userID);
+                        throw new CannotSendMessageToThisUserException(clientResult, userID);
                     else if (errorCode == ErrorCode.CannotSendEmptyMessage.ToErrorCode())
-                        throw new CannotSendEmptyMessageException(userID);
+                        throw new CannotSendEmptyMessageException(clientResult, userID);
                     else
                         throw new UknownDiscordException(clientResult);
                 }
@@ -131,10 +131,13 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <exception cref="InvalidStatusException">Thrown when status cannot be set as own status</exception>
         public void SetOnlineStatus(StatusType status, Client.UpdateStatusCallback callback)
         {
-            if (!status.CanSetAsOwnStatus())
-                throw new InvalidStatusException(status);
+            Client.UpdateStatusCallback errorHandle = (result) =>
+            {
+                if (!result.Successful() && result.ErrorCode() == ErrorCode.InvalidBody.ToErrorCode())
+                    throw new InvalidStatusException(result, status);
+            };
 
-            Client.SetOnlineStatus(status, callback);
+            Client.SetOnlineStatus(status, errorHandle + callback);
         }
 
         /// <summary>
