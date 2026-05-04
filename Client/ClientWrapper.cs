@@ -75,25 +75,32 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// Returns <see cref="UserHandle"/> of current client
         /// </summary>
         /// <returns></returns>
-        public UserHandle GetUser() => Client.GetCurrentUserV2();
+        public UserHandle GetSelfUser() => Client.GetCurrentUserV2();
+
+        /// <summary>
+        /// Retrieves a handle to the user with the specified unique identifier.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user to retrieve.</param>
+        /// <returns>A <see cref="UserHandle"/> representing the user with the specified identifier</returns>
+        public UserHandle GetUser(ulong userId) => Client.GetUser(userId);
 
         /// <summary>
         /// Returns user ID of client
         /// </summary>
         /// <returns></returns>
-        public ulong GetID() => GetUser().Id();
+        public ulong GetID() => GetSelfUser().Id();
 
         /// <summary>
         /// Returns username of client
         /// </summary>
         /// <returns></returns>
-        public string GetUsername() => GetUser().Username();
+        public string GetUsername() => GetSelfUser().Username();
 
         /// <summary>
         /// Returns online status of client
         /// </summary>
         /// <returns></returns>
-        public StatusType GetOnlineStatus() => GetUser().Status();
+        public StatusType GetOnlineStatus() => GetSelfUser().Status();
 
         /// <summary>
         /// Sets the online status for the current client and invokes a callback upon completion

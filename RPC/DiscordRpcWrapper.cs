@@ -154,10 +154,15 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <param name="detailsURL">URL that opens when user clicks details text</param>
         /// <param name="state">State for rich presence</param>
         /// <param name="stateURL">URL that opens when user clicks state text</param>
-        public void SetInfo(string name, string details, string detailsURL = null, string state = null, string stateURL = null)
+        public void SetInfo(string name, string details = null, string detailsURL = null, string state = null, string stateURL = null)
         {
             if (!IsReady)
                 return;
+
+            details ??= CurrentDetails;
+            detailsURL ??= CurrentDetailsUrl;
+            state ??= CurrentState;
+            stateURL ??= CurrentStateUrl;
 
             currentActivity.SetName(name);
             currentActivity.SetDetails(details);
