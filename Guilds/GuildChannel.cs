@@ -150,7 +150,7 @@ namespace BepInEx.DiscordSocialSDK.Guilds
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public ChannelType Type()
+        public BepInEx.DiscordSocialSDK.Enums.ChannelType Type()
         {
             if (disposed_ != 0)
             {
@@ -158,7 +158,7 @@ namespace BepInEx.DiscordSocialSDK.Guilds
             }
             unsafe
             {
-                ChannelType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ChannelType __returnValue;
                 fixed (NativeMethods.GuildChannel* self = &this.self)
                 {
                     __returnValue = NativeMethods.GuildChannel.Type(self);
@@ -166,7 +166,7 @@ namespace BepInEx.DiscordSocialSDK.Guilds
                 return __returnValue;
             }
         }
-        public void SetType(ChannelType value)
+        public void SetType(BepInEx.DiscordSocialSDK.Enums.ChannelType value)
         {
             if (disposed_ != 0)
             {
@@ -307,7 +307,7 @@ namespace BepInEx.DiscordSocialSDK.Guilds
                 }
             }
         }
-        public LinkedLobby? LinkedLobby()
+        public BepInEx.DiscordSocialSDK.Channels.LinkedLobby? LinkedLobby()
         {
             if (disposed_ != 0)
             {
@@ -331,7 +331,7 @@ namespace BepInEx.DiscordSocialSDK.Guilds
                 return __returnValue;
             }
         }
-        public void SetLinkedLobby(LinkedLobby? value)
+        public void SetLinkedLobby(BepInEx.DiscordSocialSDK.Channels.LinkedLobby? value)
         {
             if (disposed_ != 0)
             {

@@ -187,7 +187,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the type of the external identity provider.
         /// </summary>
-        public ExternalIdentityProviderType ProviderType()
+        public BepInEx.DiscordSocialSDK.Enums.ExternalIdentityProviderType ProviderType()
         {
             if (disposed_ != 0)
             {
@@ -195,7 +195,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
             }
             unsafe
             {
-                ExternalIdentityProviderType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ExternalIdentityProviderType __returnValue;
                 fixed (NativeMethods.UserApplicationProfileHandle* self = &this.self)
                 {
                     __returnValue = NativeMethods.UserApplicationProfileHandle.ProviderType(self);

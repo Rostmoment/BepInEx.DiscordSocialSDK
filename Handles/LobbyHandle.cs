@@ -173,7 +173,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  has not yet joined the voice call.
         ///
         /// </remarks>
-        public CallInfoHandle? GetCallInfoHandle()
+        public BepInEx.DiscordSocialSDK.Handles.CallInfoHandle? GetCallInfoHandle()
         {
             if (disposed_ != 0)
             {
@@ -201,7 +201,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  Returns a reference to the LobbyMemberHandle for the given user ID, if they are a member of
         ///  this lobby.
         /// </summary>
-        public LobbyMemberHandle? GetLobbyMemberHandle(ulong memberId)
+        public BepInEx.DiscordSocialSDK.Handles.LobbyMemberHandle? GetLobbyMemberHandle(ulong memberId)
         {
             if (disposed_ != 0)
             {
@@ -247,7 +247,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns information about the channel linked to this lobby, if any.
         /// </summary>
-        public LinkedChannel? LinkedChannel()
+        public BepInEx.DiscordSocialSDK.Channels.LinkedChannel? LinkedChannel()
         {
             if (disposed_ != 0)
             {
@@ -296,7 +296,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns a list of the LobbyMemberHandle objects for each member of this lobby.
         /// </summary>
-        public LobbyMemberHandle[] LobbyMembers()
+        public BepInEx.DiscordSocialSDK.Handles.LobbyMemberHandle[] LobbyMembers()
         {
             if (disposed_ != 0)
             {
@@ -309,7 +309,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
                 {
                     NativeMethods.LobbyHandle.LobbyMembers(self, &__returnValue);
                 }
-                var __returnValueSurface = new LobbyMemberHandle[(int)__returnValue.size];
+                var __returnValueSurface = new BepInEx.DiscordSocialSDK.Handles.LobbyMemberHandle[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] = new LobbyMemberHandle(__returnValue.ptr[__i], 0);

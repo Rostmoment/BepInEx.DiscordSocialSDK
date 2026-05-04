@@ -275,7 +275,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <summary>
         ///  Adds a custom button to the rich presence
         /// </summary>
-        public void AddButton(ActivityButton button)
+        public void AddButton(BepInEx.DiscordSocialSDK.RPC.ActivityButton button)
         {
             if (disposed_ != 0)
             {
@@ -295,7 +295,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <summary>
         ///  Compares each field of the Activity struct for equality.
         /// </summary>
-        public bool Equals(Activity other)
+        public bool Equals(BepInEx.DiscordSocialSDK.RPC.Activity other)
         {
             if (disposed_ != 0)
             {
@@ -317,7 +317,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <summary>
         ///  Returns the custom buttons for the rich presence
         /// </summary>
-        public ActivityButton[] GetButtons()
+        public BepInEx.DiscordSocialSDK.RPC.ActivityButton[] GetButtons()
         {
             if (disposed_ != 0)
             {
@@ -330,7 +330,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.Activity.GetButtons(self, &__returnValue);
                 }
-                var __returnValueSurface = new ActivityButton[(int)__returnValue.size];
+                var __returnValueSurface = new BepInEx.DiscordSocialSDK.RPC.ActivityButton[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] = new ActivityButton(__returnValue.ptr[__i], 0);
@@ -352,7 +352,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.Activity.Name(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -378,7 +379,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public ActivityTypes Type()
+        public BepInEx.DiscordSocialSDK.Enums.ActivityTypes Type()
         {
             if (disposed_ != 0)
             {
@@ -386,7 +387,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             }
             unsafe
             {
-                ActivityTypes __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ActivityTypes __returnValue;
                 fixed (NativeMethods.Activity* self = &this.self)
                 {
                     __returnValue = NativeMethods.Activity.Type(self);
@@ -394,7 +395,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetType(ActivityTypes value)
+        public void SetType(BepInEx.DiscordSocialSDK.Enums.ActivityTypes value)
         {
             if (disposed_ != 0)
             {
@@ -408,7 +409,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public StatusDisplayTypes? StatusDisplayType()
+        public BepInEx.DiscordSocialSDK.Enums.StatusDisplayTypes? StatusDisplayType()
         {
             if (disposed_ != 0)
             {
@@ -417,7 +418,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             unsafe
             {
                 bool __returnIsNonNull;
-                StatusDisplayTypes __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.StatusDisplayTypes __returnValue;
                 fixed (NativeMethods.Activity* self = &this.self)
                 {
                     __returnIsNonNull = NativeMethods.Activity.StatusDisplayType(self, &__returnValue);
@@ -429,7 +430,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetStatusDisplayType(StatusDisplayTypes? value)
+        public void SetStatusDisplayType(BepInEx.DiscordSocialSDK.Enums.StatusDisplayTypes? value)
         {
             if (disposed_ != 0)
             {
@@ -463,7 +464,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     return null;
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -507,7 +509,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     return null;
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -551,7 +554,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     return null;
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -595,7 +599,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     return null;
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -696,7 +701,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivityAssets? Assets()
+        public BepInEx.DiscordSocialSDK.RPC.ActivityAssets? Assets()
         {
             if (disposed_ != 0)
             {
@@ -719,7 +724,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetAssets(ActivityAssets? value)
+        public void SetAssets(BepInEx.DiscordSocialSDK.RPC.ActivityAssets? value)
         {
             if (disposed_ != 0)
             {
@@ -738,7 +743,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivityTimestamps? Timestamps()
+        public BepInEx.DiscordSocialSDK.RPC.ActivityTimestamps? Timestamps()
         {
             if (disposed_ != 0)
             {
@@ -761,7 +766,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetTimestamps(ActivityTimestamps? value)
+        public void SetTimestamps(BepInEx.DiscordSocialSDK.RPC.ActivityTimestamps? value)
         {
             if (disposed_ != 0)
             {
@@ -780,7 +785,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivityParty? Party()
+        public BepInEx.DiscordSocialSDK.RPC.ActivityParty? Party()
         {
             if (disposed_ != 0)
             {
@@ -803,7 +808,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetParty(ActivityParty? value)
+        public void SetParty(BepInEx.DiscordSocialSDK.RPC.ActivityParty? value)
         {
             if (disposed_ != 0)
             {
@@ -822,7 +827,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivitySecrets? Secrets()
+        public BepInEx.DiscordSocialSDK.RPC.ActivitySecrets? Secrets()
         {
             if (disposed_ != 0)
             {
@@ -845,7 +850,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetSecrets(ActivitySecrets? value)
+        public void SetSecrets(BepInEx.DiscordSocialSDK.RPC.ActivitySecrets? value)
         {
             if (disposed_ != 0)
             {
@@ -864,7 +869,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivityGamePlatforms SupportedPlatforms()
+        public BepInEx.DiscordSocialSDK.Enums.ActivityGamePlatforms SupportedPlatforms()
         {
             if (disposed_ != 0)
             {
@@ -872,7 +877,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             }
             unsafe
             {
-                ActivityGamePlatforms __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ActivityGamePlatforms __returnValue;
                 fixed (NativeMethods.Activity* self = &this.self)
                 {
                     __returnValue = NativeMethods.Activity.SupportedPlatforms(self);
@@ -880,7 +885,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetSupportedPlatforms(ActivityGamePlatforms value)
+        public void SetSupportedPlatforms(BepInEx.DiscordSocialSDK.Enums.ActivityGamePlatforms value)
         {
             if (disposed_ != 0)
             {

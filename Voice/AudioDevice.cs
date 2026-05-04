@@ -85,7 +85,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         /// <summary>
         ///  Compares the ID of two AudioDevice objects for equality.
         /// </summary>
-        public bool Equals(AudioDevice rhs)
+        public bool Equals(BepInEx.DiscordSocialSDK.Voice.AudioDevice rhs)
         {
             if (disposed_ != 0)
             {

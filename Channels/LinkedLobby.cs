@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Channels
 {
-
     /// <summary>
     ///  Struct that stores information about the lobby linked to a channel.
     /// </summary>

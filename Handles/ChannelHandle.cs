@@ -88,6 +88,27 @@ namespace BepInEx.DiscordSocialSDK.Handles
                 }
             }
         }
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+    public BepInEx.DiscordSocialSDK.Voice.CallInfoHandle? GetCallInfoHandle() {
+        if (disposed_ != 0) {
+            throw new ObjectDisposedException(nameof(ChannelHandle));
+        }
+        unsafe {
+            bool __returnIsNonNull;
+            var __returnValueNative = new NativeMethods.CallInfoHandle();
+            CallInfoHandle? __returnValue = null;
+            fixed(NativeMethods.ChannelHandle* self = &this.self) {
+                __returnIsNonNull =
+                  NativeMethods.ChannelHandle.GetCallInfoHandle(self, &__returnValueNative);
+            }
+            if (!__returnIsNonNull) {
+                return null;
+            }
+            __returnValue = new CallInfoHandle(__returnValueNative, 0);
+            return __returnValue;
+        }
+    }
+#endif
         /// <summary>
         ///  Returns the ID of the channel.
         /// </summary>
@@ -160,7 +181,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the type of the channel.
         /// </summary>
-        public ChannelType Type()
+        public BepInEx.DiscordSocialSDK.Enums.ChannelType Type()
         {
             if (disposed_ != 0)
             {
@@ -168,7 +189,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
             }
             unsafe
             {
-                ChannelType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ChannelType __returnValue;
                 fixed (NativeMethods.ChannelHandle* self = &this.self)
                 {
                     __returnValue = NativeMethods.ChannelHandle.Type(self);

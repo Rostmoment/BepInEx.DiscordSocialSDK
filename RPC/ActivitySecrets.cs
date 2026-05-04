@@ -104,7 +104,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.ActivitySecrets.Join(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }

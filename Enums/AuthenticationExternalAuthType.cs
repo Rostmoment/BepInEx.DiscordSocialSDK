@@ -10,7 +10,7 @@ namespace BepInEx.DiscordSocialSDK.Enums
     ///  Represents the various identity providers that can be used to authenticate a provisional
     ///  account user for public clients.
     /// </summary>
-    public enum AuthenticationExternalAuthType
+    internal enum AuthenticationExternalAuthType
     {
         OIDC = 0,
         EpicOnlineServicesAccessToken = 1,

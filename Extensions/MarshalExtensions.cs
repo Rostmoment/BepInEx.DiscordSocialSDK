@@ -9,13 +9,13 @@ namespace BepInEx.DiscordSocialSDK.Extensions
 {
     class MarshalExtensions
     {
-        // Netstandard2.0 does not have Marshal.StringToCoTaskMemUTF8 or Marshal.PtrToStringUTF8
+        // Netstandard2.0 does not have Marshal.StringToCoTaskMemUTF8 or MarshalExtensions.PtrToStringUTF8
         // Thanks to https://github.com/dartasen/Discord.SocialSdk-CSharp for these methods
         public static unsafe IntPtr StringToCoTaskMemUTF8(string value)
         {
             if (value == null)
                 return IntPtr.Zero;
-            
+
 
             byte[] utf8Bytes = Encoding.UTF8.GetBytes(value);
             IntPtr ptr = Marshal.AllocCoTaskMem(utf8Bytes.Length + 1);
@@ -31,7 +31,7 @@ namespace BepInEx.DiscordSocialSDK.Extensions
 
             if (byteLen < 0)
                 throw new ArgumentOutOfRangeException(nameof(byteLen), "byteLen must be non-negative");
-            
+
 
             return CreateStringFromEncoding((byte*)ptr, byteLen, Encoding.UTF8);
         }
@@ -57,7 +57,7 @@ namespace BepInEx.DiscordSocialSDK.Extensions
             // 0 bytelength might be possible if there's something in an encoder
             if (stringLength == 0)
                 return string.Empty;
-            
+
 
             string s = new string(' ', stringLength);
             fixed (char* pTempChars = s)

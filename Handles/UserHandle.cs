@@ -131,7 +131,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Converts the AvatarType enum to a string.
         /// </summary>
-        public static string AvatarTypeToString(UserHandle.AvatarType type)
+        public static string AvatarTypeToString(BepInEx.DiscordSocialSDK.Handles.UserHandle.AvatarType type)
         {
             unsafe
             {
@@ -151,8 +151,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  returned instead.
         ///
         /// </remarks>
-        public string AvatarUrl(UserHandle.AvatarType animatedType,
-                                UserHandle.AvatarType staticType)
+        public string AvatarUrl(BepInEx.DiscordSocialSDK.Handles.UserHandle.AvatarType animatedType, BepInEx.DiscordSocialSDK.Handles.UserHandle.AvatarType staticType)
         {
             if (disposed_ != 0)
             {
@@ -206,7 +205,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  https://discord.com/developers/docs/rich-presence/overview
         ///
         /// </remarks>
-        public Activity? GameActivity()
+        public BepInEx.DiscordSocialSDK.RPC.Activity? GameActivity()
         {
             if (disposed_ != 0)
             {
@@ -312,7 +311,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  Returns a reference to the RelationshipHandle between the currently authenticated user and
         ///  this user, if any.
         /// </summary>
-        public RelationshipHandle Relationship()
+        public BepInEx.DiscordSocialSDK.Handles.RelationshipHandle Relationship()
         {
             if (disposed_ != 0)
             {
@@ -333,7 +332,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the user's online/offline/idle status.
         /// </summary>
-        public StatusType Status()
+        public BepInEx.DiscordSocialSDK.Enums.StatusType Status()
         {
             if (disposed_ != 0)
             {
@@ -341,7 +340,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
             }
             unsafe
             {
-                StatusType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.StatusType __returnValue;
                 fixed (NativeMethods.UserHandle* self = &this.self)
                 {
                     __returnValue = NativeMethods.UserHandle.Status(self);
@@ -354,7 +353,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  have a single profile per application, so this list will always contain at most one
         ///  UserApplicationProfileHandle.
         /// </summary>
-        public UserApplicationProfileHandle[] UserApplicationProfiles()
+        public BepInEx.DiscordSocialSDK.Handles.UserApplicationProfileHandle[] UserApplicationProfiles()
         {
             if (disposed_ != 0)
             {
@@ -368,7 +367,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
                     NativeMethods.UserHandle.UserApplicationProfiles(self, &__returnValue);
                 }
                 var __returnValueSurface =
-                  new UserApplicationProfileHandle[(int)__returnValue.size];
+                  new BepInEx.DiscordSocialSDK.Handles.UserApplicationProfileHandle[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] =

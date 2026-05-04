@@ -15,19 +15,23 @@ namespace BepInEx.DiscordSocialSDK
     /// </summary>
     internal static unsafe class NativeMethods
     {
-        public static void ReportUnhandledException(Exception ex)
-        {
-            if (UnhandledException != null)
-                UnhandledException(ex);
-            else
-                Logger.LogException(ex);
-        }
+
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void __Init()
         {
             // The real logic is in the static constructor.
         }
+
+        public static void __ReportUnhandledException(Exception ex)
+        {
+            if (UnhandledException != null)
+                UnhandledException(ex);
+            else
+                Logger.LogException(ex);
+
+        }
+
         public static void __OnPostConstruct(object obj) { }
 
         public delegate void Discord_FreeFn(void* ptr);
@@ -204,7 +208,6 @@ namespace BepInEx.DiscordSocialSDK
                    EntryPoint = "Discord_SetFreeThreaded",
                    CallingConvention = CallingConvention.Cdecl)]
         public static extern void Discord_SetFreeThreaded();
-
 
         [StructLayout(LayoutKind.Sequential)]
         public struct Discord_String
@@ -1103,7 +1106,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -1125,7 +1128,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -1149,7 +1152,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -1175,7 +1178,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2061,6 +2064,103 @@ namespace BepInEx.DiscordSocialSDK
         {
             public IntPtr Handle;
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate void UpdateLobbyMemberCallback(ClientResult* result,
+                                                           ulong userId,
+                                                           ulong lobbyId,
+                                                           void* __userData);
+            [AOT.MonoPInvokeCallback(typeof(UpdateLobbyMemberCallback))]
+            public static void UpdateLobbyMemberCallback_Handler(ClientResult* result,
+                                                                 ulong userId,
+                                                                 ulong lobbyId,
+                                                                 void* __userData)
+            {
+                var __callback =
+                  NativeMethods.ManagedUserData
+                    .DelegateFromPointer<BepInEx.DiscordSocialSDK.Client.Client.UpdateLobbyMemberCallback>(__userData);
+                try
+                {
+                    __callback(new BepInEx.DiscordSocialSDK.Client.ClientResult(*result, 0), userId, lobbyId);
+                }
+                catch (Exception ex)
+                {
+                    NativeMethods.__ReportUnhandledException(ex);
+                }
+                finally
+                {
+                }
+            }
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate void LobbyActionCallback(ClientResult* result,
+                                                     ulong lobbyId,
+                                                     void* __userData);
+            [AOT.MonoPInvokeCallback(typeof(LobbyActionCallback))]
+            public static void LobbyActionCallback_Handler(ClientResult* result,
+                                                           ulong lobbyId,
+                                                           void* __userData)
+            {
+                var __callback =
+                  NativeMethods.ManagedUserData
+                    .DelegateFromPointer<BepInEx.DiscordSocialSDK.Client.Client.LobbyActionCallback>(__userData);
+                try
+                {
+                    __callback(new BepInEx.DiscordSocialSDK.Client.ClientResult(*result, 0), lobbyId);
+                }
+                catch (Exception ex)
+                {
+                    NativeMethods.__ReportUnhandledException(ex);
+                }
+                finally
+                {
+                }
+            }
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate void PerformOnThreadWithStringCallback(Discord_String text,
+                                                                   void* __userData);
+            [AOT.MonoPInvokeCallback(typeof(PerformOnThreadWithStringCallback))]
+            public static void PerformOnThreadWithStringCallback_Handler(Discord_String text,
+                                                                         void* __userData)
+            {
+                var __callback =
+                  NativeMethods.ManagedUserData
+                    .DelegateFromPointer<BepInEx.DiscordSocialSDK.Client.Client.PerformOnThreadWithStringCallback>(
+                      __userData);
+                try
+                {
+                    __callback(MarshalExtensions.PtrToStringUTF8((IntPtr)text.ptr, (int)text.size));
+                }
+                catch (Exception ex)
+                {
+                    NativeMethods.__ReportUnhandledException(ex);
+                }
+                finally
+                {
+                    NativeMethods.Discord_Free(text.ptr);
+                }
+            }
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate void UpdateUserApplicationProfileCallback(ClientResult* result,
+                                                                      void* __userData);
+            [AOT.MonoPInvokeCallback(typeof(UpdateUserApplicationProfileCallback))]
+            public static void UpdateUserApplicationProfileCallback_Handler(ClientResult* result,
+                                                                            void* __userData)
+            {
+                var __callback =
+                  NativeMethods.ManagedUserData
+                    .DelegateFromPointer<BepInEx.DiscordSocialSDK.Client.Client.UpdateUserApplicationProfileCallback>(
+                      __userData);
+                try
+                {
+                    __callback(new BepInEx.DiscordSocialSDK.Client.ClientResult(*result, 0));
+                }
+                catch (Exception ex)
+                {
+                    NativeMethods.__ReportUnhandledException(ex);
+                }
+                finally
+                {
+                }
+            }
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate void EndCallCallback(void* __userData);
             [AOT.MonoPInvokeCallback(typeof(EndCallCallback))]
             public static void EndCallCallback_Handler(void* __userData)
@@ -2074,7 +2174,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2094,7 +2194,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2115,7 +2215,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2136,7 +2236,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2161,7 +2261,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2187,7 +2287,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2220,7 +2320,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2242,7 +2342,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2262,7 +2362,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2282,7 +2382,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2309,7 +2409,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2346,7 +2446,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2374,7 +2474,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2402,7 +2502,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2440,7 +2540,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2470,7 +2570,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2510,7 +2610,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2533,7 +2633,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2553,7 +2653,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2574,7 +2674,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2594,7 +2694,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2617,7 +2717,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2638,7 +2738,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2658,7 +2758,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2679,7 +2779,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2699,7 +2799,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2727,7 +2827,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2758,7 +2858,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2787,7 +2887,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2809,7 +2909,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2830,7 +2930,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2854,7 +2954,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2874,7 +2974,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2898,7 +2998,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2918,7 +3018,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2943,7 +3043,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2965,7 +3065,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -2991,7 +3091,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3015,7 +3115,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3044,7 +3144,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3073,7 +3173,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3099,7 +3199,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3120,7 +3220,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3141,7 +3241,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3161,7 +3261,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3181,7 +3281,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3205,7 +3305,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3229,7 +3329,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3253,7 +3353,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3273,7 +3373,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3293,7 +3393,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3318,7 +3418,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3340,7 +3440,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3361,7 +3461,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3382,7 +3482,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3409,7 +3509,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3430,7 +3530,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3451,7 +3551,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3472,7 +3572,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3493,7 +3593,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3517,7 +3617,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3541,7 +3641,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3567,7 +3667,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3589,7 +3689,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {
@@ -3609,7 +3709,7 @@ namespace BepInEx.DiscordSocialSDK
                 }
                 catch (Exception ex)
                 {
-                    NativeMethods.ReportUnhandledException(ex);
+                    NativeMethods.__ReportUnhandledException(ex);
                 }
                 finally
                 {

@@ -12,7 +12,7 @@ using UnityEngine.SocialPlatforms;
 namespace BepInEx.DiscordSocialSDK.Auth
 {
     /// <summary>
-    /// Arguments to the Client::Authorize function.
+    ///  Arguments to the Client::Authorize function.
     /// </summary>
     internal class AuthorizationArgs : IDisposable
     {
@@ -133,7 +133,8 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 {
                     NativeMethods.AuthorizationArgs.Scopes(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -251,7 +252,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public AuthorizationCodeChallenge? CodeChallenge()
+        public BepInEx.DiscordSocialSDK.Auth.AuthorizationCodeChallenge? CodeChallenge()
         {
             if (disposed_ != 0)
             {
@@ -275,7 +276,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 return __returnValue;
             }
         }
-        public void SetCodeChallenge(AuthorizationCodeChallenge? value)
+        public void SetCodeChallenge(BepInEx.DiscordSocialSDK.Auth.AuthorizationCodeChallenge? value)
         {
             if (disposed_ != 0)
             {
@@ -295,7 +296,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
             }
         }
-        public IntegrationType? IntegrationType()
+        public BepInEx.DiscordSocialSDK.Enums.IntegrationType? IntegrationType()
         {
             if (disposed_ != 0)
             {
@@ -304,7 +305,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
             unsafe
             {
                 bool __returnIsNonNull;
-                IntegrationType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.IntegrationType __returnValue;
                 fixed (NativeMethods.AuthorizationArgs* self = &this.self)
                 {
                     __returnIsNonNull =
@@ -317,7 +318,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 return __returnValue;
             }
         }
-        public void SetIntegrationType(IntegrationType? value)
+        public void SetIntegrationType(BepInEx.DiscordSocialSDK.Enums.IntegrationType? value)
         {
             if (disposed_ != 0)
             {

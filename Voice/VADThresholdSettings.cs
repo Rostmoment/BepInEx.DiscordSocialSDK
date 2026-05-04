@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BepInEx.DiscordSocialSDK.Voice
 {
     /// <summary>
-    /// Settings for the void auto detection threshold for picking up activity from a user's mic.
+    ///  Settings for the void auto detection threshold for picking up activity from a user's mic.
     /// </summary>
     public class VADThresholdSettings : IDisposable
     {

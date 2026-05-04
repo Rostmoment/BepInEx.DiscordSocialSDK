@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Handles
 {
+
     /// <summary>
     ///  A VoiceStateHandle represents the state of a single participant in a Discord voice call.
     /// </summary>

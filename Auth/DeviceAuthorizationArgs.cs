@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BepInEx.DiscordSocialSDK.Auth
 {
     /// <summary>
-    /// Arguments to the Client::GetTokenFromDevice function.
+    ///  Arguments to the Client::GetTokenFromDevice function.
     /// </summary>
     internal class DeviceAuthorizationArgs : IDisposable
     {
@@ -131,7 +131,8 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 {
                     NativeMethods.DeviceAuthorizationArgs.Scopes(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }

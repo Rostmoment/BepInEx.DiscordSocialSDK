@@ -11,6 +11,7 @@ using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.Client
 {
+
     /// <summary>
     ///  Options for creating a new Client instance.
     /// </summary>
@@ -174,7 +175,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.__FreeLocalString(&__valueSpan, __valueOwned);
             }
         }
-        public AudioSystem ExperimentalAudioSystem()
+        public BepInEx.DiscordSocialSDK.Enums.AudioSystem ExperimentalAudioSystem()
         {
             if (disposed_ != 0)
             {
@@ -182,7 +183,7 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                AudioSystem __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.AudioSystem __returnValue;
                 fixed (NativeMethods.ClientCreateOptions* self = &this.self)
                 {
                     __returnValue = NativeMethods.ClientCreateOptions.ExperimentalAudioSystem(self);
@@ -190,7 +191,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 return __returnValue;
             }
         }
-        public void SetExperimentalAudioSystem(AudioSystem value)
+        public void SetExperimentalAudioSystem(BepInEx.DiscordSocialSDK.Enums.AudioSystem value)
         {
             if (disposed_ != 0)
             {

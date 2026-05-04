@@ -106,7 +106,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     NativeMethods.ActivityParty.Id(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -192,7 +193,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 }
             }
         }
-        public ActivityPartyPrivacy Privacy()
+        public BepInEx.DiscordSocialSDK.Enums.ActivityPartyPrivacy Privacy()
         {
             if (disposed_ != 0)
             {
@@ -200,7 +201,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
             }
             unsafe
             {
-                ActivityPartyPrivacy __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ActivityPartyPrivacy __returnValue;
                 fixed (NativeMethods.ActivityParty* self = &this.self)
                 {
                     __returnValue = NativeMethods.ActivityParty.Privacy(self);
@@ -208,7 +209,7 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 return __returnValue;
             }
         }
-        public void SetPrivacy(ActivityPartyPrivacy value)
+        public void SetPrivacy(BepInEx.DiscordSocialSDK.Enums.ActivityPartyPrivacy value)
         {
             if (disposed_ != 0)
             {

@@ -10,7 +10,6 @@ using UnityEngine.SocialPlatforms;
 
 namespace BepInEx.DiscordSocialSDK.Handles
 {
-
     /// <summary>
     ///  A LobbyMemberHandle represents the state of a single user in a Lobby.
     /// </summary>
@@ -197,7 +196,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  The UserHandle of the lobby member.
         /// </summary>
-        public UserHandle? User()
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle? User()
         {
             if (disposed_ != 0)
             {

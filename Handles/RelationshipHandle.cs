@@ -115,7 +115,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the type of the Discord relationship.
         /// </summary>
-        public RelationshipType DiscordRelationshipType()
+        public BepInEx.DiscordSocialSDK.Enums.RelationshipType DiscordRelationshipType()
         {
             if (disposed_ != 0)
             {
@@ -123,7 +123,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
             }
             unsafe
             {
-                RelationshipType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.RelationshipType __returnValue;
                 fixed (NativeMethods.RelationshipHandle* self = &this.self)
                 {
                     __returnValue = NativeMethods.RelationshipHandle.DiscordRelationshipType(self);
@@ -134,7 +134,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the type of the Game relationship.
         /// </summary>
-        public RelationshipType GameRelationshipType()
+        public BepInEx.DiscordSocialSDK.Enums.RelationshipType GameRelationshipType()
         {
             if (disposed_ != 0)
             {
@@ -142,7 +142,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
             }
             unsafe
             {
-                RelationshipType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.RelationshipType __returnValue;
                 fixed (NativeMethods.RelationshipHandle* self = &this.self)
                 {
                     __returnValue = NativeMethods.RelationshipHandle.GameRelationshipType(self);
@@ -192,7 +192,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  Returns a handle to the target user in this relationship, if one is available.
         ///  This would be the user with the same ID as the one returned by the Id() method.
         /// </summary>
-        public UserHandle? User()
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle? User()
         {
             if (disposed_ != 0)
             {

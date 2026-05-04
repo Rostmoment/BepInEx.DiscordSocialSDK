@@ -138,7 +138,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  If the message contains non-text content, such as images, videos, embeds, polls, etc, this
         ///  method will return information about that content.
         /// </summary>
-        public AdditionalContent? AdditionalContent()
+        public BepInEx.DiscordSocialSDK.Messages.AdditionalContent? AdditionalContent()
         {
             if (disposed_ != 0)
             {
@@ -196,7 +196,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the UserHandle for the author of this message.
         /// </summary>
-        public UserHandle? Author()
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle? Author()
         {
             if (disposed_ != 0)
             {
@@ -241,7 +241,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the ChannelHandle for the channel this message was sent in.
         /// </summary>
-        public ChannelHandle? Channel()
+        public BepInEx.DiscordSocialSDK.Handles.ChannelHandle? Channel()
         {
             if (disposed_ != 0)
             {
@@ -315,7 +315,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  If this is an auto-generated message that is explaining some integration behavior to users,
         ///  this method will return the type of disclosure so you can customize it.
         /// </summary>
-        public DisclosureTypes? DisclosureType()
+        public BepInEx.DiscordSocialSDK.Enums.DisclosureTypes? DisclosureType()
         {
             if (disposed_ != 0)
             {
@@ -324,7 +324,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
             unsafe
             {
                 bool __returnIsNonNull;
-                DisclosureTypes __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.DisclosureTypes __returnValue;
                 fixed (NativeMethods.MessageHandle* self = &this.self)
                 {
                     __returnIsNonNull =
@@ -382,7 +382,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the LobbyHandle this message was sent in, if it was sent in a lobby.
         /// </summary>
-        public LobbyHandle? Lobby()
+        public BepInEx.DiscordSocialSDK.Handles.LobbyHandle? Lobby()
         {
             if (disposed_ != 0)
             {
@@ -507,7 +507,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         /// <summary>
         ///  Returns the UserHandle for the other participant in a DM, if this message was sent in a DM.
         /// </summary>
-        public UserHandle? Recipient()
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle? Recipient()
         {
             if (disposed_ != 0)
             {

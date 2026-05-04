@@ -11,7 +11,7 @@ using UnityEngine.SocialPlatforms;
 namespace BepInEx.DiscordSocialSDK.Auth
 {
     /// <summary>
-    /// Struct that encapsulates both parts of the code verification flow.
+    ///  Struct that encapsulates both parts of the code verification flow.
     /// </summary>
     internal class AuthorizationCodeVerifier : IDisposable
     {
@@ -77,7 +77,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
             }
         }
-        public AuthorizationCodeChallenge Challenge()
+        public BepInEx.DiscordSocialSDK.Auth.AuthorizationCodeChallenge Challenge()
         {
             if (disposed_ != 0)
             {
@@ -95,7 +95,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 return __returnValue;
             }
         }
-        public void SetChallenge(AuthorizationCodeChallenge value)
+        public void SetChallenge(BepInEx.DiscordSocialSDK.Auth.AuthorizationCodeChallenge value)
         {
             if (disposed_ != 0)
             {

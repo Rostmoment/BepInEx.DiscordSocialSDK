@@ -120,7 +120,7 @@ namespace BepInEx.DiscordSocialSDK.Handles
         ///  Accesses the voice state for a single user so you can know if they have muted or deafened
         ///  themselves.
         /// </summary>
-        public VoiceStateHandle? GetVoiceStateHandle(ulong userId)
+        public BepInEx.DiscordSocialSDK.Handles.VoiceStateHandle? GetVoiceStateHandle(ulong userId)
         {
             if (disposed_ != 0)
             {

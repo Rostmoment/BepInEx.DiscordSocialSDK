@@ -94,7 +94,7 @@ namespace BepInEx.DiscordSocialSDK.Messages
         /// <summary>
         ///  Compares each field of the AdditionalContent struct for equality.
         /// </summary>
-        public bool Equals(AdditionalContent rhs)
+        public bool Equals(BepInEx.DiscordSocialSDK.Messages.AdditionalContent rhs)
         {
             if (disposed_ != 0)
             {
@@ -116,7 +116,7 @@ namespace BepInEx.DiscordSocialSDK.Messages
         /// <summary>
         ///  Converts the AdditionalContentType enum to a string.
         /// </summary>
-        public static string TypeToString(AdditionalContentType type)
+        public static string TypeToString(BepInEx.DiscordSocialSDK.Enums.AdditionalContentType type)
         {
             unsafe
             {
@@ -128,7 +128,7 @@ namespace BepInEx.DiscordSocialSDK.Messages
                 return __returnValueSurface;
             }
         }
-        public AdditionalContentType Type()
+        public BepInEx.DiscordSocialSDK.Enums.AdditionalContentType Type()
         {
             if (disposed_ != 0)
             {
@@ -136,7 +136,7 @@ namespace BepInEx.DiscordSocialSDK.Messages
             }
             unsafe
             {
-                AdditionalContentType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.AdditionalContentType __returnValue;
                 fixed (NativeMethods.AdditionalContent* self = &this.self)
                 {
                     __returnValue = NativeMethods.AdditionalContent.Type(self);
@@ -144,7 +144,7 @@ namespace BepInEx.DiscordSocialSDK.Messages
                 return __returnValue;
             }
         }
-        public void SetType(AdditionalContentType value)
+        public void SetType(BepInEx.DiscordSocialSDK.Enums.AdditionalContentType value)
         {
             if (disposed_ != 0)
             {

@@ -14,7 +14,7 @@ namespace BepInEx.DiscordSocialSDK.Enums
     ///  The only method used by the SDK is sha256.
     ///
     /// </remarks>
-    public enum AuthenticationCodeChallengeMethod
+    internal enum AuthenticationCodeChallengeMethod
     {
         S256 = 0
     }

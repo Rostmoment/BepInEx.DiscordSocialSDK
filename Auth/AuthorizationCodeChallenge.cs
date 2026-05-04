@@ -91,7 +91,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 }
             }
         }
-        public AuthenticationCodeChallengeMethod Method()
+        public BepInEx.DiscordSocialSDK.Enums.AuthenticationCodeChallengeMethod Method()
         {
             if (disposed_ != 0)
             {
@@ -99,7 +99,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
             }
             unsafe
             {
-                AuthenticationCodeChallengeMethod __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.AuthenticationCodeChallengeMethod __returnValue;
                 fixed (NativeMethods.AuthorizationCodeChallenge* self = &this.self)
                 {
                     __returnValue = NativeMethods.AuthorizationCodeChallenge.Method(self);
@@ -107,7 +107,7 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 return __returnValue;
             }
         }
-        public void SetMethod(AuthenticationCodeChallengeMethod value)
+        public void SetMethod(BepInEx.DiscordSocialSDK.Enums.AuthenticationCodeChallengeMethod value)
         {
             if (disposed_ != 0)
             {
@@ -134,7 +134,8 @@ namespace BepInEx.DiscordSocialSDK.Auth
                 {
                     NativeMethods.AuthorizationCodeChallenge.Challenge(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }

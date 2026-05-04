@@ -95,17 +95,23 @@ namespace BepInEx.DiscordSocialSDK.Client
             Network = 2,
         }
 
+        public delegate void UpdateLobbyMemberCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                       ulong userId,
+                                                       ulong lobbyId);
+        public delegate void LobbyActionCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result, ulong lobbyId);
+        public delegate void PerformOnThreadWithStringCallback(string text);
+        public delegate void UpdateUserApplicationProfileCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void EndCallCallback();
         public delegate void EndCallsCallback();
-        public delegate void GetCurrentInputDeviceCallback(AudioDevice device);
-        public delegate void GetCurrentOutputDeviceCallback(AudioDevice device);
-        public delegate void GetInputDevicesCallback(AudioDevice[] devices);
-        public delegate void GetOutputDevicesCallback(AudioDevice[] devices);
-        public delegate void DeviceChangeCallback(AudioDevice[] inputDevices,
-                                                  AudioDevice[] outputDevices);
-        public delegate void SetInputDeviceCallback(ClientResult result);
+        public delegate void GetCurrentInputDeviceCallback(BepInEx.DiscordSocialSDK.Voice.AudioDevice device);
+        public delegate void GetCurrentOutputDeviceCallback(BepInEx.DiscordSocialSDK.Voice.AudioDevice device);
+        public delegate void GetInputDevicesCallback(BepInEx.DiscordSocialSDK.Voice.AudioDevice[] devices);
+        public delegate void GetOutputDevicesCallback(BepInEx.DiscordSocialSDK.Voice.AudioDevice[] devices);
+        public delegate void DeviceChangeCallback(BepInEx.DiscordSocialSDK.Voice.AudioDevice[] inputDevices,
+                                                  BepInEx.DiscordSocialSDK.Voice.AudioDevice[] outputDevices);
+        public delegate void SetInputDeviceCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void NoAudioInputCallback(bool inputDetected);
-        public delegate void SetOutputDeviceCallback(ClientResult result);
+        public delegate void SetOutputDeviceCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void VoiceParticipantChangedCallback(ulong lobbyId, ulong memberId, bool added);
         public delegate void UserAudioReceivedCallback(ulong userId,
                                                        IntPtr data,
@@ -117,60 +123,60 @@ namespace BepInEx.DiscordSocialSDK.Client
                                                        ulong samplesPerChannel,
                                                        int sampleRate,
                                                        ulong channels);
-        public delegate void AuthorizationCallback(ClientResult result,
+        public delegate void AuthorizationCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
                                                    string code,
                                                    string redirectUri);
-        public delegate void ExchangeChildTokenCallback(ClientResult result,
+        internal delegate void ExchangeChildTokenCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
                                                         string accessToken,
-                                                        AuthorizationTokenType tokenType,
+                                                        BepInEx.DiscordSocialSDK.Enums.AuthorizationTokenType tokenType,
                                                         int expiresIn,
                                                         string scopes);
-        public delegate void FetchCurrentUserCallback(ClientResult result,
+        public delegate void FetchCurrentUserCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
                                                       ulong id,
                                                       string name);
-        public delegate void TokenExchangeCallback(ClientResult result,
+        internal delegate void TokenExchangeCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
                                                    string accessToken,
                                                    string refreshToken,
-                                                   AuthorizationTokenType tokenType,
+                                                   BepInEx.DiscordSocialSDK.Enums.AuthorizationTokenType tokenType,
                                                    int expiresIn,
                                                    string scopes);
         public delegate void AuthorizeRequestCallback();
-        public delegate void RevokeTokenCallback(ClientResult result);
+        public delegate void RevokeTokenCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void AuthorizeDeviceScreenClosedCallback();
         public delegate void TokenExpirationCallback();
-        public delegate void UnmergeIntoProvisionalAccountCallback(ClientResult result);
+        public delegate void UnmergeIntoProvisionalAccountCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void UpdateProvisionalAccountDisplayNameCallback(
-          ClientResult result);
-        public delegate void UpdateTokenCallback(ClientResult result);
-        public delegate void DeleteUserMessageCallback(ClientResult result);
-        public delegate void EditUserMessageCallback(ClientResult result);
-        public delegate void GetLobbyMessagesCallback(ClientResult result,
-                                                      MessageHandle[] messages);
-        public delegate void UserMessageSummariesCallback(ClientResult result,
-                                                          UserMessageSummary[] summaries);
-        public delegate void UserMessagesWithLimitCallback(ClientResult result,
-                                                           MessageHandle[] messages);
+          BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void UpdateTokenCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void DeleteUserMessageCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void EditUserMessageCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void GetLobbyMessagesCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                      BepInEx.DiscordSocialSDK.Handles.MessageHandle[] messages);
+        public delegate void UserMessageSummariesCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                          BepInEx.DiscordSocialSDK.Messages.UserMessageSummary[] summaries);
+        public delegate void UserMessagesWithLimitCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                           BepInEx.DiscordSocialSDK.Handles.MessageHandle[] messages);
         public delegate void ProvisionalUserMergeRequiredCallback();
-        public delegate void OpenMessageInDiscordCallback(ClientResult result);
-        public delegate void SendUserMessageCallback(ClientResult result, ulong messageId);
+        public delegate void OpenMessageInDiscordCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void SendUserMessageCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result, ulong messageId);
         public delegate void MessageCreatedCallback(ulong messageId);
         public delegate void MessageDeletedCallback(ulong messageId, ulong channelId);
         public delegate void MessageUpdatedCallback(ulong messageId);
-        public delegate void LogCallback(string message, LoggingSeverity severity);
+        public delegate void LogCallback(string message, BepInEx.DiscordSocialSDK.Enums.LoggingSeverity severity);
         public delegate void OpenConnectedGamesSettingsInDiscordCallback(
-          ClientResult result);
-        public delegate void OnStatusChanged(Client.Status status,
-                                             Client.Error error,
+          BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void OnStatusChanged(BepInEx.DiscordSocialSDK.Client.Client.Status status,
+                                             BepInEx.DiscordSocialSDK.Client.Client.Error error,
                                              int errorDetail);
-        public delegate void CreateOrJoinLobbyCallback(ClientResult result, ulong lobbyId);
-        public delegate void GetGuildChannelsCallback(ClientResult result,
-                                                      GuildChannel[] guildChannels);
-        public delegate void GetUserGuildsCallback(ClientResult result,
-                                                   GuildMinimal[] guilds);
-        public delegate void JoinLinkedLobbyGuildCallback(ClientResult result,
+        public delegate void CreateOrJoinLobbyCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result, ulong lobbyId);
+        public delegate void GetGuildChannelsCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                      BepInEx.DiscordSocialSDK.Guilds.GuildChannel[] guildChannels);
+        public delegate void GetUserGuildsCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                   BepInEx.DiscordSocialSDK.Guilds.GuildMinimal[] guilds);
+        public delegate void JoinLinkedLobbyGuildCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
                                                           string inviteUrl);
-        public delegate void LeaveLobbyCallback(ClientResult result);
-        public delegate void LinkOrUnlinkChannelCallback(ClientResult result);
+        public delegate void LeaveLobbyCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void LinkOrUnlinkChannelCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void LobbyCreatedCallback(ulong lobbyId);
         public delegate void LobbyDeletedCallback(ulong lobbyId);
         public delegate void LobbyMemberAddedCallback(ulong lobbyId, ulong memberId);
@@ -178,23 +184,23 @@ namespace BepInEx.DiscordSocialSDK.Client
         public delegate void LobbyMemberUpdatedCallback(ulong lobbyId, ulong memberId);
         public delegate void LobbyUpdatedCallback(ulong lobbyId);
         public delegate void IsDiscordAppInstalledCallback(bool installed);
-        public delegate void AcceptActivityInviteCallback(ClientResult result,
+        public delegate void AcceptActivityInviteCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
                                                           string joinSecret);
-        public delegate void SendActivityInviteCallback(ClientResult result);
-        public delegate void ActivityInviteCallback(ActivityInvite invite);
+        public delegate void SendActivityInviteCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void ActivityInviteCallback(BepInEx.DiscordSocialSDK.RPC.ActivityInvite invite);
         public delegate void ActivityJoinCallback(string joinSecret);
         public delegate void ActivityJoinWithApplicationCallback(ulong applicationId,
                                                                  string joinSecret);
-        public delegate void UpdateStatusCallback(ClientResult result);
-        public delegate void UpdateRichPresenceCallback(ClientResult result);
-        public delegate void UpdateRelationshipCallback(ClientResult result);
-        public delegate void SendFriendRequestCallback(ClientResult result);
+        public delegate void UpdateStatusCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void UpdateRichPresenceCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void UpdateRelationshipCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
+        public delegate void SendFriendRequestCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result);
         public delegate void RelationshipCreatedCallback(ulong userId,
                                                          bool isDiscordRelationshipUpdate);
         public delegate void RelationshipDeletedCallback(ulong userId,
                                                          bool isDiscordRelationshipUpdate);
-        public delegate void GetDiscordClientConnectedUserCallback(ClientResult result,
-                                                                   UserHandle? user);
+        public delegate void GetDiscordClientConnectedUserCallback(BepInEx.DiscordSocialSDK.Client.ClientResult result,
+                                                                   BepInEx.DiscordSocialSDK.Handles.UserHandle? user);
         public delegate void RelationshipGroupsUpdatedCallback(ulong userId);
         public delegate void UserUpdatedCallback(ulong userId);
         /// <summary>
@@ -241,7 +247,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Creates a new instance of the Client with custom options.
         /// </summary>
-        public Client(ClientCreateOptions options)
+        public Client(BepInEx.DiscordSocialSDK.Client.ClientCreateOptions options)
         {
             NativeMethods.__Init();
             unsafe
@@ -274,7 +280,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Converts the Error enum to a string.
         /// </summary>
-        public static string ErrorToString(Client.Error type)
+        public static string ErrorToString(BepInEx.DiscordSocialSDK.Client.Client.Error type)
         {
             unsafe
             {
@@ -316,7 +322,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         [Obsolete("Please use GetCurrentUserV2 instead. This will be removed in a future version.")]
-        public UserHandle GetCurrentUser()
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle GetCurrentUser()
         {
             if (disposed_ != 0)
             {
@@ -477,7 +483,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Converts the Status enum to a string.
         /// </summary>
-        public static string StatusToString(Client.Status type)
+        public static string StatusToString(BepInEx.DiscordSocialSDK.Client.Client.Status type)
         {
             unsafe
             {
@@ -492,7 +498,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Converts the Thread enum to a string.
         /// </summary>
-        public static string ThreadToString(Client.Thread type)
+        public static string ThreadToString(BepInEx.DiscordSocialSDK.Client.Client.Thread type)
         {
             unsafe
             {
@@ -508,7 +514,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Ends any active call, if any. Any references you have to Call objects are invalid after
         ///  they are ended, and can be immediately freed.
         /// </summary>
-        public void EndCall(ulong channelId, Client.EndCallCallback callback)
+        public void EndCall(ulong channelId, BepInEx.DiscordSocialSDK.Client.Client.EndCallCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -516,8 +522,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.EndCallCallback __callbackDelegate =
-                  NativeMethods.Client.EndCallCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.EndCallCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.EndCallCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.EndCall(self,
@@ -532,7 +538,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Ends any active call, if any. Any references you have to Call objects are invalid after
         ///  they are ended, and can be immediately freed.
         /// </summary>
-        public void EndCalls(Client.EndCallsCallback callback)
+        public void EndCalls(BepInEx.DiscordSocialSDK.Client.Client.EndCallsCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -540,8 +546,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.EndCallsCallback __callbackDelegate =
-                  NativeMethods.Client.EndCallsCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.EndCallsCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.EndCallsCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.EndCalls(self,
@@ -554,7 +560,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Returns a reference to the currently active call, if any.
         /// </summary>
-        public Call? GetCall(ulong channelId)
+        public BepInEx.DiscordSocialSDK.Voice.Call? GetCall(ulong channelId)
         {
             if (disposed_ != 0)
             {
@@ -581,7 +587,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Returns a reference to all currently active calls, if any.
         /// </summary>
-        public Call?[] GetCalls()
+        public BepInEx.DiscordSocialSDK.Voice.Call?[] GetCalls()
         {
             if (disposed_ != 0)
             {
@@ -594,7 +600,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     NativeMethods.Client.GetCalls(self, &__returnValue);
                 }
-                var __returnValueSurface = new Call?[(int)__returnValue.size];
+                var __returnValueSurface = new BepInEx.DiscordSocialSDK.Voice.Call?[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] = new Call(__returnValue.ptr[__i], 0);
@@ -606,7 +612,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Asynchronously fetches the current audio input device in use by the client.
         /// </summary>
-        public void GetCurrentInputDevice(Client.GetCurrentInputDeviceCallback cb)
+        public void GetCurrentInputDevice(BepInEx.DiscordSocialSDK.Client.Client.GetCurrentInputDeviceCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -614,8 +620,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetCurrentInputDeviceCallback __cbDelegate =
-                  NativeMethods.Client.GetCurrentInputDeviceCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetCurrentInputDeviceCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetCurrentInputDeviceCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetCurrentInputDevice(
@@ -629,7 +635,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Asynchronously fetches the current audio output device in use by the client.
         /// </summary>
-        public void GetCurrentOutputDevice(Client.GetCurrentOutputDeviceCallback cb)
+        public void GetCurrentOutputDevice(BepInEx.DiscordSocialSDK.Client.Client.GetCurrentOutputDeviceCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -637,8 +643,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetCurrentOutputDeviceCallback __cbDelegate =
-                  NativeMethods.Client.GetCurrentOutputDeviceCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetCurrentOutputDeviceCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetCurrentOutputDeviceCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetCurrentOutputDevice(
@@ -652,7 +658,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Asynchronously fetches the list of audio input devices available to the user.
         /// </summary>
-        public void GetInputDevices(Client.GetInputDevicesCallback cb)
+        public void GetInputDevices(BepInEx.DiscordSocialSDK.Client.Client.GetInputDevicesCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -660,8 +666,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetInputDevicesCallback __cbDelegate =
-                  NativeMethods.Client.GetInputDevicesCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetInputDevicesCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetInputDevicesCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetInputDevices(
@@ -699,7 +705,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Asynchronously fetches the list of audio output devices available to the user.
         /// </summary>
-        public void GetOutputDevices(Client.GetOutputDevicesCallback cb)
+        public void GetOutputDevices(BepInEx.DiscordSocialSDK.Client.Client.GetOutputDevicesCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -707,8 +713,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetOutputDevicesCallback __cbDelegate =
-                  NativeMethods.Client.GetOutputDevicesCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetOutputDevicesCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetOutputDevicesCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetOutputDevices(
@@ -831,7 +837,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Sets a callback function to be invoked when Discord detects a change in the available audio
         ///  devices.
         /// </summary>
-        public void SetDeviceChangeCallback(Client.DeviceChangeCallback callback)
+        public void SetDeviceChangeCallback(BepInEx.DiscordSocialSDK.Client.Client.DeviceChangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -839,8 +845,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.DeviceChangeCallback __callbackDelegate =
-                  NativeMethods.Client.DeviceChangeCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.DeviceChangeCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.DeviceChangeCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetDeviceChangeCallback(
@@ -908,7 +914,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  You can find the list of device IDs that can be passed in with the Client::GetInputDevices
         ///  function.
         /// </summary>
-        public void SetInputDevice(string deviceId, Client.SetInputDeviceCallback cb)
+        public void SetInputDevice(string deviceId, BepInEx.DiscordSocialSDK.Client.Client.SetInputDeviceCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -922,8 +928,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __deviceIdSpan;
                 var __deviceIdOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__deviceIdSpan, deviceId);
-                NativeMethods.Client.SetInputDeviceCallback __cbDelegate =
-                  NativeMethods.Client.SetInputDeviceCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SetInputDeviceCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SetInputDeviceCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetInputDevice(self,
@@ -961,7 +967,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Callback function invoked when the above threshold is set and there is a change in whether
         ///  audio is being detected.
         /// </summary>
-        public void SetNoAudioInputCallback(Client.NoAudioInputCallback callback)
+        public void SetNoAudioInputCallback(BepInEx.DiscordSocialSDK.Client.Client.NoAudioInputCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -969,8 +975,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.NoAudioInputCallback __callbackDelegate =
-                  NativeMethods.Client.NoAudioInputCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.NoAudioInputCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.NoAudioInputCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetNoAudioInputCallback(
@@ -1059,7 +1065,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  device. You can find the list of device IDs that can be passed in with the
         ///  Client::GetOutputDevices function.
         /// </summary>
-        public void SetOutputDevice(string deviceId, Client.SetOutputDeviceCallback cb)
+        public void SetOutputDevice(string deviceId, BepInEx.DiscordSocialSDK.Client.Client.SetOutputDeviceCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -1073,8 +1079,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __deviceIdSpan;
                 var __deviceIdOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__deviceIdSpan, deviceId);
-                NativeMethods.Client.SetOutputDeviceCallback __cbDelegate =
-                  NativeMethods.Client.SetOutputDeviceCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SetOutputDeviceCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SetOutputDeviceCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetOutputDevice(
@@ -1182,7 +1188,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  - Voice: This is the thread that the voice engine runs on and processes all audio data
         ///
         /// </remarks>
-        public void SetThreadPriority(Client.Thread thread, int priority)
+        public void SetThreadPriority(BepInEx.DiscordSocialSDK.Client.Client.Thread thread, int priority)
         {
             if (disposed_ != 0)
             {
@@ -1206,7 +1212,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SetVoiceParticipantChangedCallback(
-          Client.VoiceParticipantChangedCallback cb)
+          BepInEx.DiscordSocialSDK.Client.Client.VoiceParticipantChangedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -1214,8 +1220,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.VoiceParticipantChangedCallback __cbDelegate =
-                  NativeMethods.Client.VoiceParticipantChangedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.VoiceParticipantChangedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.VoiceParticipantChangedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetVoiceParticipantChangedCallback(
@@ -1259,7 +1265,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Returns null if the user is already in the given voice channel.
         ///
         /// </remarks>
-        public Call? StartCall(ulong channelId)
+        public BepInEx.DiscordSocialSDK.Voice.Call? StartCall(ulong channelId)
         {
             if (disposed_ != 0)
             {
@@ -1305,10 +1311,10 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Returns null if the user is already in the given voice channel.
         ///
         /// </remarks>
-        public Call? StartCallWithAudioCallbacks(
+        public BepInEx.DiscordSocialSDK.Voice.Call? StartCallWithAudioCallbacks(
           ulong lobbyId,
-          Client.UserAudioReceivedCallback receivedCb,
-          Client.UserAudioCapturedCallback capturedCb)
+          BepInEx.DiscordSocialSDK.Client.Client.UserAudioReceivedCallback receivedCb,
+          BepInEx.DiscordSocialSDK.Client.Client.UserAudioCapturedCallback capturedCb)
         {
             if (disposed_ != 0)
             {
@@ -1319,10 +1325,10 @@ namespace BepInEx.DiscordSocialSDK.Client
                 bool __returnIsNonNull;
                 var __returnValueNative = new NativeMethods.Call();
                 Call? __returnValue = null;
-                NativeMethods.Client.UserAudioReceivedCallback __receivedCbDelegate =
-                  NativeMethods.Client.UserAudioReceivedCallback_Handler;
-                NativeMethods.Client.UserAudioCapturedCallback __capturedCbDelegate =
-                  NativeMethods.Client.UserAudioCapturedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UserAudioReceivedCallback __receivedCbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UserAudioReceivedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UserAudioCapturedCallback __capturedCbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UserAudioCapturedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     __returnIsNonNull = NativeMethods.Client.StartCallWithAudioCallbacks(
@@ -1440,7 +1446,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  for you when performing the authorization. You can override state if you want for your own
         ///  flow, but please be mindful to keep it a secure, random value.
         ///  - If you are using the Client::GetToken function you will need to provide a "code
-        ///  challenge" or "code verifier". We'll spare you the boring details of how that works (woo…
+        ///  challenge" or "code verifier". We'll spare you the boring details of how that works (woo...
         ///  crypto), as we've made a simple function to create these for you,
         ///  Client::CreateAuthorizationCodeVerifier. That returns a struct with two items, a
         ///  `challenge` value to pass into this function and a `verifier` value to pass into
@@ -1481,8 +1487,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  For more information see: https://discord.com/developers/docs/topics/oauth2
         ///
         /// </remarks>
-        internal void Authorize(AuthorizationArgs args,
-                              Client.AuthorizationCallback callback)
+        internal void Authorize(BepInEx.DiscordSocialSDK.Auth.AuthorizationArgs args,
+                              BepInEx.DiscordSocialSDK.Client.Client.AuthorizationCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1492,8 +1498,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 fixed (NativeMethods.AuthorizationArgs* __argsFixed = &args.self)
                 {
-                    NativeMethods.Client.AuthorizationCallback __callbackDelegate =
-                      NativeMethods.Client.AuthorizationCallback_Handler;
+                    BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizationCallback __callbackDelegate =
+                      BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizationCallback_Handler;
                     fixed (NativeMethods.Client* self = &this.self)
                     {
                         NativeMethods.Client.Authorize(
@@ -1532,7 +1538,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  `challenge` value to pass into Client::Authorize and a `verifier` value to pass into
         ///  GetToken.
         /// </summary>
-        internal AuthorizationCodeVerifier CreateAuthorizationCodeVerifier()
+        internal BepInEx.DiscordSocialSDK.Auth.AuthorizationCodeVerifier CreateAuthorizationCodeVerifier()
         {
             if (disposed_ != 0)
             {
@@ -1569,9 +1575,9 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void ExchangeChildToken(string parentApplicationToken,
+        internal void ExchangeChildToken(string parentApplicationToken,
                                        ulong childApplicationId,
-                                       Client.ExchangeChildTokenCallback callback)
+                                       BepInEx.DiscordSocialSDK.Client.Client.ExchangeChildTokenCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1589,8 +1595,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                                                   1024,
                                                   &__parentApplicationTokenSpan,
                                                   parentApplicationToken);
-                NativeMethods.Client.ExchangeChildTokenCallback __callbackDelegate =
-                  NativeMethods.Client.ExchangeChildTokenCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.ExchangeChildTokenCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ExchangeChildTokenCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.ExchangeChildToken(
@@ -1614,9 +1620,9 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  so it can be called immediately after the client connects.
         ///
         /// </remarks>
-        public void FetchCurrentUser(AuthorizationTokenType tokenType,
+        internal void FetchCurrentUser(BepInEx.DiscordSocialSDK.Enums.AuthorizationTokenType tokenType,
                                      string token,
-                                     Client.FetchCurrentUserCallback callback)
+                                     BepInEx.DiscordSocialSDK.Client.Client.FetchCurrentUserCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1630,8 +1636,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __tokenSpan;
                 var __tokenOwned =
                   NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__tokenSpan, token);
-                NativeMethods.Client.FetchCurrentUserCallback __callbackDelegate =
-                  NativeMethods.Client.FetchCurrentUserCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.FetchCurrentUserCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.FetchCurrentUserCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.FetchCurrentUser(
@@ -1682,10 +1688,10 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void GetProvisionalToken(ulong applicationId,
-                                        AuthenticationExternalAuthType externalAuthType,
+        internal void GetProvisionalToken(ulong applicationId,
+                                        BepInEx.DiscordSocialSDK.Enums.AuthenticationExternalAuthType externalAuthType,
                                         string externalAuthToken,
-                                        Client.TokenExchangeCallback callback)
+                                        BepInEx.DiscordSocialSDK.Client.Client.TokenExchangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1699,8 +1705,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __externalAuthTokenSpan;
                 var __externalAuthTokenOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__externalAuthTokenSpan, externalAuthToken);
-                NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
-                  NativeMethods.Client.TokenExchangeCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetProvisionalToken(
@@ -1742,11 +1748,11 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void GetToken(ulong applicationId,
+        internal void GetToken(ulong applicationId,
                              string code,
                              string codeVerifier,
                              string redirectUri,
-                             Client.TokenExchangeCallback callback)
+                             BepInEx.DiscordSocialSDK.Client.Client.TokenExchangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1766,8 +1772,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __redirectUriSpan;
                 var __redirectUriOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__redirectUriSpan, redirectUri);
-                NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
-                  NativeMethods.Client.TokenExchangeCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetToken(self,
@@ -1813,8 +1819,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        internal void GetTokenFromDevice(DeviceAuthorizationArgs args,
-                                       Client.TokenExchangeCallback callback)
+        internal void GetTokenFromDevice(BepInEx.DiscordSocialSDK.Auth.DeviceAuthorizationArgs args,
+                                       BepInEx.DiscordSocialSDK.Client.Client.TokenExchangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1824,8 +1830,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 fixed (NativeMethods.DeviceAuthorizationArgs* __argsFixed = &args.self)
                 {
-                    NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
-                      NativeMethods.Client.TokenExchangeCallback_Handler;
+                    BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
+                      BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback_Handler;
                     fixed (NativeMethods.Client* self = &this.self)
                     {
                         NativeMethods.Client.GetTokenFromDevice(
@@ -1879,10 +1885,10 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         internal void GetTokenFromDeviceProvisionalMerge(
-          DeviceAuthorizationArgs args,
-          AuthenticationExternalAuthType externalAuthType,
+          BepInEx.DiscordSocialSDK.Auth.DeviceAuthorizationArgs args,
+          BepInEx.DiscordSocialSDK.Enums.AuthenticationExternalAuthType externalAuthType,
           string externalAuthToken,
-          Client.TokenExchangeCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.TokenExchangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1898,8 +1904,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                     NativeMethods.Discord_String __externalAuthTokenSpan;
                     var __externalAuthTokenOwned = NativeMethods.__InitStringLocal(
                       __scratch, &__scratchUsed, 1024, &__externalAuthTokenSpan, externalAuthToken);
-                    NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
-                      NativeMethods.Client.TokenExchangeCallback_Handler;
+                    BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
+                      BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback_Handler;
                     fixed (NativeMethods.Client* self = &this.self)
                     {
                         NativeMethods.Client.GetTokenFromDeviceProvisionalMerge(
@@ -1949,14 +1955,14 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void GetTokenFromProvisionalMerge(
+        internal void GetTokenFromProvisionalMerge(
           ulong applicationId,
           string code,
           string codeVerifier,
           string redirectUri,
-          AuthenticationExternalAuthType externalAuthType,
+          BepInEx.DiscordSocialSDK.Enums.AuthenticationExternalAuthType externalAuthType,
           string externalAuthToken,
-          Client.TokenExchangeCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.TokenExchangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -1979,8 +1985,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __externalAuthTokenSpan;
                 var __externalAuthTokenOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__externalAuthTokenSpan, externalAuthToken);
-                NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
-                  NativeMethods.Client.TokenExchangeCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetTokenFromProvisionalMerge(
@@ -2088,9 +2094,9 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void RefreshToken(ulong applicationId,
+        internal void RefreshToken(ulong applicationId,
                                  string refreshToken,
-                                 Client.TokenExchangeCallback callback)
+                                 BepInEx.DiscordSocialSDK.Client.Client.TokenExchangeCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2104,8 +2110,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __refreshTokenSpan;
                 var __refreshTokenOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__refreshTokenSpan, refreshToken);
-                NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
-                  NativeMethods.Client.TokenExchangeCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExchangeCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RefreshToken(
@@ -2132,7 +2138,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void RegisterAuthorizeRequestCallback(
-          Client.AuthorizeRequestCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.AuthorizeRequestCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2140,8 +2146,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.AuthorizeRequestCallback __callbackDelegate =
-                  NativeMethods.Client.AuthorizeRequestCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizeRequestCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizeRequestCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RegisterAuthorizeRequestCallback(
@@ -2193,7 +2199,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void RevokeToken(ulong applicationId,
                                 string token,
-                                Client.RevokeTokenCallback callback)
+                                BepInEx.DiscordSocialSDK.Client.Client.RevokeTokenCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2207,8 +2213,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __tokenSpan;
                 var __tokenOwned =
                   NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__tokenSpan, token);
-                NativeMethods.Client.RevokeTokenCallback __callbackDelegate =
-                  NativeMethods.Client.RevokeTokenCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.RevokeTokenCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.RevokeTokenCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RevokeToken(
@@ -2226,7 +2232,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Sets a callback function to be invoked when the device authorization screen is closed.
         /// </summary>
         public void SetAuthorizeDeviceScreenClosedCallback(
-          Client.AuthorizeDeviceScreenClosedCallback cb)
+          BepInEx.DiscordSocialSDK.Client.Client.AuthorizeDeviceScreenClosedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2234,8 +2240,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.AuthorizeDeviceScreenClosedCallback __cbDelegate =
-                  NativeMethods.Client.AuthorizeDeviceScreenClosedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizeDeviceScreenClosedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.AuthorizeDeviceScreenClosedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetAuthorizeDeviceScreenClosedCallback(
@@ -2283,7 +2289,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  connected), the expiration callback will not be invoked.
         ///
         /// </remarks>
-        public void SetTokenExpirationCallback(Client.TokenExpirationCallback callback)
+        public void SetTokenExpirationCallback(BepInEx.DiscordSocialSDK.Client.Client.TokenExpirationCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2291,8 +2297,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.TokenExpirationCallback __callbackDelegate =
-                  NativeMethods.Client.TokenExpirationCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExpirationCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.TokenExpirationCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetTokenExpirationCallback(
@@ -2323,11 +2329,11 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  https://discord.com/developers/applications
         ///
         /// </remarks>
-        public void UnmergeIntoProvisionalAccount(
+        internal void UnmergeIntoProvisionalAccount(
           ulong applicationId,
-          AuthenticationExternalAuthType externalAuthType,
+          BepInEx.DiscordSocialSDK.Enums.AuthenticationExternalAuthType externalAuthType,
           string externalAuthToken,
-          Client.UnmergeIntoProvisionalAccountCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.UnmergeIntoProvisionalAccountCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2341,9 +2347,9 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __externalAuthTokenSpan;
                 var __externalAuthTokenOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__externalAuthTokenSpan, externalAuthToken);
-                NativeMethods.Client
+                BepInEx.DiscordSocialSDK.NativeMethods.Client
                   .UnmergeIntoProvisionalAccountCallback __callbackDelegate =
-                  NativeMethods.Client.UnmergeIntoProvisionalAccountCallback_Handler;
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UnmergeIntoProvisionalAccountCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.UnmergeIntoProvisionalAccount(
@@ -2369,7 +2375,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void UpdateProvisionalAccountDisplayName(
           string name,
-          Client.UpdateProvisionalAccountDisplayNameCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.UpdateProvisionalAccountDisplayNameCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2383,9 +2389,9 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __nameSpan;
                 var __nameOwned =
                   NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__nameSpan, name);
-                NativeMethods.Client
+                BepInEx.DiscordSocialSDK.NativeMethods.Client
                   .UpdateProvisionalAccountDisplayNameCallback __callbackDelegate =
-                  NativeMethods.Client.UpdateProvisionalAccountDisplayNameCallback_Handler;
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateProvisionalAccountDisplayNameCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.UpdateProvisionalAccountDisplayName(
@@ -2408,9 +2414,9 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  invoked though so that the next Client::Connect attempt uses the updated token.
         ///
         /// </remarks>
-        public void UpdateToken(AuthorizationTokenType tokenType,
+        internal void UpdateToken(BepInEx.DiscordSocialSDK.Enums.AuthorizationTokenType tokenType,
                                 string token,
-                                Client.UpdateTokenCallback callback)
+                                BepInEx.DiscordSocialSDK.Client.Client.UpdateTokenCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2424,8 +2430,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __tokenSpan;
                 var __tokenOwned =
                   NativeMethods.__InitStringLocal(__scratch, &__scratchUsed, 1024, &__tokenSpan, token);
-                NativeMethods.Client.UpdateTokenCallback __callbackDelegate =
-                  NativeMethods.Client.UpdateTokenCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateTokenCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateTokenCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.UpdateToken(
@@ -2469,7 +2475,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </summary>
         public void DeleteUserMessage(ulong recipientId,
                                       ulong messageId,
-                                      Client.DeleteUserMessageCallback cb)
+                                      BepInEx.DiscordSocialSDK.Client.Client.DeleteUserMessageCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2477,8 +2483,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.DeleteUserMessageCallback __cbDelegate =
-                  NativeMethods.Client.DeleteUserMessageCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.DeleteUserMessageCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.DeleteUserMessageCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.DeleteUserMessage(
@@ -2501,7 +2507,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         public void EditUserMessage(ulong recipientId,
                                     ulong messageId,
                                     string content,
-                                    Client.EditUserMessageCallback cb)
+                                    BepInEx.DiscordSocialSDK.Client.Client.EditUserMessageCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2515,8 +2521,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __contentSpan;
                 var __contentOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__contentSpan, content);
-                NativeMethods.Client.EditUserMessageCallback __cbDelegate =
-                  NativeMethods.Client.EditUserMessageCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.EditUserMessageCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.EditUserMessageCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.EditUserMessage(
@@ -2541,7 +2547,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  for the SDK are a DM, an Ephemeral DM, and a Lobby.
         ///
         /// </remarks>
-        public ChannelHandle? GetChannelHandle(ulong channelId)
+        public BepInEx.DiscordSocialSDK.Handles.ChannelHandle? GetChannelHandle(ulong channelId)
         {
             if (disposed_ != 0)
             {
@@ -2582,7 +2588,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void GetLobbyMessagesWithLimit(ulong lobbyId,
                                               int limit,
-                                              Client.GetLobbyMessagesCallback cb)
+                                              BepInEx.DiscordSocialSDK.Client.Client.GetLobbyMessagesCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2590,8 +2596,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetLobbyMessagesCallback __cbDelegate =
-                  NativeMethods.Client.GetLobbyMessagesCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetLobbyMessagesCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetLobbyMessagesCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetLobbyMessagesWithLimit(
@@ -2612,7 +2618,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Messages sent before the SDK was started cannot be accessed with this.
         ///
         /// </remarks>
-        public MessageHandle? GetMessageHandle(ulong messageId)
+        public BepInEx.DiscordSocialSDK.Handles.MessageHandle? GetMessageHandle(ulong messageId)
         {
             if (disposed_ != 0)
             {
@@ -2646,7 +2652,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  - lastMessageId: The ID of the most recent message in this conversation
         ///
         /// </remarks>
-        public void GetUserMessageSummaries(Client.UserMessageSummariesCallback cb)
+        public void GetUserMessageSummaries(BepInEx.DiscordSocialSDK.Client.Client.UserMessageSummariesCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2654,8 +2660,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UserMessageSummariesCallback __cbDelegate =
-                  NativeMethods.Client.UserMessageSummariesCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UserMessageSummariesCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UserMessageSummariesCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetUserMessageSummaries(
@@ -2686,7 +2692,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void GetUserMessagesWithLimit(ulong recipientId,
                                              int limit,
-                                             Client.UserMessagesWithLimitCallback cb)
+                                             BepInEx.DiscordSocialSDK.Client.Client.UserMessagesWithLimitCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2694,8 +2700,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UserMessagesWithLimitCallback __cbDelegate =
-                  NativeMethods.Client.UserMessagesWithLimitCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UserMessagesWithLimitCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UserMessagesWithLimitCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetUserMessagesWithLimit(
@@ -2719,8 +2725,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void OpenMessageInDiscord(
           ulong messageId,
-          Client.ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
-          Client.OpenMessageInDiscordCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
+          BepInEx.DiscordSocialSDK.Client.Client.OpenMessageInDiscordCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -2728,11 +2734,11 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client
+                BepInEx.DiscordSocialSDK.NativeMethods.Client
                   .ProvisionalUserMergeRequiredCallback __provisionalUserMergeRequiredCallbackDelegate =
-                  NativeMethods.Client.ProvisionalUserMergeRequiredCallback_Handler;
-                NativeMethods.Client.OpenMessageInDiscordCallback __callbackDelegate =
-                  NativeMethods.Client.OpenMessageInDiscordCallback_Handler;
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ProvisionalUserMergeRequiredCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.OpenMessageInDiscordCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.OpenMessageInDiscordCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.OpenMessageInDiscord(
@@ -2763,7 +2769,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void SendLobbyMessage(ulong lobbyId,
                                      string content,
-                                     Client.SendUserMessageCallback cb)
+                                     BepInEx.DiscordSocialSDK.Client.Client.SendUserMessageCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2777,8 +2783,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __contentSpan;
                 var __contentOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__contentSpan, content);
-                NativeMethods.Client.SendUserMessageCallback __cbDelegate =
-                  NativeMethods.Client.SendUserMessageCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendLobbyMessage(
@@ -2804,7 +2810,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         public void SendLobbyMessageWithMetadata(ulong lobbyId,
                                                  string content,
                                                  Dictionary<string, string> metadata,
-                                                 Client.SendUserMessageCallback cb)
+                                                 BepInEx.DiscordSocialSDK.Client.Client.SendUserMessageCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2818,7 +2824,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __contentSpan;
                 var __contentOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__contentSpan, content);
-                NativeMethods.Discord_Properties __metadataNative;
+                BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties __metadataNative;
                 __metadataNative.size = (IntPtr)metadata.Count;
                 NativeMethods.Discord_String* __metadataKeys;
                 NativeMethods.Discord_String* __metadataValues;
@@ -2834,9 +2840,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                   __scratch, &__scratchUsed, 1024, &__metadataValueOwnership, metadata.Count);
                 {
                     int __i = 0;
-                    foreach (var keyValuePair in metadata)
+                    foreach (var (__metadataKey, __metadataValue) in metadata)
                     {
-                        (var __metadataKey, var __metadataValue) = (keyValuePair.Key, keyValuePair.Value);
                         NativeMethods.Discord_String __metadataKeySpan;
                         NativeMethods.Discord_String __metadataValueSpan;
                         __metadataKeyOwnership[__i] = NativeMethods.__InitStringLocal(
@@ -2850,8 +2855,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 }
                 __metadataNative.keys = __metadataKeys;
                 __metadataNative.values = __metadataValues;
-                NativeMethods.Client.SendUserMessageCallback __cbDelegate =
-                  NativeMethods.Client.SendUserMessageCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendLobbyMessageWithMetadata(
@@ -2892,7 +2897,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void SendUserMessage(ulong recipientId,
                                     string content,
-                                    Client.SendUserMessageCallback cb)
+                                    BepInEx.DiscordSocialSDK.Client.Client.SendUserMessageCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2906,8 +2911,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __contentSpan;
                 var __contentOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__contentSpan, content);
-                NativeMethods.Client.SendUserMessageCallback __cbDelegate =
-                  NativeMethods.Client.SendUserMessageCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendUserMessage(
@@ -2933,7 +2938,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         public void SendUserMessageWithMetadata(ulong recipientId,
                                                 string content,
                                                 Dictionary<string, string> metadata,
-                                                Client.SendUserMessageCallback cb)
+                                                BepInEx.DiscordSocialSDK.Client.Client.SendUserMessageCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -2947,7 +2952,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __contentSpan;
                 var __contentOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__contentSpan, content);
-                NativeMethods.Discord_Properties __metadataNative;
+                BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties __metadataNative;
                 __metadataNative.size = (IntPtr)metadata.Count;
                 NativeMethods.Discord_String* __metadataKeys;
                 NativeMethods.Discord_String* __metadataValues;
@@ -2963,9 +2968,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                   __scratch, &__scratchUsed, 1024, &__metadataValueOwnership, metadata.Count);
                 {
                     int __i = 0;
-                    foreach (var keyValuePair in metadata)
+                    foreach (var (__metadataKey, __metadataValue) in metadata)
                     {
-                        (var __metadataKey, var __metadataValue) = (keyValuePair.Key, keyValuePair.Value);
                         NativeMethods.Discord_String __metadataKeySpan;
                         NativeMethods.Discord_String __metadataValueSpan;
                         __metadataKeyOwnership[__i] = NativeMethods.__InitStringLocal(
@@ -2979,8 +2983,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 }
                 __metadataNative.keys = __metadataKeys;
                 __metadataNative.values = __metadataValues;
-                NativeMethods.Client.SendUserMessageCallback __cbDelegate =
-                  NativeMethods.Client.SendUserMessageCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendUserMessageCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendUserMessageWithMetadata(
@@ -3017,7 +3021,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  notifications.
         ///
         /// </remarks>
-        public void SetMessageCreatedCallback(Client.MessageCreatedCallback cb)
+        public void SetMessageCreatedCallback(BepInEx.DiscordSocialSDK.Client.Client.MessageCreatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3025,8 +3029,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.MessageCreatedCallback __cbDelegate =
-                  NativeMethods.Client.MessageCreatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageCreatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageCreatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetMessageCreatedCallback(
@@ -3047,7 +3051,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Discord client, it is reflected in game as well.
         ///
         /// </remarks>
-        public void SetMessageDeletedCallback(Client.MessageDeletedCallback cb)
+        public void SetMessageDeletedCallback(BepInEx.DiscordSocialSDK.Client.Client.MessageDeletedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3055,8 +3059,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.MessageDeletedCallback __cbDelegate =
-                  NativeMethods.Client.MessageDeletedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageDeletedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageDeletedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetMessageDeletedCallback(
@@ -3077,7 +3081,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Discord client, it is reflected in game as well.
         ///
         /// </remarks>
-        public void SetMessageUpdatedCallback(Client.MessageUpdatedCallback cb)
+        public void SetMessageUpdatedCallback(BepInEx.DiscordSocialSDK.Client.Client.MessageUpdatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3085,8 +3089,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.MessageUpdatedCallback __cbDelegate =
-                  NativeMethods.Client.MessageUpdatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageUpdatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.MessageUpdatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetMessageUpdatedCallback(
@@ -3138,8 +3142,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  object.
         ///
         /// </remarks>
-        public void AddLogCallback(Client.LogCallback callback,
-                                   LoggingSeverity minSeverity)
+        public void AddLogCallback(BepInEx.DiscordSocialSDK.Client.Client.LogCallback callback,
+                                   BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity)
         {
             if (disposed_ != 0)
             {
@@ -3147,8 +3151,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LogCallback __callbackDelegate =
-                  NativeMethods.Client.LogCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LogCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LogCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.AddLogCallback(
@@ -3169,8 +3173,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  object.
         ///
         /// </remarks>
-        public void AddVoiceLogCallback(Client.LogCallback callback,
-                                        LoggingSeverity minSeverity)
+        public void AddVoiceLogCallback(BepInEx.DiscordSocialSDK.Client.Client.LogCallback callback,
+                                        BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity)
         {
             if (disposed_ != 0)
             {
@@ -3178,8 +3182,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LogCallback __callbackDelegate =
-                  NativeMethods.Client.LogCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LogCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LogCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.AddVoiceLogCallback(
@@ -3242,7 +3246,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Returns the current status of the client, see the Status enum for an explanation of the
         ///  possible values.
         /// </summary>
-        public Client.Status GetStatus()
+        public BepInEx.DiscordSocialSDK.Client.Client.Status GetStatus()
         {
             if (disposed_ != 0)
             {
@@ -3250,7 +3254,7 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                Client.Status __returnValue;
+                BepInEx.DiscordSocialSDK.Client.Client.Status __returnValue;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     __returnValue = NativeMethods.Client.GetStatus(self);
@@ -3270,7 +3274,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void OpenConnectedGamesSettingsInDiscord(
-          Client.OpenConnectedGamesSettingsInDiscordCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.OpenConnectedGamesSettingsInDiscordCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -3278,9 +3282,9 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client
+                BepInEx.DiscordSocialSDK.NativeMethods.Client
                   .OpenConnectedGamesSettingsInDiscordCallback __callbackDelegate =
-                  NativeMethods.Client.OpenConnectedGamesSettingsInDiscordCallback_Handler;
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.OpenConnectedGamesSettingsInDiscordCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.OpenConnectedGamesSettingsInDiscord(
@@ -3329,7 +3333,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Returns true if the log file was successfully opened, false otherwise.
         ///
         /// </remarks>
-        public bool SetLogDir(string path, LoggingSeverity minSeverity)
+        public bool SetLogDir(string path, BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity)
         {
             if (disposed_ != 0)
             {
@@ -3355,7 +3359,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Sets a callback function to be invoked whenever the SDKs status changes.
         /// </summary>
-        public void SetStatusChangedCallback(Client.OnStatusChanged cb)
+        public void SetStatusChangedCallback(BepInEx.DiscordSocialSDK.Client.Client.OnStatusChanged cb)
         {
             if (disposed_ != 0)
             {
@@ -3363,8 +3367,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.OnStatusChanged __cbDelegate =
-                  NativeMethods.Client.OnStatusChanged_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.OnStatusChanged __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.OnStatusChanged_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetStatusChangedCallback(
@@ -3392,7 +3396,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  It will print out a warning if invoked too late.
         ///
         /// </remarks>
-        public void SetVoiceLogDir(string path, LoggingSeverity minSeverity)
+        public void SetVoiceLogDir(string path, BepInEx.DiscordSocialSDK.Enums.LoggingSeverity minSeverity)
         {
             if (disposed_ != 0)
             {
@@ -3435,7 +3439,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void CreateOrJoinLobby(string secret,
-                                      Client.CreateOrJoinLobbyCallback callback)
+                                      BepInEx.DiscordSocialSDK.Client.Client.CreateOrJoinLobbyCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -3449,8 +3453,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __secretSpan;
                 var __secretOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__secretSpan, secret);
-                NativeMethods.Client.CreateOrJoinLobbyCallback __callbackDelegate =
-                  NativeMethods.Client.CreateOrJoinLobbyCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.CreateOrJoinLobbyCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.CreateOrJoinLobbyCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.CreateOrJoinLobby(
@@ -3477,7 +3481,7 @@ namespace BepInEx.DiscordSocialSDK.Client
           string secret,
           Dictionary<string, string> lobbyMetadata,
           Dictionary<string, string> memberMetadata,
-          Client.CreateOrJoinLobbyCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.CreateOrJoinLobbyCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -3491,7 +3495,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __secretSpan;
                 var __secretOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__secretSpan, secret);
-                NativeMethods.Discord_Properties __lobbyMetadataNative;
+                BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties __lobbyMetadataNative;
                 __lobbyMetadataNative.size = (IntPtr)lobbyMetadata.Count;
                 NativeMethods.Discord_String* __lobbyMetadataKeys;
                 NativeMethods.Discord_String* __lobbyMetadataValues;
@@ -3507,9 +3511,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                   __scratch, &__scratchUsed, 1024, &__lobbyMetadataValueOwnership, lobbyMetadata.Count);
                 {
                     int __i = 0;
-                    foreach (var keyValuePair in lobbyMetadata)
+                    foreach ((string __lobbyMetadataKey, string __lobbyMetadataValue) in lobbyMetadata)
                     {
-                        (var __lobbyMetadataKey, var __lobbyMetadataValue) = (keyValuePair.Key, keyValuePair.Value);
                         NativeMethods.Discord_String __lobbyMetadataKeySpan;
                         NativeMethods.Discord_String __lobbyMetadataValueSpan;
                         __lobbyMetadataKeyOwnership[__i] = NativeMethods.__InitStringLocal(
@@ -3527,7 +3530,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 }
                 __lobbyMetadataNative.keys = __lobbyMetadataKeys;
                 __lobbyMetadataNative.values = __lobbyMetadataValues;
-                NativeMethods.Discord_Properties __memberMetadataNative;
+                BepInEx.DiscordSocialSDK.NativeMethods.Discord_Properties __memberMetadataNative;
                 __memberMetadataNative.size = (IntPtr)memberMetadata.Count;
                 NativeMethods.Discord_String* __memberMetadataKeys;
                 NativeMethods.Discord_String* __memberMetadataValues;
@@ -3547,9 +3550,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                                                          memberMetadata.Count);
                 {
                     int __i = 0;
-                    foreach (var keyValuePair in memberMetadata)
+                    foreach (var (__memberMetadataKey, __memberMetadataValue) in memberMetadata)
                     {
-                        (var __memberMetadataKey, var __memberMetadataValue) = (keyValuePair.Key, keyValuePair.Value);
                         NativeMethods.Discord_String __memberMetadataKeySpan;
                         NativeMethods.Discord_String __memberMetadataValueSpan;
                         __memberMetadataKeyOwnership[__i] =
@@ -3571,8 +3573,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 }
                 __memberMetadataNative.keys = __memberMetadataKeys;
                 __memberMetadataNative.values = __memberMetadataValues;
-                NativeMethods.Client.CreateOrJoinLobbyCallback __callbackDelegate =
-                  NativeMethods.Client.CreateOrJoinLobbyCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.CreateOrJoinLobbyCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.CreateOrJoinLobbyCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.CreateOrJoinLobbyWithMetadata(
@@ -3617,7 +3619,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  information.
         ///
         /// </remarks>
-        public void GetGuildChannels(ulong guildId, Client.GetGuildChannelsCallback cb)
+        public void GetGuildChannels(ulong guildId, BepInEx.DiscordSocialSDK.Client.Client.GetGuildChannelsCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3625,8 +3627,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetGuildChannelsCallback __cbDelegate =
-                  NativeMethods.Client.GetGuildChannelsCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetGuildChannelsCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetGuildChannelsCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetGuildChannels(
@@ -3641,7 +3643,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Returns a reference to the Discord lobby object for the given ID.
         /// </summary>
-        public LobbyHandle? GetLobbyHandle(ulong lobbyId)
+        public BepInEx.DiscordSocialSDK.Handles.LobbyHandle? GetLobbyHandle(ulong lobbyId)
         {
             if (disposed_ != 0)
             {
@@ -3702,7 +3704,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  to link to. See the docs on LobbyHandle for more information.
         ///
         /// </remarks>
-        public void GetUserGuilds(Client.GetUserGuildsCallback cb)
+        public void GetUserGuilds(BepInEx.DiscordSocialSDK.Client.Client.GetUserGuildsCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3710,8 +3712,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.GetUserGuildsCallback __cbDelegate =
-                  NativeMethods.Client.GetUserGuildsCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.GetUserGuildsCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetUserGuildsCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetUserGuilds(self,
@@ -3733,8 +3735,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void JoinLinkedLobbyGuild(
           ulong lobbyId,
-          Client.ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
-          Client.JoinLinkedLobbyGuildCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback,
+          BepInEx.DiscordSocialSDK.Client.Client.JoinLinkedLobbyGuildCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -3742,11 +3744,11 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client
+                BepInEx.DiscordSocialSDK.NativeMethods.Client
                   .ProvisionalUserMergeRequiredCallback __provisionalUserMergeRequiredCallbackDelegate =
-                  NativeMethods.Client.ProvisionalUserMergeRequiredCallback_Handler;
-                NativeMethods.Client.JoinLinkedLobbyGuildCallback __callbackDelegate =
-                  NativeMethods.Client.JoinLinkedLobbyGuildCallback_Handler;
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ProvisionalUserMergeRequiredCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.JoinLinkedLobbyGuildCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.JoinLinkedLobbyGuildCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.JoinLinkedLobbyGuild(
@@ -3771,7 +3773,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  use the server API to remove them too.
         ///
         /// </remarks>
-        public void LeaveLobby(ulong lobbyId, Client.LeaveLobbyCallback callback)
+        public void LeaveLobby(ulong lobbyId, BepInEx.DiscordSocialSDK.Client.Client.LeaveLobbyCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -3779,8 +3781,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LeaveLobbyCallback __callbackDelegate =
-                  NativeMethods.Client.LeaveLobbyCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LeaveLobbyCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LeaveLobbyCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.LeaveLobby(
@@ -3802,7 +3804,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void LinkChannelToLobby(ulong lobbyId,
                                        ulong channelId,
-                                       Client.LinkOrUnlinkChannelCallback callback)
+                                       BepInEx.DiscordSocialSDK.Client.Client.LinkOrUnlinkChannelCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -3810,8 +3812,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LinkOrUnlinkChannelCallback __callbackDelegate =
-                  NativeMethods.Client.LinkOrUnlinkChannelCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LinkOrUnlinkChannelCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LinkOrUnlinkChannelCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.LinkChannelToLobby(
@@ -3839,7 +3841,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  callback invoked first.
         ///
         /// </remarks>
-        public void SetLobbyCreatedCallback(Client.LobbyCreatedCallback cb)
+        public void SetLobbyCreatedCallback(BepInEx.DiscordSocialSDK.Client.Client.LobbyCreatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3847,8 +3849,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LobbyCreatedCallback __cbDelegate =
-                  NativeMethods.Client.LobbyCreatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyCreatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyCreatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetLobbyCreatedCallback(
@@ -3872,7 +3874,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  users!
         ///
         /// </remarks>
-        public void SetLobbyDeletedCallback(Client.LobbyDeletedCallback cb)
+        public void SetLobbyDeletedCallback(BepInEx.DiscordSocialSDK.Client.Client.LobbyDeletedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3880,8 +3882,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LobbyDeletedCallback __cbDelegate =
-                  NativeMethods.Client.LobbyDeletedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyDeletedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyDeletedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetLobbyDeletedCallback(
@@ -3903,7 +3905,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  permission to connect to that lobby.
         ///
         /// </remarks>
-        public void SetLobbyMemberAddedCallback(Client.LobbyMemberAddedCallback cb)
+        public void SetLobbyMemberAddedCallback(BepInEx.DiscordSocialSDK.Client.Client.LobbyMemberAddedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3911,8 +3913,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LobbyMemberAddedCallback __cbDelegate =
-                  NativeMethods.Client.LobbyMemberAddedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberAddedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberAddedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetLobbyMemberAddedCallback(
@@ -3934,7 +3936,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  LobbyMemberHandle object will indicate they are not connected now.
         ///
         /// </remarks>
-        public void SetLobbyMemberRemovedCallback(Client.LobbyMemberRemovedCallback cb)
+        public void SetLobbyMemberRemovedCallback(BepInEx.DiscordSocialSDK.Client.Client.LobbyMemberRemovedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3942,8 +3944,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LobbyMemberRemovedCallback __cbDelegate =
-                  NativeMethods.Client.LobbyMemberRemovedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberRemovedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberRemovedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetLobbyMemberRemovedCallback(
@@ -3963,7 +3965,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  - The metadata of the member is changed
         ///
         /// </remarks>
-        public void SetLobbyMemberUpdatedCallback(Client.LobbyMemberUpdatedCallback cb)
+        public void SetLobbyMemberUpdatedCallback(BepInEx.DiscordSocialSDK.Client.Client.LobbyMemberUpdatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3971,8 +3973,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LobbyMemberUpdatedCallback __cbDelegate =
-                  NativeMethods.Client.LobbyMemberUpdatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberUpdatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyMemberUpdatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetLobbyMemberUpdatedCallback(
@@ -3987,7 +3989,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Sets a callback to be invoked when a lobby is edited, for example if the lobby's metadata
         ///  is changed.
         /// </summary>
-        public void SetLobbyUpdatedCallback(Client.LobbyUpdatedCallback cb)
+        public void SetLobbyUpdatedCallback(BepInEx.DiscordSocialSDK.Client.Client.LobbyUpdatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -3995,8 +3997,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LobbyUpdatedCallback __cbDelegate =
-                  NativeMethods.Client.LobbyUpdatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyUpdatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LobbyUpdatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetLobbyUpdatedCallback(
@@ -4017,7 +4019,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void UnlinkChannelFromLobby(ulong lobbyId,
-                                           Client.LinkOrUnlinkChannelCallback callback)
+                                           BepInEx.DiscordSocialSDK.Client.Client.LinkOrUnlinkChannelCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -4025,8 +4027,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.LinkOrUnlinkChannelCallback __callbackDelegate =
-                  NativeMethods.Client.LinkOrUnlinkChannelCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.LinkOrUnlinkChannelCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.LinkOrUnlinkChannelCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.UnlinkChannelFromLobby(
@@ -4055,7 +4057,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///    in your AndroidManifest.xml (required for Android 11+).
         ///
         /// </remarks>
-        public void IsDiscordAppInstalled(Client.IsDiscordAppInstalledCallback callback)
+        public void IsDiscordAppInstalled(BepInEx.DiscordSocialSDK.Client.Client.IsDiscordAppInstalledCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -4063,8 +4065,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.IsDiscordAppInstalledCallback __callbackDelegate =
-                  NativeMethods.Client.IsDiscordAppInstalledCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.IsDiscordAppInstalledCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.IsDiscordAppInstalledCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.IsDiscordAppInstalled(
@@ -4084,8 +4086,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  This join secret comes from the other user's rich presence activity.
         ///
         /// </remarks>
-        public void AcceptActivityInvite(ActivityInvite invite,
-                                         Client.AcceptActivityInviteCallback cb)
+        public void AcceptActivityInvite(BepInEx.DiscordSocialSDK.RPC.ActivityInvite invite,
+                                         BepInEx.DiscordSocialSDK.Client.Client.AcceptActivityInviteCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4095,8 +4097,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 fixed (NativeMethods.ActivityInvite* __inviteFixed = &invite.self)
                 {
-                    NativeMethods.Client.AcceptActivityInviteCallback __cbDelegate =
-                      NativeMethods.Client.AcceptActivityInviteCallback_Handler;
+                    BepInEx.DiscordSocialSDK.NativeMethods.Client.AcceptActivityInviteCallback __cbDelegate =
+                      BepInEx.DiscordSocialSDK.NativeMethods.Client.AcceptActivityInviteCallback_Handler;
                     fixed (NativeMethods.Client* self = &this.self)
                     {
                         NativeMethods.Client.AcceptActivityInvite(
@@ -4214,7 +4216,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </remarks>
         public void SendActivityInvite(ulong userId,
                                        string content,
-                                       Client.SendActivityInviteCallback cb)
+                                       BepInEx.DiscordSocialSDK.Client.Client.SendActivityInviteCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4228,8 +4230,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __contentSpan;
                 var __contentOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__contentSpan, content);
-                NativeMethods.Client.SendActivityInviteCallback __cbDelegate =
-                  NativeMethods.Client.SendActivityInviteCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendActivityInvite(
@@ -4254,7 +4256,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SendActivityJoinRequest(ulong userId,
-                                            Client.SendActivityInviteCallback cb)
+                                            BepInEx.DiscordSocialSDK.Client.Client.SendActivityInviteCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4262,8 +4264,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.SendActivityInviteCallback __cbDelegate =
-                  NativeMethods.Client.SendActivityInviteCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendActivityJoinRequest(
@@ -4280,8 +4282,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  to allow that user to join. Specifically this will send the original user an activity
         ///  invite which they then need to accept again.
         /// </summary>
-        public void SendActivityJoinRequestReply(ActivityInvite invite,
-                                                 Client.SendActivityInviteCallback cb)
+        public void SendActivityJoinRequestReply(BepInEx.DiscordSocialSDK.RPC.ActivityInvite invite,
+                                                 BepInEx.DiscordSocialSDK.Client.Client.SendActivityInviteCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4291,8 +4293,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 fixed (NativeMethods.ActivityInvite* __inviteFixed = &invite.self)
                 {
-                    NativeMethods.Client.SendActivityInviteCallback __cbDelegate =
-                      NativeMethods.Client.SendActivityInviteCallback_Handler;
+                    BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback __cbDelegate =
+                      BepInEx.DiscordSocialSDK.NativeMethods.Client.SendActivityInviteCallback_Handler;
                     fixed (NativeMethods.Client* self = &this.self)
                     {
                         NativeMethods.Client.SendActivityJoinRequestReply(
@@ -4317,7 +4319,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Client::AcceptActivityInvite.
         ///
         /// </remarks>
-        public void SetActivityInviteCreatedCallback(Client.ActivityInviteCallback cb)
+        public void SetActivityInviteCreatedCallback(BepInEx.DiscordSocialSDK.Client.Client.ActivityInviteCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4325,8 +4327,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.ActivityInviteCallback __cbDelegate =
-                  NativeMethods.Client.ActivityInviteCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityInviteCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityInviteCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetActivityInviteCreatedCallback(
@@ -4344,7 +4346,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  joinable. It is possible for an invalid invite to go from invalid to valid if the sender
         ///  rejoins the activity.
         /// </summary>
-        public void SetActivityInviteUpdatedCallback(Client.ActivityInviteCallback cb)
+        public void SetActivityInviteUpdatedCallback(BepInEx.DiscordSocialSDK.Client.Client.ActivityInviteCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4352,8 +4354,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.ActivityInviteCallback __cbDelegate =
-                  NativeMethods.Client.ActivityInviteCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityInviteCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityInviteCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetActivityInviteUpdatedCallback(
@@ -4374,7 +4376,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  on invites.
         ///
         /// </remarks>
-        public void SetActivityJoinCallback(Client.ActivityJoinCallback cb)
+        public void SetActivityJoinCallback(BepInEx.DiscordSocialSDK.Client.Client.ActivityJoinCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4382,8 +4384,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.ActivityJoinCallback __cbDelegate =
-                  NativeMethods.Client.ActivityJoinCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityJoinCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityJoinCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetActivityJoinCallback(
@@ -4405,7 +4407,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SetActivityJoinWithApplicationCallback(
-          Client.ActivityJoinWithApplicationCallback cb)
+          BepInEx.DiscordSocialSDK.Client.Client.ActivityJoinWithApplicationCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4413,8 +4415,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.ActivityJoinWithApplicationCallback __cbDelegate =
-                  NativeMethods.Client.ActivityJoinWithApplicationCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityJoinWithApplicationCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.ActivityJoinWithApplicationCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetActivityJoinWithApplicationCallback(
@@ -4428,8 +4430,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <summary>
         ///  Sets whether a user is online/invisible/idle/dnd on Discord.
         /// </summary>
-        public void SetOnlineStatus(StatusType status,
-                                    Client.UpdateStatusCallback callback)
+        public void SetOnlineStatus(BepInEx.DiscordSocialSDK.Enums.StatusType status,
+                                    BepInEx.DiscordSocialSDK.Client.Client.UpdateStatusCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -4437,8 +4439,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateStatusCallback __callbackDelegate =
-                  NativeMethods.Client.UpdateStatusCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateStatusCallback __callbackDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateStatusCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetOnlineStatus(
@@ -4470,8 +4472,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  for more information.
         ///
         /// </remarks>
-        public void UpdateRichPresence(Activity activity,
-                                       Client.UpdateRichPresenceCallback cb)
+        public void UpdateRichPresence(BepInEx.DiscordSocialSDK.RPC.Activity activity,
+                                       BepInEx.DiscordSocialSDK.Client.Client.UpdateRichPresenceCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4481,8 +4483,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             {
                 fixed (NativeMethods.Activity* __activityFixed = &activity.self)
                 {
-                    NativeMethods.Client.UpdateRichPresenceCallback __cbDelegate =
-                      NativeMethods.Client.UpdateRichPresenceCallback_Handler;
+                    BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRichPresenceCallback __cbDelegate =
+                      BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRichPresenceCallback_Handler;
                     fixed (NativeMethods.Client* self = &this.self)
                     {
                         NativeMethods.Client.UpdateRichPresence(
@@ -4505,7 +4507,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void AcceptDiscordFriendRequest(ulong userId,
-                                               Client.UpdateRelationshipCallback cb)
+                                               BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4513,8 +4515,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.AcceptDiscordFriendRequest(
@@ -4536,7 +4538,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void AcceptGameFriendRequest(ulong userId,
-                                            Client.UpdateRelationshipCallback cb)
+                                            BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4544,8 +4546,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.AcceptGameFriendRequest(
@@ -4567,7 +4569,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Discord will block them in all other games and on Discord as well.
         ///
         /// </remarks>
-        public void BlockUser(ulong userId, Client.UpdateRelationshipCallback cb)
+        public void BlockUser(ulong userId, BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4575,8 +4577,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.BlockUser(self,
@@ -4597,7 +4599,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void CancelDiscordFriendRequest(ulong userId,
-                                               Client.UpdateRelationshipCallback cb)
+                                               BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4605,8 +4607,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.CancelDiscordFriendRequest(
@@ -4628,7 +4630,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void CancelGameFriendRequest(ulong userId,
-                                            Client.UpdateRelationshipCallback cb)
+                                            BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4636,8 +4638,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.CancelGameFriendRequest(
@@ -4653,7 +4655,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Returns the RelationshipHandle that corresponds to the relationship between the current
         ///  user and the given user.
         /// </summary>
-        public RelationshipHandle GetRelationshipHandle(ulong userId)
+        public BepInEx.DiscordSocialSDK.Handles.RelationshipHandle GetRelationshipHandle(ulong userId)
         {
             if (disposed_ != 0)
             {
@@ -4675,7 +4677,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Returns a list of all of the relationships the current user has with others, including all
         ///  Discord relationships and all Game relationships for the current game.
         /// </summary>
-        public RelationshipHandle[] GetRelationships()
+        public BepInEx.DiscordSocialSDK.Handles.RelationshipHandle[] GetRelationships()
         {
             if (disposed_ != 0)
             {
@@ -4688,7 +4690,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     NativeMethods.Client.GetRelationships(self, &__returnValue);
                 }
-                var __returnValueSurface = new RelationshipHandle[(int)__returnValue.size];
+                var __returnValueSurface = new BepInEx.DiscordSocialSDK.Handles.RelationshipHandle[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] = new RelationshipHandle(__returnValue.ptr[__i], 0);
@@ -4706,8 +4708,8 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  game before are sorted to the top)
         ///  - Offline: Users who are offline
         /// </summary>
-        public RelationshipHandle[] GetRelationshipsByGroup(
-          RelationshipGroupType groupType)
+        public BepInEx.DiscordSocialSDK.Handles.RelationshipHandle[] GetRelationshipsByGroup(
+          BepInEx.DiscordSocialSDK.Enums.RelationshipGroupType groupType)
         {
             if (disposed_ != 0)
             {
@@ -4720,7 +4722,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     NativeMethods.Client.GetRelationshipsByGroup(self, groupType, &__returnValue);
                 }
-                var __returnValueSurface = new RelationshipHandle[(int)__returnValue.size];
+                var __returnValueSurface = new BepInEx.DiscordSocialSDK.Handles.RelationshipHandle[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] = new RelationshipHandle(__returnValue.ptr[__i], 0);
@@ -4739,7 +4741,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void RejectDiscordFriendRequest(ulong userId,
-                                               Client.UpdateRelationshipCallback cb)
+                                               BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4747,8 +4749,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RejectDiscordFriendRequest(
@@ -4770,7 +4772,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void RejectGameFriendRequest(ulong userId,
-                                            Client.UpdateRelationshipCallback cb)
+                                            BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4778,8 +4780,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RejectGameFriendRequest(
@@ -4800,7 +4802,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void RemoveDiscordAndGameFriend(ulong userId,
-                                               Client.UpdateRelationshipCallback cb)
+                                               BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4808,8 +4810,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RemoveDiscordAndGameFriend(
@@ -4828,7 +4830,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Fails if the target user is not currently a game friend with the current user.
         ///
         /// </remarks>
-        public void RemoveGameFriend(ulong userId, Client.UpdateRelationshipCallback cb)
+        public void RemoveGameFriend(ulong userId, BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4836,8 +4838,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.RemoveGameFriend(
@@ -4857,7 +4859,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Under the hood uses the Levenshtein distance algorithm.
         ///
         /// </remarks>
-        public UserHandle[] SearchFriendsByUsername(string searchStr)
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle[] SearchFriendsByUsername(string searchStr)
         {
             if (disposed_ != 0)
             {
@@ -4877,7 +4879,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                     NativeMethods.Client.SearchFriendsByUsername(self, __searchStrSpan, &__returnValue);
                 }
                 NativeMethods.__FreeLocalString(&__searchStrSpan, __searchStrOwned);
-                var __returnValueSurface = new UserHandle[(int)__returnValue.size];
+                var __returnValueSurface = new BepInEx.DiscordSocialSDK.Handles.UserHandle[(int)__returnValue.size];
                 for (int __i = 0; __i < (int)__returnValue.size; __i++)
                 {
                     __returnValueSurface[__i] = new UserHandle(__returnValue.ptr[__i], 0);
@@ -4906,7 +4908,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SendDiscordFriendRequest(string username,
-                                             Client.SendFriendRequestCallback cb)
+                                             BepInEx.DiscordSocialSDK.Client.Client.SendFriendRequestCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4920,8 +4922,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __usernameSpan;
                 var __usernameOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__usernameSpan, username);
-                NativeMethods.Client.SendFriendRequestCallback __cbDelegate =
-                  NativeMethods.Client.SendFriendRequestCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendFriendRequestCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendFriendRequestCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendDiscordFriendRequest(
@@ -4954,7 +4956,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SendDiscordFriendRequestById(ulong userId,
-                                                 Client.UpdateRelationshipCallback cb)
+                                                 BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -4962,8 +4964,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendDiscordFriendRequestById(
@@ -4995,7 +4997,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SendGameFriendRequest(string username,
-                                          Client.SendFriendRequestCallback cb)
+                                          BepInEx.DiscordSocialSDK.Client.Client.SendFriendRequestCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5009,8 +5011,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 NativeMethods.Discord_String __usernameSpan;
                 var __usernameOwned = NativeMethods.__InitStringLocal(
                   __scratch, &__scratchUsed, 1024, &__usernameSpan, username);
-                NativeMethods.Client.SendFriendRequestCallback __cbDelegate =
-                  NativeMethods.Client.SendFriendRequestCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.SendFriendRequestCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.SendFriendRequestCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendGameFriendRequest(
@@ -5043,7 +5045,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///
         /// </remarks>
         public void SendGameFriendRequestById(ulong userId,
-                                              Client.UpdateRelationshipCallback cb)
+                                              BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5051,8 +5053,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SendGameFriendRequestById(
@@ -5073,7 +5075,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  example.
         ///
         /// </remarks>
-        public void SetRelationshipCreatedCallback(Client.RelationshipCreatedCallback cb)
+        public void SetRelationshipCreatedCallback(BepInEx.DiscordSocialSDK.Client.Client.RelationshipCreatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5081,8 +5083,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.RelationshipCreatedCallback __cbDelegate =
-                  NativeMethods.Client.RelationshipCreatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipCreatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipCreatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetRelationshipCreatedCallback(
@@ -5102,7 +5104,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  return a relationship with the type set to RelationshipType::None.
         ///
         /// </remarks>
-        public void SetRelationshipDeletedCallback(Client.RelationshipDeletedCallback cb)
+        public void SetRelationshipDeletedCallback(BepInEx.DiscordSocialSDK.Client.Client.RelationshipDeletedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5110,8 +5112,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.RelationshipDeletedCallback __cbDelegate =
-                  NativeMethods.Client.RelationshipDeletedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipDeletedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipDeletedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetRelationshipDeletedCallback(
@@ -5129,7 +5131,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  Fails if the target user is not currently blocked.
         ///
         /// </remarks>
-        public void UnblockUser(ulong userId, Client.UpdateRelationshipCallback cb)
+        public void UnblockUser(ulong userId, BepInEx.DiscordSocialSDK.Client.Client.UpdateRelationshipCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5137,8 +5139,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
-                  NativeMethods.Client.UpdateRelationshipCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UpdateRelationshipCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.UnblockUser(self,
@@ -5154,7 +5156,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  when no user is authenticated or available. This provides clearer intent about when
         ///  the user data is actually available.
         /// </summary>
-        public UserHandle? GetCurrentUserV2()
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle? GetCurrentUserV2()
         {
             if (disposed_ != 0)
             {
@@ -5184,7 +5186,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// </summary>
         public void GetDiscordClientConnectedUser(
           ulong applicationId,
-          Client.GetDiscordClientConnectedUserCallback callback)
+          BepInEx.DiscordSocialSDK.Client.Client.GetDiscordClientConnectedUserCallback callback)
         {
             if (disposed_ != 0)
             {
@@ -5192,9 +5194,9 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client
+                BepInEx.DiscordSocialSDK.NativeMethods.Client
                   .GetDiscordClientConnectedUserCallback __callbackDelegate =
-                  NativeMethods.Client.GetDiscordClientConnectedUserCallback_Handler;
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.GetDiscordClientConnectedUserCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.GetDiscordClientConnectedUser(
@@ -5215,7 +5217,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  received.
         ///
         /// </remarks>
-        public UserHandle? GetUser(ulong userId)
+        public BepInEx.DiscordSocialSDK.Handles.UserHandle? GetUser(ulong userId)
         {
             if (disposed_ != 0)
             {
@@ -5246,7 +5248,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  friends list.
         /// </summary>
         public void SetRelationshipGroupsUpdatedCallback(
-          Client.RelationshipGroupsUpdatedCallback cb)
+          BepInEx.DiscordSocialSDK.Client.Client.RelationshipGroupsUpdatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5254,8 +5256,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.RelationshipGroupsUpdatedCallback __cbDelegate =
-                  NativeMethods.Client.RelationshipGroupsUpdatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipGroupsUpdatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.RelationshipGroupsUpdatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetRelationshipGroupsUpdatedCallback(
@@ -5272,7 +5274,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         ///  changes their name or avatar the UserUpdatedCallback will be invoked. It is also invoked
         ///  when users come online, go offline, or start playing your game.
         /// </summary>
-        public void SetUserUpdatedCallback(Client.UserUpdatedCallback cb)
+        public void SetUserUpdatedCallback(BepInEx.DiscordSocialSDK.Client.Client.UserUpdatedCallback cb)
         {
             if (disposed_ != 0)
             {
@@ -5280,8 +5282,8 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                NativeMethods.Client.UserUpdatedCallback __cbDelegate =
-                  NativeMethods.Client.UserUpdatedCallback_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Client.UserUpdatedCallback __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Client.UserUpdatedCallback_Handler;
                 fixed (NativeMethods.Client* self = &this.self)
                 {
                     NativeMethods.Client.SetUserUpdatedCallback(

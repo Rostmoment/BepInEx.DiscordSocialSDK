@@ -123,7 +123,8 @@ namespace BepInEx.DiscordSocialSDK.RPC
                 {
                     return null;
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -159,16 +160,18 @@ namespace BepInEx.DiscordSocialSDK.RPC
             unsafe
             {
                 bool __returnIsNonNull;
-                NativeMethods.Discord_String __returnValue = new NativeMethods.Discord_String();
+                var __returnValue = new NativeMethods.Discord_String();
                 fixed (NativeMethods.ActivityAssets* self = &this.self)
                 {
                     __returnIsNonNull = NativeMethods.ActivityAssets.LargeText(self, &__returnValue);
                 }
                 if (!__returnIsNonNull)
+                {
                     return null;
-
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
-                NativeMethods.Discord_Free(__returnValue.ptr);
+                }
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }

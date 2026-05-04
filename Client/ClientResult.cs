@@ -104,12 +104,13 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     NativeMethods.ClientResult.ToString(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
         }
-        public ErrorType Type()
+        public BepInEx.DiscordSocialSDK.Enums.ErrorType Type()
         {
             if (disposed_ != 0)
             {
@@ -117,7 +118,7 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                ErrorType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.ErrorType __returnValue;
                 fixed (NativeMethods.ClientResult* self = &this.self)
                 {
                     __returnValue = NativeMethods.ClientResult.Type(self);
@@ -125,7 +126,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 return __returnValue;
             }
         }
-        public void SetType(ErrorType value)
+        public void SetType(BepInEx.DiscordSocialSDK.Enums.ErrorType value)
         {
             if (disposed_ != 0)
             {
@@ -152,7 +153,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     NativeMethods.ClientResult.Error(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }
@@ -208,7 +210,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 }
             }
         }
-        public HttpStatusCode Status()
+        public BepInEx.DiscordSocialSDK.Enums.HttpStatusCode Status()
         {
             if (disposed_ != 0)
             {
@@ -216,7 +218,7 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
             unsafe
             {
-                HttpStatusCode __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.HttpStatusCode __returnValue;
                 fixed (NativeMethods.ClientResult* self = &this.self)
                 {
                     __returnValue = NativeMethods.ClientResult.Status(self);
@@ -224,7 +226,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                 return __returnValue;
             }
         }
-        public void SetStatus(HttpStatusCode value)
+        public void SetStatus(BepInEx.DiscordSocialSDK.Enums.HttpStatusCode value)
         {
             if (disposed_ != 0)
             {
@@ -251,7 +253,8 @@ namespace BepInEx.DiscordSocialSDK.Client
                 {
                     NativeMethods.ClientResult.ResponseBody(self, &__returnValue);
                 }
-                string __returnValueSurface = MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
+                string __returnValueSurface =
+                  MarshalExtensions.PtrToStringUTF8((IntPtr)__returnValue.ptr, (int)__returnValue.size);
                 NativeMethods.Discord_Free((void*)__returnValue.ptr);
                 return __returnValueSurface;
             }

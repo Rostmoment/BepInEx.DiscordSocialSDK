@@ -247,10 +247,10 @@ namespace BepInEx.DiscordSocialSDK.RPC
             ActivityTimestamps timestamps = new ActivityTimestamps();
 
             if (start != null)
-                timestamps.SetStart((ulong)new DateTimeOffset(start.Value).ToUnixTimeMilliseconds());
+                timestamps.SetStart(start.Value);
 
             if (end != null)
-                timestamps.SetEnd((ulong)new DateTimeOffset(end.Value).ToUnixTimeMilliseconds());
+                timestamps.SetEnd(end.Value);
 
             currentActivity.SetTimestamps(timestamps);
             noButtons.SetTimestamps(timestamps);
@@ -297,21 +297,29 @@ namespace BepInEx.DiscordSocialSDK.RPC
         /// <param name="url">URL that opens when user clicks button</param>
         public void AddButton(string label, string url)
         {
+            ActivityButton button = new ActivityButton();
+            button.SetLabel(label);
+            button.SetUrl(url);
+            AddButton(button);
+        }
+        /// <summary>
+        /// Adds button to current rich presence
+        /// <para>Won't add button if there is already 2 buttons</para>
+        /// </summary>
+        /// <param name="button">Button to add</param>
+        public void AddButton(ActivityButton button)
+        {
             if (!IsReady)
                 return;
 
             if (CurrentButtons != null && CurrentButtons.Length >= 2)
                 return;
-
-            ActivityButton button = new ActivityButton();
-            button.SetLabel(label);
-            button.SetUrl(url);
-
             currentActivity.AddButton(button);
-            // Buttons cannot be removed from acrivity, that's why I made noButtons field
+            // Buttons cannot be removed from activity, that's why I made noButtons field
 
             Update();
         }
+
         // Why discord didn't make a ClearButtons method is beyond me
         /// <summary>
         /// Clears all buttons from current rich presence

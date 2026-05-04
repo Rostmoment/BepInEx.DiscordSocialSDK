@@ -58,8 +58,8 @@ namespace BepInEx.DiscordSocialSDK.Voice
         public delegate void OnVoiceStateChanged(ulong userId);
         public delegate void OnParticipantChanged(ulong userId, bool added);
         public delegate void OnSpeakingStatusChanged(ulong userId, bool isPlayingSound);
-        public delegate void OnStatusChanged(Call.Status status,
-                                             Call.Error error,
+        public delegate void OnStatusChanged(BepInEx.DiscordSocialSDK.Voice.Call.Status status,
+                                             BepInEx.DiscordSocialSDK.Voice.Call.Error error,
                                              int errorDetail);
         public void Dispose()
         {
@@ -115,7 +115,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         /// <summary>
         ///  Converts the Error enum to a string.
         /// </summary>
-        public static string ErrorToString(Call.Error type)
+        public static string ErrorToString(BepInEx.DiscordSocialSDK.Voice.Call.Error type)
         {
             unsafe
             {
@@ -131,7 +131,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  Returns whether the call is configured to use voice auto detection or push to talk for the
         ///  current user.
         /// </summary>
-        public AudioModeType GetAudioMode()
+        public BepInEx.DiscordSocialSDK.Enums.AudioModeType GetAudioMode()
         {
             if (disposed_ != 0)
             {
@@ -139,7 +139,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
             }
             unsafe
             {
-                AudioModeType __returnValue;
+                BepInEx.DiscordSocialSDK.Enums.AudioModeType __returnValue;
                 fixed (NativeMethods.Call* self = &this.self)
                 {
                     __returnValue = NativeMethods.Call.GetAudioMode(self);
@@ -335,7 +335,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  A call is not ready to be used until the status changes to "Connected".
         ///
         /// </remarks>
-        public Call.Status GetStatus()
+        public BepInEx.DiscordSocialSDK.Voice.Call.Status GetStatus()
         {
             if (disposed_ != 0)
             {
@@ -343,7 +343,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
             }
             unsafe
             {
-                Call.Status __returnValue;
+                BepInEx.DiscordSocialSDK.Voice.Call.Status __returnValue;
                 fixed (NativeMethods.Call* self = &this.self)
                 {
                     __returnValue = NativeMethods.Call.GetStatus(self);
@@ -355,7 +355,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  Returns the current configuration for void auto detection thresholds. See the description
         ///  of the VADThreshold struct for specifics.
         /// </summary>
-        public VADThresholdSettings GetVADThreshold()
+        public BepInEx.DiscordSocialSDK.Voice.VADThresholdSettings GetVADThreshold()
         {
             if (disposed_ != 0)
             {
@@ -381,7 +381,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  themselves.
         ///
         /// </remarks>
-        public VoiceStateHandle? GetVoiceStateHandle(ulong userId)
+        public BepInEx.DiscordSocialSDK.Handles.VoiceStateHandle? GetVoiceStateHandle(ulong userId)
         {
             if (disposed_ != 0)
             {
@@ -413,7 +413,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  confused push to talk key.
         ///
         /// </remarks>
-        public void SetAudioMode(AudioModeType audioMode)
+        public void SetAudioMode(BepInEx.DiscordSocialSDK.Enums.AudioModeType audioMode)
         {
             if (disposed_ != 0)
             {
@@ -458,7 +458,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  generally not invoked when users join or leave channels.
         ///
         /// </remarks>
-        public void SetOnVoiceStateChangedCallback(Call.OnVoiceStateChanged cb)
+        public void SetOnVoiceStateChangedCallback(BepInEx.DiscordSocialSDK.Voice.Call.OnVoiceStateChanged cb)
         {
             if (disposed_ != 0)
             {
@@ -466,8 +466,8 @@ namespace BepInEx.DiscordSocialSDK.Voice
             }
             unsafe
             {
-                NativeMethods.Call.OnVoiceStateChanged __cbDelegate =
-                  NativeMethods.Call.OnVoiceStateChanged_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Call.OnVoiceStateChanged __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Call.OnVoiceStateChanged_Handler;
                 fixed (NativeMethods.Call* self = &this.self)
                 {
                     NativeMethods.Call.SetOnVoiceStateChangedCallback(
@@ -481,7 +481,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         /// <summary>
         ///  Sets a callback function to be invoked whenever some joins or leaves a voice call.
         /// </summary>
-        public void SetParticipantChangedCallback(Call.OnParticipantChanged cb)
+        public void SetParticipantChangedCallback(BepInEx.DiscordSocialSDK.Voice.Call.OnParticipantChanged cb)
         {
             if (disposed_ != 0)
             {
@@ -489,8 +489,8 @@ namespace BepInEx.DiscordSocialSDK.Voice
             }
             unsafe
             {
-                NativeMethods.Call.OnParticipantChanged __cbDelegate =
-                  NativeMethods.Call.OnParticipantChanged_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Call.OnParticipantChanged __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Call.OnParticipantChanged_Handler;
                 fixed (NativeMethods.Call* self = &this.self)
                 {
                     NativeMethods.Call.SetParticipantChangedCallback(
@@ -610,7 +610,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  user plays a soundboard sound.
         ///
         /// </remarks>
-        public void SetSpeakingStatusChangedCallback(Call.OnSpeakingStatusChanged cb)
+        public void SetSpeakingStatusChangedCallback(BepInEx.DiscordSocialSDK.Voice.Call.OnSpeakingStatusChanged cb)
         {
             if (disposed_ != 0)
             {
@@ -618,8 +618,8 @@ namespace BepInEx.DiscordSocialSDK.Voice
             }
             unsafe
             {
-                NativeMethods.Call.OnSpeakingStatusChanged __cbDelegate =
-                  NativeMethods.Call.OnSpeakingStatusChanged_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Call.OnSpeakingStatusChanged __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Call.OnSpeakingStatusChanged_Handler;
                 fixed (NativeMethods.Call* self = &this.self)
                 {
                     NativeMethods.Call.SetSpeakingStatusChangedCallback(
@@ -634,7 +634,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         ///  Sets a callback function to be invoked when the call status changes, such as when it fully
         ///  connects or starts reconnecting.
         /// </summary>
-        public void SetStatusChangedCallback(Call.OnStatusChanged cb)
+        public void SetStatusChangedCallback(BepInEx.DiscordSocialSDK.Voice.Call.OnStatusChanged cb)
         {
             if (disposed_ != 0)
             {
@@ -642,8 +642,8 @@ namespace BepInEx.DiscordSocialSDK.Voice
             }
             unsafe
             {
-                NativeMethods.Call.OnStatusChanged __cbDelegate =
-                  NativeMethods.Call.OnStatusChanged_Handler;
+                BepInEx.DiscordSocialSDK.NativeMethods.Call.OnStatusChanged __cbDelegate =
+                  BepInEx.DiscordSocialSDK.NativeMethods.Call.OnStatusChanged_Handler;
                 fixed (NativeMethods.Call* self = &this.self)
                 {
                     NativeMethods.Call.SetStatusChangedCallback(
@@ -678,7 +678,7 @@ namespace BepInEx.DiscordSocialSDK.Voice
         /// <summary>
         ///  Converts the Status enum to a string.
         /// </summary>
-        public static string StatusToString(Call.Status type)
+        public static string StatusToString(BepInEx.DiscordSocialSDK.Voice.Call.Status type)
         {
             unsafe
             {

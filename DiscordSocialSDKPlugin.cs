@@ -24,7 +24,7 @@ namespace BepInEx.DiscordSocialSDK
         #region constants
         public const string GUID = "rost.moment.unity.bepinex.discordsocialsdk";
         public const string NAME = "Discord Social SDK For BepInEx";
-        public const string VERSION = "1.1.0";
+        public const string VERSION = "1.1.1";
 
         private const string PING_HOST = "discord.com";
         private const int PING_TIMEOUT_MS = 3000;
