@@ -147,6 +147,41 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <param name="status">The new online status to set for the client</param>
         /// <exception cref="InvalidStatusException">Thrown when status cannot be set as own status</exception>
         public void SetOnlineStatus(StatusType status) => SetOnlineStatus(status, (x) => { });
+
+
+
+
+        /// <summary>
+        /// Opens a message in Discord if possible
+        /// </summary>
+        /// <param name="messageId">Message id to open</param>
+        /// <returns>True if the message was opened successfully, false otherwise</returns>
+        public bool OpenMessageInDiscordIfCan(ulong messageId) => OpenMessageInDiscordIfCan(messageId, () => { }, (x) => { });
+        /// <summary>
+        /// Opens a message in Discord if possible
+        /// </summary>
+        /// <param name="messageId">Message id to open</param>
+        /// <param name="callback">Callback to be called if message is opened successfully</param>
+        /// <returns>True if the message was opened successfully, false otherwise</returns>
+        public bool OpenMessageInDiscordIfCan(ulong messageId, Client.OpenMessageInDiscordCallback callback) => 
+            OpenMessageInDiscordIfCan(messageId, () => { }, callback);
+
+        /// <summary>
+        /// Opens a message in Discord if possible
+        /// </summary>
+        /// <param name="messageId">Message id to open</param>
+        /// <param name="provisionalUserMergeRequiredCallback">Callback to be called if a provisional user merge is required</param>
+        /// <param name="callback">Callback to be called if message is opened successfully</param>
+        /// <returns>True if the message was opened successfully, false otherwise</returns>
+        public bool OpenMessageInDiscordIfCan(ulong messageId, Client.ProvisionalUserMergeRequiredCallback provisionalUserMergeRequiredCallback, Client.OpenMessageInDiscordCallback callback)
+        {
+            if (Client.CanOpenMessageInDiscord(messageId))
+            {
+                Client.OpenMessageInDiscord(messageId, provisionalUserMergeRequiredCallback, callback);
+                return true;
+            }
+            return false;
+        }
         #endregion
 
         #region initialization
