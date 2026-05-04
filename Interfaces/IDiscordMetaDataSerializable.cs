@@ -12,7 +12,6 @@ namespace BepInEx.DiscordSocialSDK.Interfaces
     /// Discord message metadata (a flat string key-value dictionary).
     /// <para>
     /// Implement this interface to attach structured data to Discord messages
-    /// Keys must be unique across all metadata objects passed in a single call
     /// </para>
     /// </summary>
     public interface IDiscordMetaDataSerializable
