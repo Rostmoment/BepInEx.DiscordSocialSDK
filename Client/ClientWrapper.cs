@@ -139,7 +139,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <param name="metadata">Metadata associated with the message, just key-value pairs as string</param>
         /// <exception cref="CannotSendMessageToThisUserException">Thrown when the message cannot be sent to the specified user</exception>
         /// <exception cref="CannotSendEmptyMessageException">Thrown when the message text is empty</exception>
-        /// <exception cref="UknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
+        /// <exception cref="UnknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
         public void SendMessageToUser(ulong userID, string text, Dictionary<string, string> metadata) =>
             SendMessageToUser(userID, text, metadata, (x, y) => { });
 
@@ -152,7 +152,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <param name="callback">A callback method to be invoked after the message is sent</param>
         /// <exception cref="CannotSendMessageToThisUserException">Thrown when the message cannot be sent to the specified user</exception>
         /// <exception cref="CannotSendEmptyMessageException">Thrown when the message text is empty</exception>
-        /// <exception cref="UknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
+        /// <exception cref="UnknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
         public void SendMessageToUser(ulong userID, string text, Dictionary<string, string> metadata, Client.SendUserMessageCallback callback)
         {
             Client.SendUserMessageCallback errorHandle = (clientResult, messageID) =>
@@ -165,7 +165,7 @@ namespace BepInEx.DiscordSocialSDK.Client
                     else if (errorCode == ErrorCode.CannotSendEmptyMessage.ToErrorCode())
                         throw new CannotSendEmptyMessageException(clientResult, userID);
                     else
-                        throw new UknownDiscordException(clientResult);
+                        throw new UnknownDiscordException(clientResult);
                 }
             };
 
@@ -188,7 +188,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <exception cref="ArgumentException">Thrown when multiple metadata objects contain the same key</exception>
         /// <exception cref="CannotSendMessageToThisUserException">Thrown when the message cannot be sent to the specified user</exception>
         /// <exception cref="CannotSendEmptyMessageException">Thrown when the message text is empty</exception>
-        /// <exception cref="UknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
+        /// <exception cref="UnknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
         public void SendMessageToUser(ulong userID, string text, params IDiscordMetaDataSerializable[] metadataObjects) =>
             SendMessageToUser(userID, text, metadataObjects, (x, y) => { });
 
@@ -202,7 +202,7 @@ namespace BepInEx.DiscordSocialSDK.Client
         /// <exception cref="ArgumentException">Thrown when multiple metadata objects contain the same key</exception>
         /// <exception cref="CannotSendMessageToThisUserException">Thrown when the message cannot be sent to the specified user</exception>
         /// <exception cref="CannotSendEmptyMessageException">Thrown when the message text is empty</exception>
-        /// <exception cref="UknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
+        /// <exception cref="UnknownDiscordException">Thrown when an unknown error occurs while sending the message</exception>
         public void SendMessageToUser(ulong userID, string text, IDiscordMetaDataSerializable[] metadataObjects, Client.SendUserMessageCallback callback)
         {
             Dictionary<string, string> mergedMetadata = new Dictionary<string, string>();

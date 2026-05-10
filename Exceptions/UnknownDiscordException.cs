@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BepInEx.DiscordSocialSDK.Exceptions
 {
-    public class UknownDiscordException : BaseDiscordException
+    public class UnknownDiscordException : BaseDiscordException
     {
-        public UknownDiscordException(ClientResult result) : base(result)
+        public UnknownDiscordException(ClientResult result) : base(result)
         {
         }
     }
