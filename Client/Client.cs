@@ -1013,6 +1013,27 @@ namespace BepInEx.DiscordSocialSDK.Client
             }
         }
         /// <summary>
+        ///  Enables or disables Krisp noise cancellation.
+        /// </summary>
+        /// <remarks>
+        ///  Defaults to off. When enabled, noise suppression is automatically disabled.
+        ///
+        /// </remarks>
+        public void SetNoiseCancellation(bool on)
+        {
+            if (disposed_ != 0)
+            {
+                throw new ObjectDisposedException(nameof(Client));
+            }
+            unsafe
+            {
+                fixed (NativeMethods.Client* self = &this.self)
+                {
+                    NativeMethods.Client.SetNoiseCancellation(self, on);
+                }
+            }
+        }
+        /// <summary>
         ///  Enables basic background noise suppression.
         /// </summary>
         /// <remarks>
