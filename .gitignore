@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 # Dlls
 libs/*.dll
+/libs
+/libs/System.Runtime.CompilerServices.Unsafe.dll
