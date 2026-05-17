@@ -362,9 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Dlls
-libs/*.dll
-/libs/libdiscord_partner_sdk.so
-/libs/System.Memory.dll
-/libs/System.Numerics.Vectors.dll
-/libs/System.Runtime.CompilerServices.Unsafe.dll
+# libs
+libs/*
