@@ -24,7 +24,7 @@ namespace BepInEx.DiscordSocialSDK
         #region constants
         public const string GUID = "rost.moment.unity.bepinex.discordsocialsdk";
         public const string NAME = "Discord Social SDK For BepInEx";
-        public const string VERSION = "1.1.2";
+        public const string VERSION = "1.9.15780";
 
         private const string PING_HOST = "discord.com";
         private const int PING_TIMEOUT_MS = 3000;
@@ -38,8 +38,8 @@ namespace BepInEx.DiscordSocialSDK
         {
             Instance = this;
 
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                throw new PlatformNotSupportedException("Discord Social SDK is only supported on Windows");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                throw new PlatformNotSupportedException("Discord Social SDK is only supported on Windows and Linux");
 
             if (!CheckInternetConnection())
                 throw new Exception("No internet connection detected. Discord Social SDK requires internet access.");
