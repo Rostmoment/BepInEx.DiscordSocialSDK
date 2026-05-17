@@ -3914,6 +3914,10 @@ namespace BepInEx.DiscordSocialSDK
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetNoAudioInputThreshold(Client* self, float dBFSThreshold);
             [DllImport(Libraries.DISCORD_LIBRARY_NAME,
+                   EntryPoint = "Discord_Client_SetNoiseCancellation",
+                   CallingConvention = CallingConvention.Cdecl)]
+            public static extern void SetNoiseCancellation(Client* self, bool on);
+            [DllImport(Libraries.DISCORD_LIBRARY_NAME,
                        EntryPoint = "Discord_Client_SetNoiseSuppression",
                        CallingConvention = CallingConvention.Cdecl)]
             public static extern void SetNoiseSuppression(Client* self, bool on);
