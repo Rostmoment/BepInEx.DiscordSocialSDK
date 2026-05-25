@@ -159,10 +159,6 @@ namespace BepInEx.DiscordSocialSDK.RPC
             if (!IsReady)
                 return;
 
-            details ??= CurrentDetails;
-            detailsURL ??= CurrentDetailsUrl;
-            state ??= CurrentState;
-            stateURL ??= CurrentStateUrl;
 
             currentActivity.SetName(name);
             currentActivity.SetDetails(details);
