@@ -6,13 +6,27 @@ namespace BepInEx.DiscordSocialSDK.RPC
 {
     public class DiscordRPCWrapper
     {
-        public DiscordRPCWrapper(ClientWrapper client)
+        /// <summary>
+        /// Initializes a new instance of the DiscordRPCWrapper class with the specified client and update callback
+        /// </summary>
+        /// <param name="client">Client wrapper used to interact with the underlying client</param>
+        /// <param name="callback">Delegate invoked to handle rich presence update notifications</param>
+        public DiscordRPCWrapper(ClientWrapper client, Client.Client.UpdateRichPresenceCallback callback)
         {
             this.client = client;
+            this.callback = callback;
             Initialize();
         }
 
-        private ClientWrapper client;
+        /// <summary>
+        /// Initializes a new DiscordRPCWrapper using the specified client and a default callback.
+        /// </summary>
+        /// <remarks>Delegates to the primary constructor, supplying the specified client and the Callback</remarks>
+        /// <param name="client">The ClientWrapper used to interact with the underlying client</param>
+        public DiscordRPCWrapper(ClientWrapper client) : this(client, Callback) { }
+
+        private readonly Client.Client.UpdateRichPresenceCallback callback;
+        private readonly ClientWrapper client;
         private Activity noButtons;
         private Activity currentActivity;
         private bool initialized;
@@ -346,10 +360,10 @@ namespace BepInEx.DiscordSocialSDK.RPC
 
         private void Update()
         {
-           client.Client?.UpdateRichPresence(currentActivity, Callback);
+           client.Client?.UpdateRichPresence(currentActivity, callback);
         }
 
-        private void Callback(ClientResult result)
+        private static void Callback(ClientResult result)
         {
             if (!result.Successful())
                 Logger.LogError($"Failed to update Discord Rich Presence: {result.Error()}");
